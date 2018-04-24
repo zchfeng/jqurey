@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background: url(images/chun1.jpg);
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<select name="" id="sele">
+    <option value="1">春意绵绵</option>
+    <option value="2">夏日炎炎</option>
+    <option value="3">秋风瑟瑟</option>
+    <option value="4">冬雪皑皑</option>
+</select>
+</body>
+</html>
+<script>
+    var sele = document.getElementById("sele");  // 下拉列表
+    sele.onchange = function() {
+        // alert(this.value);
+        switch(this.value) {
+            case "1":      // 表单娶过来的值 是 字符型
+                document.body.style.backgroundImage = " url(images/chun1.jpg)";
+                break;
+            case "2":      // 表单娶过来的值 是 字符型
+                document.body.style.backgroundImage = " url(images/xia1.jpg)";
+                break;
+            case "3":      // 表单娶过来的值 是 字符型
+                document.body.style.backgroundImage = " url(images/qiu1.jpg)";
+                break;
+            case "4":      // 表单娶过来的值 是 字符型
+                document.body.style.backgroundImage = " url(images/dong1.jpg)";
+                break;
+        }
+    }
+</script>

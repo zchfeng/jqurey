@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+    <style>
+        input{
+            margin-top: 10px;
+        }
+        table,tr,td{
+            border: solid 1px #00b5ee;
+        }
+        table{
+            width: 500px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<form id="myform">
+    <p>列表</p>
+    输入搜索的内容 <input name="txt" type="text"/>
+    <input  type="button" name="soso" value="搜索" />
+</form>
+<table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <td>账号</td>
+        <td>密码</td>
+        <td>手机</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody id="tab">
+    <tr>
+        <td>账号</td>
+        <td>密码</td>
+        <td>手机</td>
+        <td>操作</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    var myform=document.getElementById("myform")
+    var otab=document.getElementById("tab")
+    var cookieobj=JSON.parse(getCooie("Cookie")||'[]')
+    for(var i=0;i<cookieobj.length;i++){
+        show(cookieobj[i])
+    }
+    function show(obj) {
+        var otr=document.createElement("tr")
+        var otd1=document.createElement("td")
+        otd1.innerHTML=obj.uname
+        otr.appendChild(otd1)
+        var otd2=document.createElement("td")
+        otd2.innerHTML=obj.upwd
+        otr.appendChild(otd2)
+        var otd3=document.createElement("td")
+        otd3.innerHTML=obj.utel
+        otr.appendChild(otd3)
+        var otd4=document.createElement("td")
+        otd4.innerHTML="<a onclick=del(this)>删除</a>"
+        otr.appendChild(otd4)
+        otab.appendChild(otr)
+    }
+    myform.soso.onclick=function () {
+        otab.innerHTML=""
+        var str=myform.txt.value
+        var newcookie=JSON.parse(getCooie("Cookie")||'[]')
+        for(var i=0;i<newcookie.length;i++){
+            if(newcookie[i].uname.indexOf(str)!=-1){
+                show(newcookie[i])
+            }
+        }
+        return false
+    }
+    function del(a) {
+        var deltr=a.parentNode.parentNode
+        deltr.remove()
+        var del_fir=deltr.firstElementChild.innerHTML||deltr.firstChild.innerHTML
+        console.log(del_fir);
+        var newcookie=JSON.parse(getCooie("Cookie")||'[]')
+        var delcookie=newcookie.filter(function (ele,index) {
+            console.log(ele != del_fir);
+            if(ele.uname!=del_fir){
+                console.log(ele);
+                return ele
+            }
+            })
+        console.log(delcookie);
+        setCookie("Cookie",JSON.stringify(delcookie))
+    }
+</script>

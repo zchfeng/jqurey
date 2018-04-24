@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            margin:3px;
+            height:100px;
+            width:100px;
+            background-color:green;
+        }
+        .box:nth-of-type(even){
+            background-color:yellow;
+        }
+        .box:nth-of-type(odd){
+            background-color:wheat;
+        }
+        span{
+            margin:3px;
+            height:50px;
+            width:50px;
+            display:block;
+            background-color:#cd0a0a;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<div class="box">
+
+    <span></span>
+
+</div>
+</body>
+</html>
+<script>
+
+    //  evt.target 被点击的那一个元素
+    //  evt.currentTarget 等于 this ,事件绑定在谁身上,this就是谁.
+    $(function(){
+
+        $(".box").on("click",function(evt){
+            console.log(evt);
+
+            //
+
+//            console.log(this == evt.currentTarget);
+
+//            console.log(evt.originalEvent);
+
+            console.log(evt.offsetX);
+            console.log(evt.clientX);
+
+        })
+
+
+    })
+</script>

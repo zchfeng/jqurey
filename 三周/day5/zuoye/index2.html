@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Cookie.js"></script>
+    <style>
+        input{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="form">
+    <p>登录</p>
+    账号名  <input type="text" name="uname"><br>
+    密&nbsp;&nbsp;&nbsp;码 <input type="password" name="pws"><br>
+    <input type="submit" >
+    <input type="reset" >
+    <div id="box"></div>
+</form>
+</body>
+</html>
+<script>
+    var oform=document.getElementById("form")
+    var obox=document.getElementById("box")
+    oform.onsubmit=function () {
+        var cookieobj=JSON.parse(getCookie("list")||'[]')
+        console.log(cookieobj);
+        for(var i=0;i<cookieobj.length;i++){
+
+            if(cookieobj[i].uname==oform.uname.value&& cookieobj[i].pws==oform.pws.value){
+                var num=5
+                var timer=setInterval(function () {
+                if(num==0){
+                    clearInterval(timer)
+                    window.location.href="index3.html"
+                }
+             obox.innerHTML="登录成功,请稍等...."+num
+               num--
+            },500)
+           return false
+            }
+        }
+        obox.innerHTML="请输入正确的账号密码".fontcolor("red")
+        return false
+    }
+
+
+</script>

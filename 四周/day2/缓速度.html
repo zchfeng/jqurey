@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;
+        margin: }
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: #00b5ee;
+        }
+    </style>
+</head>
+<body>
+<button id="400btn">400</button>
+<button id="700btn">700</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var o400Btn = document.getElementById("400btn")
+    var o700Btn = document.getElementById("700btn")
+    var obox = document.getElementById("box")
+    o400Btn.onclick = function () {
+        clearInterval(obox.timer)
+        obox.timer = setInterval(function () {
+            //        步长=(目标位置-当前位置)/10
+            var step = (400 - obox.offsetLeft) / 10
+//        步长去整
+            step = step > 0 ? Math.ceil(step) : Math.floor(step)
+            //        目标位置=现在位置+步长
+            obox.style.left = obox.offsetLeft + step + "px"
+            console.log(step);//-1
+            if (obox.offsetLeft == 400) {
+                clearInterval(obox.timer)
+            }
+        }, 40)
+    }
+    o700Btn.onclick = function () {
+        clearInterval(obox.timer)
+        obox.timer = setInterval(function () {
+            var step = (700-obox.offsetLeft) / 10
+            var step = step > 0 ? Math.ceil(step) : Math.floor(step)
+            obox.style.left = obox.offsetLeft + step + "px"
+            if (obox.offsetLeft == 700) {
+                clearInterval(obox.timer)
+            }
+        }, 40)
+    }
+</script>

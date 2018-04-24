@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="JS/animate.js"></script>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #00b5ee;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn_400">400</button>
+<button id="btn_700">700</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var btn400=document.getElementById("btn_400")
+    var btn700=document.getElementById("btn_700")
+    var obox=document.getElementById("box")
+    btn400.onclick=function () {
+//        var timer=setInterval(function () {
+//            console.log(obox.offsetLeft);
+//            var tep = 10
+//            if (obox.offsetLeft > 400) {
+//                tep = -10
+//            }
+//            obox.style.left = obox.offsetLeft + tep + "px"
+//            if(Math.abs(obox.offsetLeft-400)<=10){
+//                clearInterval(timer)
+//                obox.style.left=400+"px"
+//            }
+//        },40)
+        animate(obox,400,10)
+    }
+    btn700.onclick=function () {
+//        var timer=setInterval(function () {
+//            console.log(obox.offsetLeft);
+//            var tep = 10
+//            if (obox.offsetLeft > 700) {
+//                tep = -10
+//            }
+//            obox.style.left = obox.offsetLeft + tep + "px"
+//            if(Math.abs(obox.offsetLeft-700)<=10){
+//                clearInterval(timer)
+//                obox.style.left=700+"px"
+//            }
+//        },40)
+        animate(obox,700,10)
+    }
+</script>

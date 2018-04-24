@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li{
+            list-style: none;
+            width:200px;
+            height: 50px;
+            background: #c6c6c6;
+        }
+        ul{
+            display: none;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span>
+        <p></p>
+    </span>
+</div>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+</html>
+<script>
+    var oul=document.getElementsByTagName("ul")[0]
+     document.oncontextmenu=function (evt) {
+         var e=evt||window.event
+         if(e.preventDefault){
+             e.preventDefault()
+         }else{
+             e.returnValue=false
+         }
+         var x=e.clientX
+         var y=e.clientY
+         oul.style.display="block"
+         oul.style.left=x+"px"
+         oul.style.top=y+"px"
+     }
+
+     document.onclick=function (evt) {
+         oul.style.display="none"
+
+  }
+</script>

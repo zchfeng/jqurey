@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="JS/animate_move.js"></script>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        div{
+            width: 490px;
+            height: 600px;
+            margin:0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            width:1000%;
+            overflow: hidden;
+            position: absolute;
+        }
+        ul li,ol li{
+            list-style: none;
+            float: left;
+        }
+        ol{
+            position: absolute;
+            left:200px;
+            top:130px;
+        }
+        ol li{
+            width: 20px;
+            height: 20px;
+            background:#ffffff;
+            margin-right:20px;
+            text-align: center;
+        }
+        .color{
+            background: #00b5ee;
+        }
+    </style>
+    <script src="JS/animate.js"></script>
+</head>
+<body>
+<div>
+    <ul>
+        <li><img src="images(6)/01.jpg" /></li>
+        <li><img src="images(6)/02.jpg" /></li>
+        <li><img src="images(6)/03.jpg" /></li>
+        <li><img src="images(6)/04.jpg" /></li>
+        <li><img src="images(6)/05.jpg" /></li>
+    </ul>
+    <ol>
+        <li class="color">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+</div>
+</body>
+</html>
+<script>
+    var ol_olis=document.getElementsByTagName("ol")[0].children
+    var oul=document.getElementsByTagName("ul")[0]
+    oul.appendChild(oul.children[0].cloneNode(true))
+    for(var i=0;i<ol_olis.length;i++){
+       ol_olis[i].index=i
+        ol_olis[i].onmouseenter=function () {
+//            oul.style.left=(-490*this.index)+"px"
+            move(oul,-490*this.index,10)
+            for(var j=0;j<ol_olis.length;j++){
+                ol_olis[j].className=""
+            }
+            this.className="color"
+        }
+    }
+
+</script>

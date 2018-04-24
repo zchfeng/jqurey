@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            border:none;
+        }
+        ul, li{
+            list-style:none;
+        }
+        #box{
+            width:500px;
+            height:550px;
+            border:3px solid #ccc;
+            margin:0 auto;
+            padding:10px;
+        }
+        #list{
+            width:480px;
+            height:430px;
+            border:1px dashed #ccc;
+            padding:10px;
+            overflow:auto;
+        }
+        #txt{
+            width:500px;
+            height:50px;
+            border:1px solid orange;
+            margin-top:10px;
+        }
+        #sendBtn{
+            width:60px;
+            height:30px;
+            float:right;
+        }
+        #list li{
+            background:#9cf;
+            margin-bottom:5px;
+            padding:5px;
+            border-radius:5px;
+            display:inline-block;
+        }
+        /*#list::-webkit-scrollbar{*/
+        /*background-color: greenyellow;*/
+        /*width: 3px;*/
+        /*border-radius: 50%;*/
+        /*}*/
+
+    </style>
+
+
+</head>
+<body>
+<div id="box">
+    <ul id="list">
+
+    </ul>
+    <textarea id="txt"></textarea> <input id="sendBtn" type="button" value="发送"/>
+</div>
+</body>
+</html>
+<script>
+    function createXHR(){//创建核心对象
+        if(window.XMLHttpRequest){
+            return new XMLHttpRequest();
+        }
+        return new ActiveXObject("Msxml2.XMLHTTP");
+    }
+
+
+    var getXhr = createXHR();// 用户接受
+    var sedXhr = createXHR();// 发送
+
+    // 它会自动触发,如果一旦有数据,就自动回触发 拼接字符串,到 ul里面
+    getXhr.onreadystatechange = function(){
+        if(getXhr.status == 200 && getXhr.readyState == 4){
+
+            var getData = JSON.parse(getXhr.responseText);
+//            console.log(getData);
+            var strMsg = '';
+            getData.forEach((ele, index) =>{
+                strMsg += `<li>[${ele.sender}]${ele.msg}</li><div></div>`;
+            });
+            //            console.log(strMsg);
+            list.innerHTML = strMsg;
+
+        }
+    }
+
+    window.onload = function(){
+
+        getDate();
+
+    }
+    setInterval(function(){
+        getDate()
+    }, 500)
+    // 轮询
+    function getDate(){
+        getXhr.open("get", "http://10.41.152.12/chat?type=query");
+        getXhr.send(null);
+    }
+    
+    //send
+    var user = prompt("请输入用户名");
+    sendBtn.onclick = function(){
+
+        var txt = document.getElementById('txt').value;
+
+        var str = "http://10.41.152.12/chat/?type=send&&sender=" + user + "&&msg=" + txt;
+        sedXhr.open("get",str);
+        sedXhr.send(null)
+    }
+
+    sedXhr.onreadystatechange=function(){
+        if(sedXhr.status==200&& sedXhr.readyState==4){
+            var datas=JSON.parse(sedXhr.responseText);
+            console.log(datas);
+            if(datas.status==0){
+                alert(datas.error);
+            }
+            getDate()
+        }
+    }
+
+</script>

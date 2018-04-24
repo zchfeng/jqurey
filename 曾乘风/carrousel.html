@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;
+            padding: 0;}
+        #box{
+            width: 800px;
+            height: 550px;
+            margin:0 auto;
+            overflow: hidden;
+            position: relative;
+            background: #333333;
+            display: none;
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*top: 50%;*/
+            /*margin-left: -400px;*/
+            /*margin-top: -275px;*/
+        }
+        ul{
+            width:1000%;
+            overflow: hidden;
+            position: absolute;
+        }
+        ul li,ol li{
+            list-style: none;
+            float: left;
+        }
+        /*ol{*/
+            /*width: 490px;*/
+            /*position: absolute;*/
+            /*top:50px;*/
+            /*display: none;*/
+        /*}*/
+        /*ol li{*/
+            /*width: 50px;*/
+            /*height: 100px;*/
+            /*background:rgba(0,0,0,0.4);*/
+            /*text-align: center;*/
+        /*}*/
+        #box ol{ position:absolute; right:400px; bottom:80px; line-height:20px; text-align:center; }
+        #box ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer; border-radius:50%; }
+        #box ol li.current{ background:red; }
+        .color{
+            background: #00b5ee;
+        }
+        #left{
+            top: 200px;
+            left: 10px;
+            position: absolute;
+        }
+        #right{
+            top: 200px;
+            right:10px;
+            position: absolute;
+        }
+       #clean{
+           width: 100px;
+           height: 50px;
+           background: #00b5ee;
+           line-height:50px;
+           display: inline-block;
+       }
+        #move{
+            width: 700px;
+            height: 50px;
+            float: left;
+            background: #9a9a9a;
+            /*position: absolute;*/
+        }
+        #tan{
+            width: 100px;
+            height: 50px;
+            background: #00b5ee;
+            line-height:50px;
+            position: absolute;
+        }
+
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+<div id="tan">弹出窗口</div>
+<div  id="box">
+    <div>
+     <div id="move"></div>
+    <div id="clean">关闭</div>
+    </div>
+    <ul>
+        <li><img src="images/slidepic1.jpg" /></li>
+        <li><img src="images/slidepic2.jpg" /></li>
+        <li><img src="images/slidepic3.jpg" /></li>
+        <li><img src="images/slidepic4.jpg" /></li>
+    </ul>
+    <ol>
+    </ol>
+    <div id="left"><img src="images/prev.png"></div>
+    <div id="right"><img src="images/next.png"></div>
+</div>
+</body>
+</html>
+<script>
+    var obox=document.getElementById("box")
+    var oclean=document.getElementById("clean")
+    var oul=document.getElementsByTagName("ul")[0]
+    oul.appendChild(oul.children[0].cloneNode(true))
+    var ool=document.getElementsByTagName("ol")[0]
+    var omove=document.getElementById("move")
+    document.getElementById("tan").onclick=function () {
+        obox.style.display="block"
+        timer()
+    }
+    for(var i=0;i<oul.children.length-1;i++){
+        var oli=document.createElement("li")
+        ool.appendChild(oli)
+        if(i==0){
+            oli.className="current"
+        }
+        oli.index=i
+        oli.onclick=function () {
+            imgIndex= dian= this.index - 1;
+            show();
+        }
+    }
+    oclean.onclick=function () {
+        obox.style.display="none"
+    }
+    var dian=0
+    var imgIndex=0
+    function autoPlay(){
+        imgIndex++;
+        if(imgIndex > 4){
+            imgIndex = 1;
+            oul.style.left = "0px";
+        }
+        animate(oul,{"left":-800 * imgIndex})
+        dian++
+        if(dian>3){
+            dian=0
+        }
+        for(var i = 0; i < ool.children.length; i++){
+            ool.children[i].className = "";
+        }
+        ool.children[dian].className = "current";
+    }
+    function timer() {
+       var timer= setInterval(function(){
+           console.log(111);
+           autoPlay();
+        }, 1000);
+    }
+    omove.onmousedown=function (evt) {
+        var e=evt||window.event
+        var x=e.offsetX
+        var y=e.offsetY
+        document.onmousemove=function (evt) {
+            var ee=evt||window.event
+            console.log(ee.clientX, ee.clientY - y);
+            obox.style.left=ee.clientX-x+"px"
+            obox.style.top=ee.clientY-y+"px"
+        }
+        document.onmouseup=function () {
+            document.onmousemove=document.onmouseup=null
+        }
+    }
+    var left=document.getElementById("left")
+    var right=document.getElementById("right")
+    left.onclick=function () {
+
+        var moveleft=getstyle(oul,"left")
+        console.log(moveleft);
+        animate(oul,{"left":moveleft+800})
+    }
+    right.onclick=function () {
+
+        var moveleft=getstyle(oul,"left")
+        console.log(moveleft);
+        animate(oul,{"left":moveleft-800})
+    }
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  id="form">
+    <input type="text"    name="txt">
+    <input type="password"name="pass">
+    <input type="submit"  name="sbt" >
+</form>
+</body>
+</html>
+<script>
+    var oForm=document.getElementById("form")
+    var oTxt=oForm.txt
+    var oPass=oForm.pass
+    var oSbt=oForm.sbt
+    var n=false;
+    console.log(oTxt,oPass,oSbt)
+    oTxt.onblur=function () {
+           if(oTxt.value.length>=6){
+        for(var i=0;i<oTxt.value.length;i++){
+            console.log(oTxt.value[i])
+            if((this.value[i]>="A"&&this.value[i]<="Z")||
+                (this.value[i]>="a"&&this.value[i]<="z")||
+                (Number(this.value[i])>=0&&this.value[i]<=9)){
+                n=true
+                console.log(n)
+                break
+            }
+        }
+        }
+    }
+
+    oForm.onsubmit=function () {
+        if(n==true&&oPass.value.length>=8){
+
+            alert("正确")
+            return true
+        }else{
+            alert("错误")
+            return false
+        }
+    }
+</script>

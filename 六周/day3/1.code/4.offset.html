@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            height:100px;
+            width:100px;
+            background-color:green;
+
+        }
+        #warp{
+            height:300px;
+            width:300px;
+            background-color:yellow;
+
+        }
+
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<div id="warp">
+    <div id="box"></div>
+
+</div>
+</body>
+</html>
+<script>
+
+
+    // offset() 获取当前元素到body的理解
+    // {top:8,left:8}
+
+    //设置值得时候,没有给定位 会默认设置 position:relative
+
+    // position() 只能做获取操作,不能做设置操作!!!
+
+    $(function(){
+
+//        console.log($("#box").offset());
+
+        $("#box").offset({"left":100,"top":100})
+
+    })
+</script>

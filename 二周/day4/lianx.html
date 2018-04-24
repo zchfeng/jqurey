@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mycls{
+            width:500px;
+            height:200px;
+            background: #69ffcc;
+        }
+        span{display: block;}
+        .box{
+            width:500px;
+            height:200px;
+            background:#8ec441;
+        }
+        .myclass{
+            width:500px;
+            height:200px;
+            background: #ff1f2e;
+        }
+        .myclass1{
+            width:500px;
+            height:200px;
+            background: #1dff6c;
+        }
+    </style>
+</head>
+<body>
+<div class="mycls">1</div>
+<span class="mycls">2</span>
+<div class="box">3</div>
+<span class="box">4</span>
+<div class="myclass">3</div>
+<span class="myclass">4</span>
+<span class="myclass1 box1">5</span>
+<div class="myclass1">6</div>
+<span class="myclass12 myclass">7</span>
+</body>
+</html>
+<script>
+    function ClassName(className) {
+        var arr=[]
+        var alls=document.getElementsByTagName("*")//获取所有标签
+        for(var i=0;i<alls.length;i++){
+            if(alls[i].className==className){
+                arr.push(alls[i])
+            }
+        }
+        return arr
+    }
+    var  CLAName=(ClassName("mycls"))
+       CLAName[1].style.backgroundColor="pink";
+    function box(box) {
+        var arr1=[]
+        var all=document.getElementsByTagName("*")
+        for(var j=0;j<all.length;j++){
+            if(all[j].className==box){
+                arr1.push(all[j])
+            }
+        }
+        return arr1
+    }
+    var res=box("box")
+    res[1].style.backgroundColor="blue"
+    function  show(name){
+        var str=[]
+        var all=document.getElementsByTagName("*")//获取所有标签   数组
+        for(var n=0;n<all.length;n++){
+            if(all[n].className==name){
+                str.push(all[n])
+            }
+        }
+        return str
+    }
+    var end=show("myclass")
+    end[1].style.backgroundColor="rgba(0,0,0,0.3)";
+    function show2(num) {
+        var arr1=[]
+        var all=document.getElementsByTagName("*")//获取所有标签   数组
+         console.log(all)
+        for(var i=0; i<all.length; i++){
+            if(all[i].className.indexOf(num)!=-1){//字符串格式，判断是否含有对应的
+                console.log(all[i])
+                var str=all[i].className //如果有，获取该DOM
+
+                var  arr=str.split(" ") //把字符串分割成数组
+                for(var b=0;b<arr.length;b++){
+                    if(arr[b]==num){   //再次判断是否单独分开存在
+                        arr1.push(all[i])
+                    }
+                }
+            }
+
+        }
+        console.log(arr1)
+        return  arr1
+    }
+    show2("myclass1")
+</script>

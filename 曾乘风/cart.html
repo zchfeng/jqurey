@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 140px;
+            height: 140px;
+            border:solid 1px #000000;
+            margin:10px;
+            float: left;
+        }
+        .box p{margin-top:10px;margin-right:10px;}
+        .more p{
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .sub,.add{
+            height: 20px;
+            width: 20px;
+            border:solid 1px #000000;
+            display: inline-block;
+        }
+        #money{
+            width: 100px;
+            height: 20px;
+            display: block;
+        }
+        #end{
+            width: 100px;
+            height: 50px;
+            background:#ff6537;
+            margin: 20px auto;
+            line-height: 50px;
+            text-align: center;
+        }
+        #all{
+            width: 800px;
+            height: 320px;
+        }
+        .buy{
+            background:#8dc63f;
+        }
+    </style>
+    <script src="Cookie.js"></script>
+</head>
+<div id="all">
+<div class="box" id="one">
+    <p>香蕉</p>
+    <div><span>单价:</span><span>3</span></div>
+    <div class="more"><p>数量</p><p class="sub">-</p><p>0</p><p class="add">+</p></div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="tow">
+    <p>苹果</p>
+    <div><span>单价:</span><span>6</span></div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="thr">
+    <p>雪梨</p>
+    <div><span>单价:</span><span>9</span></div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="four">
+    <p>西瓜</p>
+    <div><span>单价:</span><span>12</span></div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="five">
+    <p>火龙果</p>
+    <div><span>单价:</span><span>8</span></div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="six">
+    <p>荔枝</p>
+    <div><span>单价:</span><span>12</span></div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="seven">
+    <p>榴莲</p>
+    <div><span>单价:</span><span>11</span></div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div>
+<div class="box" id="eight">
+    <p>哈密瓜</p>
+    <div>
+        <span>单价:</span>
+        <span>11</span>
+    </div>
+    <div class="more">
+        <p>数量</p>
+        <p class="sub">-</p>
+        <p>0</p>
+        <p class="add">+</p>
+    </div>
+    <p class="buy">加入购物车</p>
+</div></div>
+<div id="money">总金额: 0</div>
+<div id="end">去结算</div>
+</body>
+</html>
+<script>
+//    var one=document.getElementById("one")
+//    var tow=document.getElementById("tow")
+//    var thr=document.getElementById("thr")
+//    var five=document.getElementById("five")
+//    var six=document.getElementById("six")
+//    var seven=document.getElementById("seven")
+//    var eight=document.getElementById("eight")
+//    var four=document.getElementById("four")
+var oadds=document.querySelectorAll(".add")
+var osubs=document.querySelectorAll(".sub")
+var oboxs=document.querySelectorAll(".box")
+var money=document.getElementById("money")
+var Cookieobj=JSON.parse(getCookie("fruits")||'[]')
+for (var i = 0; i <Cookieobj .length; i++) {
+    for (var j = 0; j < oboxs.length; j++) {
+        if(Cookieobj[i].uname==oboxs[j].children[0].innerText){
+            oboxs[j].children[2].children[2].innerText=Cookieobj[i].number
+        }
+    }
+}
+mon()
+for (var i = 0; i < oadds.length; i++) {
+    oadds[i].onclick=function () {
+        Cookieobj=JSON.parse(getCookie("fruits")||'[]')
+        var tf=true
+        var obox=this.parentNode.parentNode
+        var nowobj={}
+        nowobj.uname=obox.children[0].innerText
+        nowobj.pie=obox.children[1].children[1].innerText
+        nowobj.number=obox.children[2].children[2].innerText
+        for (var n = 0; n < Cookieobj.length; n++) {
+            if(Cookieobj[n].uname==nowobj.uname){
+                tf=false
+                Cookieobj[n].number++
+                obox.children[2].children[2].innerText=Cookieobj[n].number
+                Cookie("fruits",JSON.stringify(Cookieobj))
+            }
+        }
+        if(tf){
+            nowobj.number=1
+            obox.children[2].children[2].innerText=nowobj.number
+            Cookieobj.push(nowobj)
+            Cookie("fruits",JSON.stringify(Cookieobj))
+        }
+        mon()
+    }
+}
+for (var i = 0; i < osubs.length; i++) {
+    osubs[i].onclick=function () {
+        Cookieobj=JSON.parse(getCookie("fruits")||'[]')
+        var tf=true
+        var obox=this.parentNode.parentNode
+        var nowobj={}
+        nowobj.uname=obox.children[0].innerText
+        nowobj.pie=obox.children[1].children[1].innerText
+        nowobj.number=obox.children[2].children[2].innerText
+        for (var n = 0; n < Cookieobj.length; n++) {
+            if(Cookieobj[n].uname==nowobj.uname){
+                tf=false
+                Cookieobj[n].number--
+                if(Cookieobj[n].number<=0){
+                    Cookieobj[n].number=0
+                }
+                obox.children[2].children[2].innerText=Cookieobj[n].number
+                Cookie("fruits",JSON.stringify(Cookieobj))
+            }
+        }
+        if(tf){
+            nowobj.number=0
+            obox.children[2].children[2].innerText=nowobj.number
+            Cookieobj.push(nowobj)
+            Cookie("fruits",JSON.stringify(Cookieobj))
+        }
+        mon()
+    }
+}
+   var obuy=document.querySelectorAll(".buy")
+for (var i = 0; i < obuy.length; i++) {
+    obuy[i].tf=false
+    obuy[i].onclick=function () {
+        this.tf=!this.tf
+        console.log(this.tf);
+        if(this.tf){
+            this.style.background="red"
+            this.parentNode.style.border="solid 1px red"
+            this.innerText="取消购买"
+        }else{
+            this.style.background="#8dc63f"
+            this.parentNode.style.border="solid 1px #000000"
+            this.innerText="加入购物车"
+        }
+        mon()
+    }
+}
+function mon() {
+    var sum=0
+    var Cookie=JSON.parse(getCookie("fruits")||'[]')
+    for (var i = 0; i <Cookieobj .length; i++) {
+        sum+=Cookieobj[i].pie*Cookieobj[i].number
+    }
+    money.innerText="金额:"+sum+"元"
+}
+//for (var i = 0; i <Cookieobj .length; i++) {
+//    sum+=Cookieobj[i].pie*Cookieobj[i].number
+//}
+//money.innerText="金额:"+sum+"元"
+    document.getElementById("end").onclick=function () {
+        location.href="totalMoney.html"
+    }
+</script>

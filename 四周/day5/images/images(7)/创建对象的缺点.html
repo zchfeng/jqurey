@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     var obj = {}
+     obj.uname = "周杰伦"
+     obj.age = 18;
+
+
+     var obj1 = {}
+     obj.uname = "蔡依林"
+     obj.age = 17;
+     */
+    //
+    //    var obj = new Object();
+    //    obj.uname = "周杰伦"
+    //    obj.age = 18;
+    //
+    //    var obj1 = new Object();
+    //    obj1.uname = "旺财"
+    //    obj1.wang = function () {
+    //        console.log("汪汪");
+    //    }
+    //    obj1.age = 10;
+
+
+    //什么是对象？    对象是new类的‘实例’ ，类又叫模板，类也是抽象，不是具体()
+    //类的组成有哪些？ 属于与方法
+    //对象==类         属于与方法
+    //定义的规则，（物语类聚）
+
+    //console.dir(obj instanceof  Object);
+    //    console.dir(obj1 instanceof  Object);
+
+    // }
+    //构造函数
+    // 模板
+    //    function Person(uname, age) {
+    //
+    //        this.uname = uname;
+    //        this.age = age;
+    //
+    //        this.show = function () {
+    //
+    //        }
+    //    }
+    //
+    //    var p1 = new Person("周杰伦", 18);
+    //    var p2 = new Person("蔡依林", 18);
+    //    console.dir(p1 === p2);
+    //
+    //    function show(p) {
+    //        p.uname="老罗"//不是同一个对象，只不过 地址是相同
+    //    }
+    //
+    //    show(p1);
+    //    console.log(p1);
+    //
+    //    //模板--又是抽象
+    //    function Dog(name, age) {
+    //        this.name = name;
+    //        this.age = age;
+    //
+    //        this.Wang= function () {
+    //
+    //        }
+    //    }
+    //
+    //
+    //    var P1=new Dog("财旺",3);
+    //    console.dir(P1);
+
+    //
+
+    function Cat(color) {
+        this.fur = color;
+        //吃的方法
+        this.eat = function (str) {
+            console.log("我是一直" + this.fur + "的猫，我喜欢吃" + str);
+        }
+
+        this.miaow = function () {
+            console.log("喵喵的叫");
+        }
+    }
+    var cat1 = new Cat("YELLOW");
+    cat1.eat("牛排")
+
+    var cat2 = new Cat("黑猫");
+
+
+    function GarfieldCat(fur, glasses) {
+        this.fur = fur;
+        this.glasses = glasses;
+        this.eat = function (str) {
+            console.log("我喜欢吃" + str);
+        }
+        this.miaow = function () {
+            console.log("喵..喵..");
+        }
+
+        this.talk = function (str) {
+            console.log(str);
+
+            return str;//从嘴里出来
+        }
+    }
+
+    var g = new GarfieldCat("巧克力", "黑色无框眼镜");
+
+    g.talk("茹浩,我吃你了");
+
+    function TomCat(fur, friends) {
+        this.fur = fur;
+        this.friends = friends;
+        this.miaow = function () {
+            console.log("喵..喵..");
+        }
+        this.eat = function (str) {
+            console.log("我喜欢吃" + str);
+        }
+        this.catchMouse = function () {
+
+            return "我捕获到了老鼠";
+        }
+    }
+
+    var tom = new TomCat("黑色", ["杰瑞", "玛丽", "徐惠俏"]);
+    //饿了什么？ 需要的时候调用
+    tom.eat("排骨");
+
+    var str = tom.catchMouse();
+    console.log(str);
+
+</script>

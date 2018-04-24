@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Mynumber (num1,num2) {
+		this.num1=num1
+		this.num2=num2
+	}
+	Mynumber.prototype={
+        constructor:Mynumber,
+		sum:function () {
+		 return	this.num1+this.num2
+        },
+        jian:function () {
+            return	this.num1-this.num2
+        },
+        cheng:function () {
+            return	this.num1*this.num2
+        },
+        chu:function () {
+            return	this.num1/this.num2
+        }
+	}
+	var num=new Mynumber (10,20)
+    console.log(num.sum());
+    console.log(num.jian());
+    console.log(num.cheng());
+    console.log(num.chu());
+</script>

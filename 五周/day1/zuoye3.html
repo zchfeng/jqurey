@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border: solid 1px red;
+            width: 500px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function CreateXTR() {
+        if(window.XMLHttpRequest){
+            return new XMLHttpRequest()
+        }
+        return new ActiveXObject("Msxml2.XMLHTTP")
+    }
+    function ajax(url,callback) {
+        var xtr=CreateXTR()
+        xtr.open("get",url)
+        xtr.send(null)
+        xtr.onreadystatechange=function () {
+            if(xtr.status==200&&xtr.readyState==4){
+                if(callback){
+                    callback(xtr.responseText)
+                }
+            }
+        }
+    }
+    ajax("http://60.205.181.47/myPHPCode2/football.php?page=1",function (ajax) {
+        var xtrobj=JSON.parse(ajax||"[]")
+        for (var i = 0; i <xtrobj .length; i++) {
+            var odiv=document.createElement("div")
+            var uname=xtrobj[i].name.fontcolor("red")
+            odiv.innerHTML=`${uname}<br>${xtrobj[i].content}`
+            document.body.appendChild(odiv)
+        }
+    })
+</script>

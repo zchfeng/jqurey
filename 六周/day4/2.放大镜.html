@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script>
+
+        /*
+        *  公式:  小图/大图=小区域/大区域
+        *   只能修改小区域
+        *   小区域=(小图/大图)*大区域
+        * */
+
+        $(window).load(function(){
+            var $smallImg = $("#smallImg"); // 小图片
+            var $smallArea = $("#smallArea");//小区域
+            var $bigArea = $("#bigArea");//大区域
+            var $bigImg = $("#bigImg");//大图
+
+            $smallArea.height(($smallImg.height() / $bigImg.height()) * $bigArea.height());
+            $smallArea.width(($smallImg.width() / $bigImg.width()) * $bigArea.width());
+            // 进入小图,让小区域显示
+            $smallImg.on("mouseenter",function(){
+                $smallArea.show();
+            }).on("mousemove",function(evt){
+                var x=evt.clientX;
+                var y=evt.clientY
+
+                var moveX=x- $(this).offset().left-$smallArea.width()/2;
+                var moveY=y- $(this).offset().top-$smallArea.height()/2;
+
+                if(moveX<=0){
+                    moveX=0;
+                }else if(moveX>=$smallImg.width()-$smallArea.width()){
+                    moveX=$smallImg.width()-$smallArea.width();
+                }
+
+                if(moveY<=0){
+                    moveY=0;
+                }else if(moveY>=$smallImg.height()-$smallArea.height()){
+                    moveY=$smallImg.height()-$smallArea.height();
+                }
+                //
+               var scale=$bigArea.height()/$smallArea.height()
+
+                $bigImg.css({
+                    left:scale*moveX*-1,
+                    top:scale*moveY*-1
+                })
+
+                $smallArea.css({
+                    left:moveX,
+                    top:moveY
+                });
+
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+<div id="smallImg" style="width: 200px; height: 200px; background: url(images/星际穿越.jpg) center; background-size: cover; position: absolute; left: 100px; top: 200px;">
+    <div id="smallArea" style="display: none; width: 40px; height: 40px; background: rgba(200, 250, 200, 0.4); position: absolute; left: 40px; top: 0;"></div>
+</div>
+
+<div id="bigArea" style="overflow: hidden; width: 300px; height: 300px; background: rgba(200, 200, 250, 0.5); position: absolute; left: 500px; top: 200px;">
+    <img id="bigImg" src="images/星际穿越.jpg" style="width:800px; height:800px; position: absolute; left: 0; top: 0;"/>
+</div>
+
+
+<!--<div style="width: 300px; height: 300px; background: rgba(200, 200, 250, 0.5); position: absolute; left: 500px; top: 200px;">
+</div>-->
+
+</body>
+</html>

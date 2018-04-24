@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            height: 30px;
+            width: 100%;
+            list-style: none;
+        }
+    </style>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    $(function () {
+        console.log($("li"));
+        for (var i = 0; i <$("li") .length; i++) {
+            if(i%2==0){
+                $("li")[i].style.background="red"
+            }else {
+                $("li")[i].style.background="blue"
+            }
+        }
+        $("li").mouseenter(function () {
+            for (var i = 0; i <$("li") .length; i++) {
+                if (i % 2 == 0) {
+                    $("li")[i].style.background = "red"
+                } else {
+                    $("li")[i].style.background = "blue"
+                }
+            }
+            this.style.background="#000"
+        })
+    })
+</script>

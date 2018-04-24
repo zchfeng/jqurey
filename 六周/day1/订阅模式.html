@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    function dingyue() {
+//        this.list=[]
+//        this.add=function (fn) {
+//            if(fn!=undefined){
+//                this.list.push(fn)
+//            }
+//        }
+//        this.show=function () {
+//            if(this.list.length>0){
+//                for(var k in this.list){
+//                    this.list[k]()
+//                }
+//            }
+//        }
+//    }
+//
+//    var p1=new dingyue()
+//    p1.add(function () {
+//        console.log("55开上线了");
+//    })
+//    p1.show()//
+    function pubsub() {
+        var pub={}
+        pub.add=function (list,fn) {
+         if(typeof (fn)=="function"){
+             if(pub[list]!=undefined){
+                 pub[list].push(fn)
+             }else{
+                 pub[list]=[]
+                 pub[list].push(fn)
+         }
+         }
+        }
+        pub.trrget=function (list,str) {
+            if(pub[list]!=undefined){
+
+                for(var key in pub[list]){
+                    pub[list][key](str)
+                }
+            }
+        }
+        return pub
+    }
+    var p1=pubsub()
+    p1.add("onclick",function (str) {
+        alert(str)
+    })
+    p1.trrget("onclick",100)
+//订阅模式
+//    定义一个对象
+//    给对象定义一个/多个(分类)数组属性,储存方法
+//    定义添加方法的属性,想数组添加方法,
+//    添加执行属性,一执行,数组里所有的方法都会执行
+//    参考直播,一主播上线(执行函数调用),所有订阅的人会收到上线通知(执行数组里有人事件),订阅(添加数组)
+//    多个主播(多个数组)
+</script>

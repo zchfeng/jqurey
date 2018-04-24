@@ -1,0 +1,86 @@
+[-<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;
+            padding: 0;}
+        div{
+            width: 490px;
+            height: 300px;
+            margin:0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            width:1000%;
+            overflow: hidden;
+            position: absolute;
+        }
+        ul li,ol li{
+            list-style: none;
+            float: left;
+        }
+        ol{
+            width: 490px;
+            position: absolute;
+            top:50px;
+            display: none;
+        }
+        ol li{
+            width: 50px;
+            height: 100px;
+            background:rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        .color{
+            background: #00b5ee;
+        }
+        #left{
+            float: left;
+            margin-left: 10px;
+        }
+        #right{
+            float:right;
+            margin-right:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li><img src="images(6)/01.jpg" /></li>
+        <li><img src="images(6)/02.jpg" /></li>
+        <li><img src="images(6)/03.jpg" /></li>
+        <li><img src="images(6)/04.jpg" /></li>
+        <li><img src="images(6)/05.jpg" /></li>
+    </ul>
+    <ol>
+        <li id="left">1</li>
+        <li id="right">2</li>
+    </ol>
+</div>
+</body>
+</html>
+<script>
+    var oli=document.getElementsByTagName("li")
+    var oul=document.getElementsByTagName("ul")[0]
+    var ingindex=0
+    oul.appendChild(oul.firstElementChild.cloneNode(true))
+    function show() {
+        ingindex++
+        if(ingindex==5){
+            ingindex=1
+            oul.style.left="0px"
+        }
+        oul.style.left=-490*ingindex+"px"
+    }
+    var timer=setInterval(function () {
+        show()
+    },500)
+
+
+</script>

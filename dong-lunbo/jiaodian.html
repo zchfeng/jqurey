@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        *{ padding:0; margin:0; list-style:none; border:0; }
+        .all{
+            width:500px;
+            height:200px;
+            padding:7px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            position:relative;
+        }
+        .screen{
+            width:500px;
+            height:200px;
+            overflow:hidden;
+            position:relative;
+        }
+        .screen li{ width:500px; height:200px; overflow:hidden; float:left; }
+        .screen ul{ position:absolute; left:0; top:0px; width:3000px; }
+        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center; }
+        .all ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer; }
+        .all ol li.current{ background:yellow; }
+
+    </style>
+    <script src="fzh.js"></script>
+</head>
+
+<body>
+<div class="all" id='all'>
+    <div class="screen">
+        <ul id="ul">
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <ol></ol>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var oall = document.getElementById('all')
+    var oul = oall.children[0].children[0]
+    var ool = oall.children[0].children[1]
+    //先克隆
+    var clli = oul.children[0].cloneNode(true)
+    oul.appendChild(clli)
+    //动态创建小点
+    for(var i = 0; i < oul.children.length - 1; i++){     //因为克隆了一个
+        var newli = document.createElement("li")
+        newli.index = i
+        newli.innerText = i + 1
+        ool.appendChild(newli)
+        if(i == 0){
+            newli.className = "current"
+        }
+        // 同时要给小点给添加点击事件
+        newli.onclick = function(){
+            //三个下标要统一
+            imgIndex = dianindex = this.index - 1
+            autoplay()     //继续播
+        }
+    }
+
+
+    //创建动态轮播函数
+    var imgIndex = 0
+    var dianindex = 0
+
+    function autoplay(){
+        imgIndex++
+        if(imgIndex > 5){
+            imgIndex = 1  //为1时 从5跳到1不会卡顿  ,如果设为0就会出现1秒的卡顿
+            oul.style.left = "0px"
+        }
+        animate(oul, -500 * imgIndex)
+        //点的背景颜色跟着轮播
+        dianindex++
+        //排他
+        if(dianindex == 5){
+            dianindex = 0
+        }
+        for(var i = 0; i < ool.children.length; i++){
+            ool.children[i].className = ""
+        }
+        ool.children[dianindex].className = "current"
+
+    }
+
+    //开始播放
+    var timer = setInterval(function(){
+        autoplay()
+    }, 500)
+    //移上去暂停
+    oall.onmouseenter = function(){
+        clearInterval(timer)
+    }
+    //鼠标离开时又继续播
+    oall.onmouseleave = function(){
+        timer = setInterval(function(){
+            autoplay()
+        }, 500)
+    }
+
+
+    //总的思路
+    //1,先动态创建小点
+    //2,创建图轮播的函数
+    //3,开始播放-暂停播放-继续播放
+    //4,点的背景颜色跟着轮播
+    //5,点的点击事件
+</script>

@@ -1,0 +1,89 @@
+[-<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="JS/animate_move.js"></script>
+    <style>
+        *{margin: 0;
+            padding: 0;}
+        div{
+            width: 490px;
+            height: 300px;
+            margin:0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            width:1000%;
+            overflow: hidden;
+            position: absolute;
+        }
+        ul li,ol li{
+            list-style: none;
+            float: left;
+        }
+        ol{
+            width: 490px;
+            position: absolute;
+            top:50px;
+            display: none;
+        }
+        ol li{
+            width: 50px;
+            height: 100px;
+            background:rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        .color{
+            background: #00b5ee;
+        }
+        #left{
+            float: left;
+            margin-left: 10px;
+        }
+        #right{
+            float:right;
+            margin-right:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li><img src="images(6)/01.jpg" /></li>
+        <li><img src="images(6)/02.jpg" /></li>
+        <li><img src="images(6)/03.jpg" /></li>
+        <li><img src="images(6)/04.jpg" /></li>
+        <li><img src="images(6)/05.jpg" /></li>
+    </ul>
+    <ol>
+        <li id="left">1</li>
+        <li id="right">2</li>
+    </ol>
+</div>
+</body>
+</html>
+<script>
+    var odiv=document.getElementsByTagName("div")[0]
+    var ool=document.getElementsByTagName("ol")[0]
+    var oul=document.getElementsByTagName("ul")[0]
+    var oleft=document.getElementById("left")
+    var oright=document.getElementById("right")
+    oul.onmouseenter=function () {
+        ool.style.display="block"
+    }
+    oul.onmouseleave=function () {
+        ool.style.display="none"
+    }
+    var num=0
+    oleft.onclick=function () {
+        num++
+        move(oul,-490*num,10)
+        if(num==4){
+            num=0
+        }
+    }
+</script>

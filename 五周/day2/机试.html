@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form{
+            background:#a71919;
+            height: 200px;
+            width: 300px;
+            margin:20px auto;
+        }
+        input{
+            width: 200px;
+            height: 20px;
+            margin:20px 0 0 30px;
+        }
+        #msg{
+            height: 20px;
+        }
+        #box{
+
+        }
+    </style>
+    <script src="Cookie.js"></script>
+</head>
+<body>
+<form id="myform">
+    <div id="msg"></div>
+    <input type="text" name="txt" /><br>
+    <input type="password" name="password" /><br>
+    <input type="submit"/>
+    <div id=box><div id="hua"></div></div>
+</form>
+</body>
+</html>
+<script>
+//    1)用户名称只能包含数字、字母、下划线，且不能以数字开头，长度在6-20位之间
+     var myform=document.getElementById("myform")
+     var msg=document.getElementById("msg")
+     var tf1 ,tf2
+      myform.txt.onblur=function () {
+         tf1=false
+         var str=this.value
+          var Cookieobj=JSON.parse(getCookie("longin")||"[]")
+          if(/^[a-zA-Z_]\w{5,19}$/.test(str)){
+             tf1=true
+              msg.innerHTML=""
+          }else{
+              msg.innerHTML="账号格式不正确"
+          }
+      }
+//    2)密码为非中文的6-20位字符之间
+      myform.password.onblur=function () {
+          tf2 = false
+          if (/^\w{6,20}$/.test(this.value)) {
+              tf2 = true
+              msg.innerHTML = ""
+          } else {
+              msg.innerHTML = "密码格式不正确"
+          }
+      }
+//    3)输入框中要有默认提示文字
+//    4)数据在输入框失去焦点时发生验证。
+//5)错误提示信息，都放在顶部错误提示框中
+//    6)错误提示框出错时显示，没有错误时不显示。
+//7)给登录框加上如图二的滑动验证，滑块滑动过程如图三所示，滑到图四位置显示验证通过
+//    8)在【7天内自动登录】前面打勾，登录后将用户名密码保存至cookie 当中
+//    9)所有的验证都通过后，点击登录表单才可以提交，否则点击无效果，
+//    提交后页面跳转到qq空间发表状态页面，并在该页面顶部显示你好，XXX用户（cookie实现）
+</script>

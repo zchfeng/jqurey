@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+    <style>
+        input{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="myform">
+    <p>登录</p>
+    账 号 <input name="uname" type="text"/><br>
+    密 码 <input name="upwd" type="password"/><br>
+    <input  type="submit" />
+    <input  type="reset"/>
+    <div id="box"></div>
+</form>
+</body>
+</html>
+<script>
+    var myform=document.getElementById("myform")
+    var obox=document.getElementById("box")
+    myform.onsubmit=function () {
+        var cookieobj=JSON.parse(getCooie("Cookie")||'[]')
+        console.log(cookieobj);
+        for(var i=0;i<cookieobj.length;i++){
+            console.log(cookieobj[i]);
+            if(cookieobj[i].uname==myform.uname.value&&cookieobj[i].upwd==myform.upwd.value){
+                console.log(cookieobj[i]);
+                var num=5
+                var timer=setInterval(function () {
+                    obox.innerHTML=`登录中,请稍等.....${num}`.fontcolor("red")
+                    num--
+                    if(num==0){
+                        clearInterval(timer)
+                        window.location.href="index3.html"
+                    }
+                },500)
+            }else{
+                obox.innerHTML="密码错误".fontcolor("red")}
+            return false
+        }
+        return false
+        }
+
+
+</script>

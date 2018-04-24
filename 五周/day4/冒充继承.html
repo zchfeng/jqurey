@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(_name,_age) {
+        this.name=_name
+        this.age=_age
+    }
+    Person.prototype={
+        constructor:Person,
+        eat:function (str) {
+            console.log("我叫" + this.name + ",我爱吃" + str);
+        }
+    }
+//    Person.prototype.eat= function (str) {
+//        console.log("我叫" + this.name + ",我爱吃" + str);
+//        }
+
+    function Empl(mname,mage) {
+        Person.apply(this,[mname,mage])
+    }
+    Empl.prototype=new Person();
+    var p1=new Empl("1111","2222")
+    console.log(p1.eat("111"));
+</script>

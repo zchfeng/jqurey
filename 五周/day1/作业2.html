@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table,tr,td{
+            border: solid 1px #00b5ee;
+        }
+        table{
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">加入数据</button>
+<table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td>name</td>
+        <td>age</td>
+        <td>sex</td>
+        <td>phone</td>
+        <td>add</td>
+        <td>qq</td>
+    </tr>
+    </thead>
+    <tbody id="tab">
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    function CreatXTR() {
+        if (window.XMLHttpRequest) {
+            return new XMLHttpRequest()
+        }
+        return new ActiveXObject("Msxml2.XMLHTTP")
+    }
+
+    function ajax(url,callback) {
+        var xtr=CreatXTR()
+        xtr.open("get",url)
+        xtr.send(null)
+        xtr.onreadystatechange=function () {
+            if(xtr.status==200&&xtr.readyState==4){
+                if(callback){
+                    callback(xtr.responseText)
+                }
+            }
+        }
+    }
+    document.getElementById("btn").onclick=function () {
+        document.getElementById("tab").innerHTML=""
+        console.log(111);
+        ajax("http://60.205.181.47/myPHPCode2/person.php ", function (ajax) {
+            console.log(111);
+            var xtrobj=JSON.parse(ajax)
+            for (var i = 0; i <xtrobj .length; i++) {
+                var otr=document.createElement("tr")
+                var otd1=document.createElement("td")
+                otd1.innerHTML=xtrobj[i].name
+                otr.appendChild(otd1)
+                var otd2=document.createElement("td")
+                otd2.innerHTML=xtrobj[i].age
+                otr.appendChild(otd2)
+                var otd3=document.createElement("td")
+                otd3.innerHTML=xtrobj[i].sex
+                otr.appendChild(otd3)
+                var otd4=document.createElement("td")
+                otd4.innerHTML=xtrobj[i].phone
+                otr.appendChild(otd4)
+                var otd5=document.createElement("td")
+                otd5.innerHTML=xtrobj[i].address
+                otr.appendChild(otd5)
+                var otd6=document.createElement("td")
+                otd6.innerHTML=xtrobj[i].qq
+                otr.appendChild(otd6)
+                console.log(otr);
+                document.getElementById("tab").appendChild(otr)
+            }
+        })
+    }
+    var odiv=document.createElement("div")
+    odiv.style.position="absolute"
+    odiv.innerHTML="滚动文字"
+    document.body.appendChild(odiv)
+    setInterval(function () {
+        odiv.style.left=parseInt(odiv.offsetLeft)+10+"px"
+        if(parseInt(odiv.style.left)>=500){
+            odiv.style.left="0px"
+        }
+    },300)
+</script>

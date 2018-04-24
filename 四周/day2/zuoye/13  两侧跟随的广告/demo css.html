@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img{
+            position:absolute;
+            left:0;
+            top:50px;
+        }
+        #demo{
+            width:1000px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<img src="images/aside.jpg" alt="" id="pic"/>
+<div id="demo">
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+</div>
+</body>
+</html>
+<script src="../../useker.animate.js"></script>
+
+<script>
+
+    //2.获取 当前广告到浏览器的边距
+    var oPic = document.getElementById('pic');
+    var picTop = oPic.offsetTop; // 广告到浏览器的边距
+
+    window.onscroll = function(){
+
+        // 1.获取当前滚动值.
+        var scrollTop = myscoll().top;  //当前滚动的值
+        //3. 广告到浏览器的边距+ 当前滚动的值 = 目标位置的值
+        var target = picTop + scrollTop;
+        animate(oPic, "top", target);
+
+
+    }
+</script>

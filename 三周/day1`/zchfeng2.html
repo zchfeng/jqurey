@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background:red;
+            position:absolute;
+        }
+        botton{
+            height:25px;
+            width: 25px;
+            border:solid 1px #000;
+        }
+    </style>
+</head>
+<body>
+<form id="form">
+    <input type="text"name="txt">
+    <input type="password"name="pass">
+    <input type="submit"name="sbt">
+</form>
+<botton id="top">向上</botton>
+<botton id="right">向右</botton>
+<botton id="bottom">向下</botton>
+<botton id="left">向左</botton>
+<div id="div"></div>
+</body>
+</html>
+<script>
+//    1, 如下图, 在输入框中输入用户名和密码,
+//        当鼠标失去焦点时: 检测用户名长度至少6位, 且只能为数字和字母;检测密码长度至少8位
+//    给登录按钮添加点击事件: 点击后弹出用户名和密码
+        var oForm=document.getElementById("form")
+        var oTxt=oForm.txt
+        var oPass=oForm.pass
+        var tf=false
+oTxt.onblur=function () {
+           if(oTxt.value.length>=6){
+                for(var i=0;i<oTxt.value.length;i++){
+                    if((oTxt.value[i]<="9"&&oTxt.value[i]>="0")||(oTxt.value[i]<="z" &&oTxt.value[i]>="a")||
+                    (oTxt.value[i]<="Z"&&oTxt.value[i]>="A")){
+                        tf=true
+                    }
+                }
+           }
+       }
+     oForm.onsubmit=function () {
+         if (tf && oPass.value.length >= 8) {
+             alert("正确")
+             console.log(oTxt, oPass)
+             return true
+         } else {
+             alert("错误")
+             console.log(oTxt, oPass)
+             return false
+         }
+     }
+
+
+//2, 有一个红色div块，有四个button, 上下左右, 当我点击对应的按钮,这个块就进行对应的行走。
+    var oTop=document.getElementById("top")
+    var oBottom=document.getElementById("bottom")
+    var oLeft=document.getElementById("left")
+    var oRight=document.getElementById("right")
+    var oDiv=document.getElementById("div")
+    oTop.onclick=function () {
+            oDiv.style.top=oDiv.offsetTop-10+"px"
+    }
+oBottom.onclick=function () {
+    oDiv.style.top=oDiv.offsetTop+10+"px"
+}
+oLeft.onclick=function () {
+    oDiv.style.left=oDiv.offsetLeft-10+"px"
+}
+oRight.onclick=function () {
+    oDiv.style.left=oDiv.offsetLeft+10+"px"
+}
+</script>

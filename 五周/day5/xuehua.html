@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+          overflow: hidden;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+<div><img src="images/bg.jpg" width=100%></div>
+</body>
+</html>
+<script>
+    var obox=document.getElementsByTagName("div")[0]
+    class Base{
+        constructor(_width,_height,url){
+            this.ele=document.createElement("img")
+            this.ele.style.width=_width+"px"
+            this.ele.style.height=_height+"px"
+            this.ele.src=url
+            this.ele.style.position="absolute"
+            this.ele.style.left=this.position().X
+            obox.appendChild(this.ele)
+        }
+        position(){
+            return {
+                X:Math.random()*obox.offsetWidth+"px",
+                Y:Math.random()*obox.offsetHeight+"px"
+            }
+        }
+        fly(){
+            var self=this
+            animate(this.ele,{"left":this.position().X,"top":this.position().Y},function (res) {
+                self.fly()
+            })
+        }
+    }
+    class Snow extends Base{
+        constructor(_width,_height,url){
+            super(_width,_height,url)
+            this.ele.top="0px"
+        }
+        fly(){
+            var self=this
+            animate(this.ele,{"top":obox.offsetHeight},function (res) {
+                res.remove()
+            })
+    }
+    }
+//    class Chong extends Base{
+//        constructor(_width,_height,url){
+//            super(_width,_height,url)
+//            this.ele.top=this.position().Y
+//            console.log(this.position().Y);
+//        }
+//    }
+//
+//    for (var i = 0; i < 30; i++) {
+//      var box1= new Chong(30,30,"images/1.jpg")
+//        box1.fly()
+//    }
+    setInterval(function () {
+        var box2= new Snow(20,20,"images/snow.gif")
+        box2.fly()
+    },500)
+    console.log(obox.offsetHeight);
+</script>

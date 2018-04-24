@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 140px;
+            height: 140px;
+            border:solid 1px #000000;
+            margin:10px;
+            float: left;
+        }
+        .box p{margin-top:10px;margin-right:10px;}
+        .more p{
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .sub,.add{
+            height: 20px;
+            width: 20px;
+            border:solid 1px #000000;
+            display: inline-block;
+        }
+        #money{
+            width: 100px;
+            height: 20px;
+            display: block;
+        }
+        #end{
+            width: 100px;
+            height: 50px;
+            background:#ff6537;
+            margin: 20px auto;
+            line-height: 50px;
+            text-align: center;
+        }
+        #all{
+            width: 800px;
+            height: 320px;
+        }
+    </style>
+    <script src="Cookie.js"></script>
+</head>
+<div id="all">
+    <div class="box">
+        <p>香蕉</p>
+        <div><span>单价:</span><span>3</span></div>
+        <div class="more"><p>数量</p><p class="sub">-</p><p>0</p><p class="add">+</p></div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box" >
+        <p>苹果</p>
+        <div><span>单价:</span><span>6</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box">
+        <p>雪梨</p>
+        <div><span>单价:</span><span>9</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box">
+        <p>西瓜</p>
+        <div><span>单价:</span><span>12</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box" >
+        <p>火龙果</p>
+        <div><span>单价:</span><span>8</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box" id="six">
+        <p>荔枝</p>
+        <div><span>单价:</span><span>12</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box" id="seven">
+        <p>榴莲</p>
+        <div><span>单价:</span><span>11</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div>
+    <div class="box" id="eight">
+        <p>哈密瓜</p>
+        <div><span>单价:</span><span>11</span></div>
+        <div class="more">
+            <p>数量</p>
+            <p class="sub">-</p>
+            <p>0</p>
+            <p class="add">+</p>
+        </div>
+        <p>加入购物车</p>
+    </div></div>
+<div id="money">总金额: 0</div>
+<div id="end">去结算</div>
+</body>
+</html>
+<script>
+    var Cookieobj=JSON.parse(getCookie("fruits")||'[]')
+    console.log(Cookieobj);
+    console.log(Cookieobj[0]);
+    console.log(Cookieobj[0].uname);
+    var obox=document.querySelectorAll(".box")
+    for (var i = 0; i <Cookieobj .length; i++) {
+        console.log(Cookieobj[i].uname);
+        console.log(111);
+        for (var j = 0; j < obox.length; j++) {
+            if(Cookieobj[i].uname==obox[j].children[0].innerText){
+                obox[j].children[2].children[2].innerText=Cookieobj[i].uname
+            }
+        }
+
+    }
+
+</script>

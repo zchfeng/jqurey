@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="tab">
+    <thead>
+    <th>
+    <td><input type="checkbox"/>全选/取消</td>
+    <td><input type="checkbox"/>反选</td>
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>111111</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>22222</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>33333</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>44444</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>555555</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    var oall=document.querySelectorAll("thead input")[0]
+    var ofan=document.querySelectorAll("thead input")[1]
+    var otd=document.querySelectorAll("tbody input")
+    oall.onclick=function () {
+        for (var i = 0; i < otd.length; i++) {
+            otd[i].checked = this.checked
+            otd[i].onclick=function () {
+                var num=0
+                for(var j=0;j<otd.length;j++){
+                   if(otd[j].checked){
+                       num++
+                   }
+                   if(num==otd.length){
+                       oall.checked=true
+                   }else {
+                       oall.checked=false
+                   }
+                }
+            }
+        }
+    }
+    ofan.onclick=function () {
+        for (var i = 0; i < otd.length; i++) {
+            otd[i].checked = !otd[i].checked
+        }
+    }
+</script>

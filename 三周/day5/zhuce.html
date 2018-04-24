@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="zuoye/js/Cookie.js"></script>
+    <style>
+        input{
+            margin-top:10px;
+        }
+
+    </style>
+</head>
+<body>
+<p>注册</p>
+<form action="" id="form">
+    账号<input type="text" name="txt1"><br>
+    密码<input type="password" name="pwd"><br>
+    手机号<input type="text" name="txt2"><br>
+    <input type="submit" >
+    <input type="reset" >
+</form>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var oform=document.getElementById("form")
+    var obox=document.getElementById("box")
+    var tf1,tf2,tf3;
+    oform.txt1.oninput=oform.txt1.onpropertychange=function () {
+        tf1=false
+        if (/^\w{6,}$/.test(this.value)) {
+            obox.innerText = ""
+            tf1 = true
+        } else {
+            obox.innerHTML = "用户名只包含数字,字母,下划线, 且长度不小于6位".fontcolor("red")
+        }
+    }
+        oform.pwd.oninput=oform.pwd.onpropertychange=function () {
+        tf2=false
+            if (/^.{8,16}$/.test(this.value)) {
+                obox.innerText = ""
+                tf2 = true
+            } else {
+                obox.innerHTML = "密码长度在8到16位".fontcolor("red")
+            }
+        }
+            oform.txt2.oninput=oform.txt2.onpropertychange=function () {
+                tf3=false
+                if(/^((13[0-9])|(14[2-7])|(15[0-57-9])|(18[3-7]))\d{8}$/.test(this.value)){
+                    obox.innerText=""
+                    tf3=true
+                }else{
+                    obox.innerHTML="手机号要合法".fontcolor("red")
+                }
+    }
+    oform.onsubmit=function () {
+        var tf4=true
+        var cookieobj=JSON.parse(getCookie("register")||'[]')
+        var registerobj={}
+        registerobj.txt1=oform.txt1.value
+        registerobj.pwd=oform.pwd.value
+        registerobj.txt2=oform.txt2.value
+        for(var i=0;i<cookieobj.length;i++){
+            if(cookieobj[i].txt1==registerobj.txt1){
+                tf4=false
+                obox.innerHTML="账号已注册".fontcolor("red")
+            }
+        }
+        if(tf1&&tf2&&tf3&&tf4){
+            cookieobj.push(registerobj)
+            setCookie("register",JSON.stringify(cookieobj))
+        }
+        return false
+    }
+
+   
+</script>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding:0;margin:0;}
+        table,tr,td{
+            border: 1px solid #0c091a;
+        }
+        td{
+            width:100px;
+            height:30px;
+            text-align: center;
+
+        }
+        table{
+            margin-top: 20px;
+        }
+        img{
+            width:100px;
+            height:100px;
+            border:solid 1px #0c091a;
+        }
+        img:last-of-type{
+            width:300px;
+            height: 300px;
+            border:solid 1px #0c091a;
+        }
+        ul{
+            width:360px;
+            height:600px;
+            background:#c6c6c6;
+        }
+        li{
+            width:100px;
+            heigt:100px;
+            background:#333333;
+            margin:10px;
+            line-height: 100px;
+            font-size:55px;
+            float:left;
+            list-style: none;
+            text-align: center;
+            color:#fff;
+        }
+        #last{
+            width:340px;
+            height:100px;
+            background:#fff;
+            border:solid 1px #000;
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="Num" placeholder="ID"/>
+<input type="text" id="Oname" placeholder="姓名"/>
+<input type="text" id="Tel" placeholder="电话"/>
+<input type="submit" id="Seve" value="保存"/>
+<table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>NAME</td>
+        <td>TEL</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody id="tab">
+    </tbody>
+</table>
+<img src="4dffef15d03f877b90dff6706c3a330f.png" />
+<img src="389ff78c4118377027858debb459264b.jpg" />
+<img src="927fa80c6c7d4edd0f4935eca86a78c0.png" /><br />
+<img />
+<ul>
+    <li mon="1">1</li>
+    <li mon="2">2</li>
+    <li mon="3">3</li>
+    <li mon="4">4</li>
+    <li mon="5">5</li>
+    <li mon="6">6</li>
+    <li mon="7">7</li>
+    <li mon="8">8</li>
+    <li mon="9">9</li>
+    <li mon="10">10</li>
+    <li mon="11">11</li>
+    <li mon="12">12</li>
+    <li id="last">内容</li>
+</ul>
+</body>
+</html>
+<script>
+//    1, 动态表格的创建, 在输入框中输入内容后,点击保存则在表格末尾添加一条记录,
+//        点击删除则会删除对应行的记录
+        document.getElementById("Seve").onclick=function () { //获取保存按钮
+            var strNum=document.getElementById("Num").value//获取三个文本框内容
+            var strOname=document.getElementById("Oname").value
+            var strTel=document.getElementById("Tel").value
+            var oTr=document.createElement("tr")//创建一行表格，未渲染
+            var oTd_1=document.createElement("td")//创建4个单元格，未渲染
+            oTd_1.innerText=strNum//分别给每个单元格内容
+            var oTd_2=document.createElement("td")
+            oTd_2.innerText=strOname
+            var oTd_3=document.createElement("td")
+            oTd_3.innerText=strTel
+            var oTd_4=document.createElement("td")
+            oTd_4.innerHTML="<a onclick='del(this)' href='#'>删除</a>"
+            oTr.appendChild(oTd_1)//4个单元格关联成一行
+            oTr.appendChild(oTd_2)
+            oTr.appendChild(oTd_3)
+            oTr.appendChild(oTd_4)
+            document.getElementById("tab").appendChild(oTr)//把这行关联进表格
+        }
+        function del(a) {
+            a.parentNode.parentNode.remove()
+        }
+//1, 点击表格中的三张图片, 切换下面的
+//        var arr=document.getElementsByTagName("img")
+//        arr[0].onclick=function () {
+//            var oImg_4=arr[3].getAttribute("src")
+//            var oImg_1=arr[0].getAttribute("src")
+//            arr[0].setAttribute("src",oImg_4)
+//            arr[3].setAttribute("src",oImg_1)
+//        }
+//        arr[1].onclick=function () {
+//            var oImg_4=arr[3].getAttribute("src")
+//            var oImg_1=arr[1].getAttribute("src")
+//            arr[1].setAttribute("src",oImg_4)
+//            arr[3].setAttribute("src",oImg_1)
+//        }
+//    arr[2].onclick=function () {
+//        var oImg_4=arr[3].getAttribute("src")
+//        var oImg_1=arr[2].getAttribute("src")
+//        arr[2].setAttribute("src",oImg_4)
+//        arr[3].setAttribute("src",oImg_1)
+//    }
+   var oimg=document.getElementsByTagName("img")
+         for(var j=0;j<oimg.length-1;j++){
+            oimg[j].onclick=function () {
+                var oSrc=this.getAttribute("src")
+//                oimg[3].setAttribute("src",oSrc)
+                oimg[3].src=oSrc
+            }
+
+         }
+
+//简易年历
+    var Mom=document.getElementsByTagName("li")//获取所有Li  数组/集合
+    var Txt=document.getElementsByTagName("ul")[0].lastElementChild||document.getElementsByTagName("ul")[0].lastChild
+//文本框
+    console.log(Mom)
+    console.log(Txt)
+    for(var i=0;i<Mom.length-1;i++){
+        console.log(Mom[i])
+        Mom[i].onclick=function () {
+            var otxt=this.getAttribute("mon")
+            Txt.innerText=otxt+"月份好"
+        }
+    }
+</script>

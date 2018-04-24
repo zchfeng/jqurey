@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Cookie.js"></script>
+    <style>
+        input{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="form">
+    <p>注册</p>
+       账号名  <input type="text" name="uname"><br>
+        密&nbsp;&nbsp;&nbsp;码 <input type="password" name="pws"><br>
+        手机号 <input type="text" name="utel"><br>
+        邮&nbsp;&nbsp;&nbsp;箱  <input type="text" name="uemail"><br>
+        <input type="submit" >
+        <input type="reset" >
+    <div id="box"></div>
+</form>
+</body>
+</html>
+<script>
+    var oform=document.getElementById("form")
+    var obox=document.getElementById("box")
+     var tf1,tf2,tf3,tf4;
+    oform.uname.oninput=oform.uname.onpropertychange=function () {
+         tf1=false
+        if(/^\w{6,}$/.test(oform.uname.value)){
+            tf1=true
+            obox.innerText=""
+        }else{
+            obox.innerHTML="账号格式错误".fontcolor("red")
+        }
+    }
+    oform.pws.oninput=oform.pws.onpropertychange=function () {
+         tf2=false
+        if(/^.{8,16}$/.test(oform.pws.value.trim())){
+            tf2=true
+            obox.innerText=""
+        }else{
+            obox.innerHTML="密码格式错误".fontcolor("red")
+        }
+    }
+    oform.utel.oninput=oform.utel.onpropertychange=function () {
+         tf3=false
+        if(/^((13[0-9])|(14[0-9])|(15[2-7])|(17[0-9])|(18[0-9]))\d{8}$/.test(oform.utel.value)){
+            tf3=true
+            obox.innerText=""
+        }else{
+            obox.innerHTML="手机号格式错误".fontcolor("red")
+        }
+    }
+    oform.uemail.oninput=oform.uemail.onpropertychange=function () {
+         tf4=false
+        if(/^\w+@\w+\.\w+$/.test(oform.uemail.value)){
+            tf4=true
+            obox.innerText=""
+        }else{
+            obox.innerHTML="邮箱格式错误".fontcolor("red")
+        }
+    }
+    oform.onsubmit=function () {
+        var tf5 = true
+        var cookieobj = JSON.parse(getCookie("list") || '[]')
+        console.log(cookieobj);
+        var myobj = {}
+        myobj.uname = oform.uname.value
+        myobj.pws = oform.pws.value
+        myobj.utel = oform.utel.value
+        myobj.uemail = oform.uemail.value
+        for (var i = 0; i < cookieobj.length; i++) {
+            if (cookieobj[i].uname == myobj.uname) {
+                tf5 = false
+                obox.innerHTML = "账号已存在".fontcolor("red")
+            }
+        }
+        console.log(tf1, tf2, tf3, tf4, tf5);
+        if(tf1&&tf2&&tf3&&tf4&&tf5){
+            cookieobj.push(myobj)
+            console.log(cookieobj);
+            setCookie("list",JSON.stringify(cookieobj))
+        }
+        return false
+    }
+
+</script>

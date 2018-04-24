@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    var obj={
+//        name:"灰机",
+//        wei:"2t",
+//        fn:function () {
+//            alert("会飞")
+//        }
+//    }
+//    obj.fn()
+//1, 创建一个人的对象, 添加属性: 姓名 年龄 爱好 薪资期望,
+// 并有一个打印自身信息的方法, 可以输出自身信息;
+//    var obj={
+//        name:"张三",
+//        age:20,
+//        lik:"唱歌",
+//        mon:"10k",
+//        coping:function () {
+//            document.write(this.name+","+this.age+"岁;爱"+this.lik+"，工资是"+this.mon)
+//        }
+//    }
+//    obj.coping()
+//2, 创建一个锤子对象hammer, 有属性:宽,高,重; 方法:可以锤钉子
+       var hammer={}
+       hammer.width=100;
+       hammer.height=50;
+       hammer.weigth=100;
+       hammer.ding=function () {
+           alert("叮叮叮")
+       }
+       hammer.ding()
+       console.log(hammer)
+
+//3, 有一辆50km/h车,跑在一条1000km路上，问多少小时跑完？
+//     对象:
+//         车Car 属性: 速度speed 50km/h
+//功能: 跑在路上runOnRoad(Road)
+//路Road 属性: 长度length 1000km
+//     var car={
+//           speed:50,
+//            runonRoad:function (Road) {
+//                hh=Road.length/this.speed
+//                console.log(hh)
+//            }
+//     }
+//     var Road={
+//           length:1000
+//     }
+//     car.runonRoad(Road)
+//1. 有2个学生，每个学生有3门课的成绩，（包括学生号，姓名，
+// 3门课成绩,语文,数学,英语），计算出平均成绩.?
+       var sty1={
+           NO:0001,
+           chine:80,
+           eng:85,
+           math:88,
+           bjs:function () {
+               man=(this.chine+this.eng+this.math)/3
+               return man
+           }
+       }
+       var sty2={
+           NO:0002,
+           chine:78,
+           eng:76,
+           math:80,
+           bjs:function () {
+               man=(this.chine+this.eng+this.math)/3
+               return man
+           }
+       }
+       console.log(sty1.bjs(),sty2.bjs())
+//    2. Mountain: 从前有座山,山里有座庙;还有name,height(高度)
+//Temple: 庙里有个老和尚,有个小和尚,还有name,area(面积)
+//Monk: 和尚能挑水,讲故事,化缘;还有name,age,sex
+//    ?
+          var Mountain={
+           Temple:{},
+           name:"大山",
+           height:1000
+       }
+          Mountain.Temple={
+           name:"什么庙",
+           area:300,
+           oldMonk:{},
+           newMonk:{}
+           }
+        Mountain.Temple.oldMonk={
+            tiao:function () {
+                console.log("挑水")
+            },
+            talk:function () {
+                console.log("讲故事")
+            },
+            huayuan:function () {
+                console.log("化缘")
+            }
+        }
+        Mountain.Temple.newMonk={
+            tiao:function () {
+                console.log("挑少点水")
+            },
+            talk:function () {
+                console.log("说话")
+            },
+            huayuan:function () {
+                console.log("不化缘")
+            }
+        }
+        Mountain.Temple.oldMonk.tiao()
+//    3. 定义一圆Cirlcle对象,包含半径r和圆心,圆心为“点”Point对象,
+// point对象有x和y属性，构造一圆，该圆可以计算周长和面积;
+// 计算该原的周长和面积?
+      var Cirlcle={
+           r:20,
+          point:{
+               x:100,
+              y:100
+          },
+          leng:function () {
+              return Math.PI*this.r*2
+          },
+          area:function () {
+            return  Math.PI*this.r*this.r
+          }
+      }
+      console.log(Cirlcle.leng(),Cirlcle.area())
+</script>

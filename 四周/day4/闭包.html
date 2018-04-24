@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+<button>按钮6</button>
+<button>按钮7</button>
+<button>按钮8</button>
+<button>按钮9</button>
+<button>按钮10</button>
+</body>
+</html>
+<script>
+    var btns=document.getElementsByTagName("button")
+    for(var i =0;i<btns.length;i++){
+        //for比onclick先执行完  次数i=0>1>2>3>4>5>6>7>8>9>10  此时i=10
+        //btns[i]了所有i  btns[0],btns[1],....btns[9]
+//        fn(i)里的i对应btns[i]的i  //所有可以打印btns[i]的索引
+        btns[i].onclick=fn(i)
+    }
+   function fn(n) {
+       return function () {
+           alert(n)
+       }
+   }
+    for(var i =0;i<btns.length;i++){
+        //for比onclick先执行完  次数i=0>1>2>3>4>5>6>7>8>9>10  此时i=10
+        btns[i].onclick=function (i) {
+            console.log(this);//对应的btns[i]
+//            alert(this.i) //undefined  相当于给this添加了一个i的属性,没赋值
+//            alert(i)  //此时的i=10
+            console.log(i);//此时 你只是给了一个有i形参的函数,并不是调用
+        }
+    }
+
+</script>

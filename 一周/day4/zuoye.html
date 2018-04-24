@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    写一个函数判断一个年份是不是闰年
+//function year(n){
+//    if((n%4==0 && n%100!=0 )||(n%400==0)){
+//        console.log(n+"是闰年")
+//        document.write(n+"是闰年")
+//    }else{
+//        console.log(n+"是平年")
+//        document.write(n+"是平年")
+//    }
+//}
+//year(prompt("输入一个年份"))
+//    2, 写一个函数判断一个数是不是素数 (又称质数,除了1和本身以外不再有其他数整除)
+//function num(n){
+//    var tf=true
+//    for(var i=2;i<n;i++){
+//        if(n%i==0){
+//            tf=false
+//        }
+//    }
+//    if(tf){
+//        console.log(n+"素数")
+//    }else {
+//        console.log(n + "合数")
+//    }
+//}
+//num(prompt("输入一个整数"))
+//    3, 年月日分别为自定义函数的参数，判断某一个日期是否为合法的日期;
+//    如: 2016年12月33日不是合法的日期
+//    2016年11月13日是合法的日期
+
+//function hefa(year,month,day) {
+//    var tf = true; //默认平年
+//        if ((year % 4 == 0 && year % 100!= 0) || (year % 400 == 0)) {
+//            tf = false//闰年
+//        }
+////        1 3 5 7 8 10 12月有31天
+//     if(month>0 && month<=12&&day<=31){
+//     if(month==1||month==3||month==5||month==7||month==8||month==10||month==12&&day<=31){
+//
+//            console.log(year + "年" + month + "月" + day + "日合法")
+//     }else if(month==4||month==6||month==9||month==11&&day<=30){
+//         //4 6 9 11月只有30天
+//         console.log(year + "年" + month + "月" + day + "日合法")
+//     }else if(month==2&&day<=28&&tf==true){
+//         //平年2月只有28天
+//         console.log(year + "年" + month + "月" + day + "日合法")
+//     }else if(month==2&&tf==false&&day<=29){
+//         //闰年2月只有29天
+//             console.log(year + "年" + month + "月" + day + "日合法")
+//     }else{
+//         console.log(year + "年" + month + "月" + day + "日不合法")
+//     }
+//     }else{
+//         console.log(year + "年" + month + "月" + day + "日不合法")
+//        }
+//}
+//
+//    hefa(prompt("输入年"),prompt("输入月"),prompt("输入日"))
+//    function time(y,m,d) {
+//        var tf=true
+////        默认tf=true为不合法
+//        var sf=true
+////        默认sf=true为平年
+//        if((y%4==0&&y%100!=0)||(y%400==0)){
+//            tf=false
+//        }
+//        switch (m){
+//            case 1:
+//            case 3:
+//            case 5:
+//            case 7:
+//            case 8:
+//            case 10:
+//            case 12:
+////                1 3 5 7 8 10 12 月有31天
+//                if(d<=31){
+//                  tf=false;
+//                }
+//                break;
+//            case 4:
+//            case 6:
+//            case 9:
+//            case 11:
+////                4 6 9 11月有30天
+//                if(d<=30){
+//                    tf=false;
+//                }
+//                break;
+//            case 2:
+//                if((d<=29 && sf==false)||(d<=28&&sf==true)){
+//                    tf=false;
+//                }
+//                break;
+//        }
+//        return  tf;
+//    }
+//var result=time(y=Number(prompt("输入年")),m=Number(prompt("输入月")),d=Number(prompt("输入日")))
+//    if(result){
+//        console.log(y+"年"+m+"月"+d+"日不合法")
+//    }else{
+//        console.log(y+"年"+m+"月"+d+"日合法")
+//    }
+//    console.log(result)
+    function show(y,m,d){
+        var tf=true
+        if(y%4==0&&y%100!=0||y%400==0){
+            tf=false
+        }
+        if(m>0&&m<=12){}
+
+    }
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            background-color: #bada55;
+            width: 400px;
+            height: 400px;
+            border: 1px solid green;
+        }
+    </style>
+    <!--第一步：把jQuery的文件引到页面里面来-->
+    <script src="../../jquery-1.11.1.min.js"></script>
+    <!--第二步：把要使用的插件引到页面里面来-->
+    <script src="jquery.color.js"></script>
+</head>
+<body>
+<button id="go">Simple</button>
+<button id="sat">Desaturate</button>
+<div id="block">Hello!</div>
+<script>
+    $(function () {
+        $("#go").click(function () {
+            $("div").animate({
+                "backgroundColor": "#666"
+            }, 2000);
+        });
+    });
+    /*jQuery("#go").click(function(){
+        jQuery("#block").animate({
+            backgroundColor: "#abcdef"
+        }, 1500 );
+    });
+    jQuery("#sat").click(function(){
+        jQuery("#block").animate({
+            backgroundColor: jQuery.Color({ saturation: 0 })
+        }, 1500 );
+    });*/
+</script>
+</body>
+</html>

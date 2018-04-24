@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            background:#00b5ee;
+            position: absolute;
+        }
+        #box2{
+            background:#0cb75d;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<!--<div id="box2"></div>-->
+</body>
+</html>
+<script>
+    function Move(_id) {
+        if(Move.aaaa!=null){
+           return Move.aaaa
+        }else{
+            Move.aaaa=this
+        }
+        this.ele=document.getElementById(_id)
+        this.movestrat=function () {
+            console.log(111);
+            var slaf=this
+            this.ele.onmousedown=function (evt) {
+                console.log(111);
+                var e=evt||window.event
+                var disX=e.offsetX
+                var disY=e.offsetY
+                slaf.moveing(disX,disY)
+                slaf.moveend()
+            }
+        }
+        this.moveing=function (x,y) {
+            var salf=this
+            document.onmousemove=function (evt) {
+                var e=evt||window.event
+                salf.ele.style.left=e.clientX-x+"px"
+                salf.ele.style.top=e.clientY-y+"px"
+            }
+        }
+        this.moveend=function () {
+            document.onmouseup=function () {
+                document.onmousemove=document.onmouseup=null
+            }
+        }
+    }
+    var obox1=new Move("box1").movestrat()
+    var obox2=new Move("box1").movestrat()
+    console.log(obox1 == obox2);
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 640px;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<img src="images4/0.jpg" />
+<div>
+    <p>关闭</p>
+</div>
+</body>
+</html>
+<script>
+//    2,  360度全景展示, 在空白页面上左右拖动,让图片呈360旋转
+//    (提示： 在空白处实现拖拽功能， 拖拽过程中 计算onmousemove的实时x坐标位置
+//    和mousedown的x坐标位置的差； 根据差值的大小来改变图片的src路径，
+//    图片名称是由0.jpg-76.jpg )
+    var oimg=document.getElementsByTagName("img")[0]
+    oimg.onmousedown=function (evt) {
+        var e=evt||window.event
+        if(e.preventDefault){
+            e.preventDefault()
+        }else{
+            e.returnValue=false
+        }
+        var x=e.clientX
+        document.onmousemove=function (evt) {
+
+            var ee=evt||window.event
+            var mx=ee.clientX-x
+            var num=Math.floor((mx-x)/20)
+            if(num>=77){
+                num=num-77
+            }else if(num<0){
+                num=num+77
+            }
+            oimg.setAttribute("src","images4/"+num+".jpg")
+        }
+        document.onmouseup=function () {
+            document.onmouseup=document.onmousemove=null
+        }
+    }
+
+
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    父类：Cat
+//    方法： eat; miaow
+//    属性： fur
+//    说明： eat吃各种东西
+   function Cat(_fur) {
+       this.fur=_fur
+   }
+Cat.prototype={
+    constructor:Cat,
+    eat:function (str) {
+        console.log("吃"+str+"东西");
+    },
+    miaow:function () {
+        console.log("会叫");
+    }
+}
+//    子类1： GarfieldCat
+//    方法：eat; miaow; talk
+//    属性：fur; glasses
+//    说明：eat只吃肉
+       function GarfieldCat(_fur,_glasses) {
+           this.glasses=_glasses;
+           Cat.call(this,_fur)
+         //  Cat.apply(this,arguments)
+       }
+GarfieldCat.prototype=new Cat()
+
+GarfieldCat.prototype.talk=function () {
+               console.log("会跑");
+           }
+
+//    子类2： TomCat
+//    方法：eat; miaow; catchMouse
+//    属性：fur; friend
+//    说明：eat只吃面包
+      function Tomcat(_fur,_friend) {
+          this.friend=_friend
+          Cat.call(this,_fur)
+      }
+      Tomcat.prototype=new Cat()
+      Tomcat.prototype.catchMouse= function () {
+              console.log("会捉老鼠");
+
+      }
+    var oCat=new Cat("黑色")
+console.log(oCat.fur);
+oCat.eat("各种")
+    oCat.miaow()
+    var oGarfieldCat=new GarfieldCat("黄色","glass")
+oGarfieldCat.eat("肉")
+oGarfieldCat.miaow()
+oGarfieldCat.talk()
+console.log(oGarfieldCat.glasses);
+console.log(oGarfieldCat.fur);
+var oTomcat=new Tomcat("黑色","_friend")
+oTomcat.catchMouse()
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    function Person() {
+        this.name="刘德华"
+       this.fimaly=["爸爸","妈妈","姐姐"]
+    }
+    Person.prototype={
+        constructor:Person,
+        fun:function () {
+           return this.fimaly
+        }
+    }
+    var p1=new Person()
+    console.log(p1.fun());
+    p1.fimaly.push("哥哥")
+    console.log(p1.fun());
+    var p2=new Person()
+    console.log(p2.fun());
+    console.dir(Person.prototype);
+    console.log('name' in Person)
+    console.log(Person.hasOwnProperty("name"));
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        div{
+            width: 512px;
+            height: 500px;
+            background:url("mi.png") no-repeat;
+            background-position-y: 0px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>
+<script>
+    var odiv=document.getElementsByTagName("div")[0]
+    var ps=0
+    odiv.onmousemove=function (evt) {
+        var e=evt||window.event
+
+        y=e.clientY-odiv.offsetTop
+        console.log(y)
+       if(y<250){
+            if(ps<=-1000){
+                odiv.style.backgroundPositionY=ps+"px"
+            }else {
+                var top=setInterval(function () {
+                    ps--
+                    if(ps<=-950) {
+                        clearInterval(top)
+                        return
+                    }
+
+                    odiv.style.backgroundPositionY = ps + "px"
+                }, 1000)
+            }
+       }else{
+           if(ps>=0){
+               odiv.style.backgroundPositionY=ps+"px"
+           }else {
+               var bottom=setInterval(function () {
+                   ps++
+                   if(ps>=0) {
+                       clearInterval(bottom)
+                   }
+
+                   odiv.style.backgroundPositionY = ps + "px"
+               }, 1000)
+           }
+       }
+    }
+</script>

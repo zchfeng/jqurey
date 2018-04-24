@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script SRC=js/useer.Cookie.js></script>
+    <style>
+        p {
+            display: inline;
+        }
+
+        input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="myform">
+    <div>注册</div>
+    账&nbsp;&nbsp;号 <input type="text" name="uname"/>
+    <p></p><br/>
+    密&nbsp;&nbsp;码 <input type="password" name="upwd"/>
+    <p></p><br/>
+    手&nbsp;&nbsp;机 <input type="text" name="utle"/>
+    <p></p><br/>
+    邮&nbsp;&nbsp;箱 <input type="text" name="uemail"/>
+    <p></p><br/>
+    <input type="submit"/>
+</form>
+</body>
+</html>
+<script>
+    var myform = document.getElementById("myform")  //获取cookie
+    var op = myform.getElementsByTagName("p")
+    var tf1, tf2, tf3, tf4  //判断格式
+    myform.uname.oninput = myform.uname.onpropertychange = function () {
+        tf1 = false   //默认格式不正确
+        if (/^\w{6,}$/.test(myform.uname.value)) {  //判断是否正确
+            tf1 = true   //正确  tf=true
+            op[0].innerHTML = ""  //无提示
+        } else {  //错误
+            op[0].innerHTML = "账号格式不正确".fontcolor("red")  //出现提示
+        }
+    }
+    myform.upwd.oninput = myform.upwd.onpropertychange = function () {
+        tf2 = false
+        if (/^\d{8,16}$/.test(myform.upwd.value.trim())) {
+            tf2 = true
+            op[1].innerHTML = ""
+        } else {
+            op[1].innerHTML = "密码格式不正确".fontcolor("red")
+        }
+    }
+    myform.utle.oninput = myform.utle.onpropertychange = function () {
+        tf3 = false
+        if (/^(13|14|15|17|18)\d{9}$/.test(myform.utle.value)) {
+            tf3 = true
+            op[2].innerHTML = ""
+        } else {
+            op[2].innerHTML = "手机号格式不正确".fontcolor("red")
+        }
+    }
+    myform.uemail.oninput = myform.uemail.onpropertychange = function () {
+        tf4 = false
+        if (/^\w+@\w+\.\w+$/.test(myform.uemail.value.trim())) {
+            tf4 = true
+            op[3].innerHTML = ""
+        } else {
+            op[3].innerHTML = "邮箱格式不正确".fontcolor("red")
+        }
+    }
+    myform.onsubmit=function () {  //点击事件
+        var cookieobj=JSON.parse(getCookie("Cookie")||'[]')//获取最新的cookie
+        var myobj={}  //给一个新的对象  储存各个属性
+        myobj.uname=myform.uname.value
+        myobj.upwd=myform.upwd.value
+        myobj.utle=myform.utle.value
+        myobj.uemail=myform.uemail.value
+        var tf5=true      //判断是否已存在  默认 cookie不存在
+        for(var i=0;i<cookieobj.length;i++){
+            if(cookieobj[i].uname==myobj.uname){//判断是否已存在
+                tf5=false  //存在  false
+                alert("账号已存在")  //提示
+            }
+        }
+        if(tf1&&tf2&&tf3&&tf4&&tf5){   //当注册要求都符合
+            cookieobj.push(myobj)  //新数据加入老数据中
+            setCookie("Cookie",JSON.stringify(cookieobj))//把数据储存进COOKIE
+        }
+        return false
+    }
+</script>

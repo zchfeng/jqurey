@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+    <script src="JS/animate_move.js"></script>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #00b5ee;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn_400">400</button>
+<button id="btn_700">700</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+//    setCookie("key1","阿萨斯")
+//    setCookie("key2","bbb")
+//    console.log(getCooie("key1"));
+//    removeCookie("key1")
+var btn400=document.getElementById("btn_400")
+var btn700=document.getElementById("btn_700")
+var obox=document.getElementById("box")
+btn400.onclick=function () {
+    move(obox,400,10)
+}
+btn700.onclick=function () {
+    move(obox,700,10)
+}
+</script>

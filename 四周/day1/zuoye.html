@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        *{ padding:0; margin:0; list-style:none; border:0; }
+        .all{
+            width:500px;
+            height:200px;
+            padding:7px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            position:relative;
+        }
+        .screen{
+            width:500px;
+            height:200px;
+            overflow:hidden;
+            position:relative;
+        }
+        .screen li{ width:500px; height:200px; overflow:hidden;}
+        .screen ul{ position:absolute; left:0; top:0px; }
+        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center; }
+        .all ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer; }
+        .all ol li.current{ background:yellow; }
+    </style>
+    <script src="JS/animate_height.js"></script>
+</head>
+
+<body>
+<div class="all" id='all'>
+    <div class="screen">
+        <ul>
+            <li><img src="images(6)/01.jpg" width="500" height="200"/></li>
+            <li><img src="images(6)/02.jpg" width="500" height="200"/></li>
+            <li><img src="images(6)/03.jpg" width="500" height="200"/></li>
+            <li><img src="images(6)/04.jpg" width="500" height="200"/></li>
+            <li><img src="images(6)/05.jpg" width="500" height="200"/></li>
+
+        </ul>
+    </div>
+    <ol></ol>
+</div>
+</body>
+</html>
+<script>
+    var oUl=document.getElementsByTagName("ul")[0]
+    oUl.appendChild(oUl.children[0].cloneNode(true))
+    var imgIndex=0
+    function autoPlay(){
+        imgIndex++;
+        if(imgIndex > 5){
+            imgIndex = 1;
+            oUl.style.top = "0px";
+        }
+        animate(oUl, -200 * imgIndex);
+
+    }
+
+    //自动播放
+    var timer = setInterval(function(){
+        autoPlay();
+    }, 500);
+
+
+</script>

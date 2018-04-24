@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function createobj(_name,_age) {
+        var p=new Object
+        p.name=_name
+        p.age=_age
+        return p
+    }
+    var p1=createobj("周杰伦",39)
+    var p2=createobj("刘德华",60)
+    console.log(p1, p2);
+//    练习：创建以下构造函数(类)
+//    Cat: 猫
+//    属性：fur (毛皮)
+//    方法：eat; miaow
+//    GarfieldCat : 加菲猫
+//    属性：fur; glasses
+//    方法：eat; miaow; talk
+//    TomCat : 汤姆猫
+//    属性：fur; friend
+//    方法：eat; miaow; catchMouse
+    function Cat(_name,_fur,arr) {
+        this.name=_name
+        this.fur=_fur
+        this.can=function () {
+            return this.name+","+this.fur+"色,会"+arr
+        }
+    }
+    var cat1=new Cat("猫","白",["eat","miaow"])
+    var cat2=new Cat("加菲猫","黄",["eat","miaow","talk"])
+    var cat3=new Cat("汤姆猫","黑",["eat","miaow","catchMouse"]);
+    cat2.glasses="glasses"
+    cat3.friend="friend"
+    console.log(cat1.can());
+    console.log(cat2.can());
+    console.log(cat3.can());
+    console.log(cat1, cat2, cat3);
+
+    var arr=[11,22,33,44]
+    console.log(arr);
+    console.log("1"+ arr);//111,22,33,44
+
+</script>

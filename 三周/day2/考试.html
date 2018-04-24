@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width:1000px;}
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+      var rgb=0
+     var obox=document.getElementById("box")
+    for(var i=1;i<=100;i++){
+        var odiv=document.createElement("div")
+        odiv.style.width=100+"px"
+        odiv.style.height=100+"px"
+        odiv.innerText=i
+        odiv.style.float="left"
+        rgb++
+        if(rgb==5){
+            rgb=1
+        }
+        switch(rgb){
+            case 1 :
+                odiv.style.background="red"
+                break;
+            case 2 :
+                odiv.style.background="yellow"
+                break;
+            case 3 :
+                odiv.style.background="green"
+                break;
+            case 4 :
+                odiv.style.background="blue"
+                break;
+        }
+        obox.appendChild(odiv)
+    }
+    var str="abcabcabcabcabcabda"
+      var g=0
+      var arr=[]
+    while(str.indexOf("ab")!=-1){
+        g++
+        arr.push(str.indexOf("ab"))
+        str=str.replace("ab",11)
+        console.log(str,arr,g)
+    }
+</script>

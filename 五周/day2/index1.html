@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Ajax2.js"></script>
+</head>
+<body>
+<form id="myform">
+    登录用户名<input type="text" name="txt"/><span></span><br>
+    登录密码<input type="text" name="password" /><br>
+    用户名<input type="text" name="oname"/><br>
+    家庭住址<input type="text" name="Address"/><br>
+    电话号码<input type="text" name="TelPhone"/><br>
+    QQ号码<input type="text" name="QQ"/ ><br>
+    年龄<input type="text" name="Age"/><br>
+    <button typeof="button" id="btn">注册</button>
+</form>
+</body>
+</html>
+<script>
+    var myform=document.getElementById("myform")
+    myform.txt.oninput=myform.txt.onproprechange=function () {
+//        var obj={}
+//        obj.url="http://useker .cn/UserInfo/IsExistUser"
+//        obj.type="post"
+//        obj.data={
+//            LoginName:this.value
+//        }
+        Ajax({
+            url : "http://useker.cn/UserInfo/IsExistUser",
+            type : "post",
+            data : {
+                "LoginName" : this.value
+            }}).then(function (seussen) {
+                var res=JSON.parse(seussen)
+            console.log(res.msg);
+            document.getElementsByTagName("span")[0].innerHTML=res.msg
+        })
+    }
+    document.getElementById("btn").onclick=function () {
+             var obj={
+                 data:{
+                     LoginName:myform.txt.value,
+                     LoginPwd:myform.password.value,
+                     Address:myform.Address.value,
+                     Age:myform.Age.value,
+                     QQ:myform.QQ.value,
+                     TelPhone:myform.TelPhone.value,
+                     UserName:myform.oname.value
+                 },
+                 url:"http://useker.cn/UserInfo/regUser"
+             }
+//        LoginName 用户名
+//        LoginPwd  密码
+//        Address  家庭住址
+//        Age     年龄 大于18,小于120
+//        QQ     必须有效的QQ
+//        TelPhone  真实手机号
+//        UserName 真实名字
+
+        Ajax(obj)
+        return false
+    }
+</script>

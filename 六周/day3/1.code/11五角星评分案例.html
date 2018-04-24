@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .comment{
+            font-size:40px;
+            color:teal;
+        }
+        .comment li{
+            float:left;
+        }
+        ul{
+            list-style:none;
+        }
+    </style>
+     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+
+</head>
+
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+
+</html>
+
+<script>
+    $(function(){
+        var shixing="★"
+        var kongxing="☆"
+        $("li").on("mouseenter",function () {
+            $(this).text(shixing).prevAll().text(shixing).end().nextAll().text(kongxing)
+        }).on("click",function () {
+            $(this).addClass("shix").siblings().removeClass("shix")
+        })
+        $("ul").on("mouseleave",function () {
+            $(this).children().text(kongxing)
+            $(".shix").text(shixing).prevAll().text(shixing)
+        })
+    })
+
+</script>

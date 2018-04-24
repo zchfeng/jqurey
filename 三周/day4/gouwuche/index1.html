@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+</head>
+<body>
+<ul>
+    <li note_value='{"uname":"单车","pic":100 }' >id1 单车 $100 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"摩托","pic":200 }' >id1 摩托 $200 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"汽车","pic":300 }' >id1 汽车 $300 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"坦克","pic":400 }' >id1 坦克 $400 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"飞机","pic":500 }' >id1 飞机 $500 <a href="#">加入购物车</a></li>
+</ul>
+<a href="index3.html" >查看购物车</a>
+</body>
+</html>
+<script>
+    var all_a = document.querySelectorAll("ul li a");//获取所有a
+//    console.log(all_a)
+    for(var i=0;i<all_a.length;i++) {//遍历A
+        all_a[i].onclick = function () {
+            var str_note = this.parentNode.getAttribute("note_value")//获取对应LI的属性
+             strobj=JSON.parse(str_note)
+            console.log(str_note);
+            var cookieobj=JSON.parse(getCookie("cart")||'[]')//获取cookie记录并打印成对象
+            var tf=true  //默认记录没有对应记录
+            for(var j=0;j<cookieobj.length;j++){
+                if(cookieobj[j].uname==strobj.uname){
+                    cookieobj[j].num+=1
+                    tf=false
+                }
+            }
+            if(tf==true){
+                strobj.num=1
+                cookieobj.push(strobj)
+
+            }
+            Cookie("cart",JSON.stringify(cookieobj))
+        }
+    }
+</script>

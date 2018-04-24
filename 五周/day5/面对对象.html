@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    学生
+    function Stuent(_name,_age) {
+        this.name=_name
+        this.age=_age
+    }
+    Stuent.prototype.say=function () {
+        console.log("说话")
+    }
+
+//    班级
+function Class(_name) {
+    this.name=_name
+    this.stu=[]
+}
+Class.prototype.add=function (obj) {
+    this.stu.push(obj)
+}
+
+var stu1=new Stuent("周杰伦",20)
+var stu2=new Stuent("刘德华",20)
+var cla1=new Class("H5")
+cla1.add(stu1)
+var cla2=new Class("Java")
+cla2.add(stu2)
+//    学校
+var School={}
+School.name="长沙校区"
+School.class=[cla1,cla2]
+console.log(School);
+console.log(School.class[0].stu[0]);
+
+</script>

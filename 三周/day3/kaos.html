@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[1,2,3,4,5,4,2,2,3,4,5,6]
+//   function notpeat(tmp) {
+//       var tmparr=[]
+//       for(var i=0;i<arr.length;i++){
+//           if(tmparr.indexOf(arr[i])==-1){
+//               tmparr.push(arr[i])
+//           }
+//       }
+//       return tmparr
+//   }
+//
+//    console.log(notpeat(arr));
+    arr.splice(1,0,9)
+    console.log(arr);
+    function show(tmp){
+        var tmparr=[]
+        for(var i=0;i<arr.length;i++){
+            if(tmparr.indexOf(arr[i])==-1){
+                tmparr.push(arr[i])
+            }
+        }
+        return tmparr
+    }
+
+    console.log(show(arr));
+
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="useer.animate.js"></script>
+    <style>
+        html,body{
+            background: #000000;
+        }
+        .BigBOX{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            border-radius: 50%;
+        }
+        .BoomBox{
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+<script>
+    document.onclick=function (evt) {//页面点击事件
+        var e = evt || window.event  //点击兼容
+        var disX = e.clientX   //获取点击位置
+        var disY = e.clientY
+        var Boom = BigBOX(disX) //生产新的div
+        animate(Boom, {"top": disY}, function (a) {
+            a.remove()
+            var deg = 20
+            var r=50+Math.random()*50
+            for (var i = 0; i < 18; i++) {
+                var Bx = disX + Math.sin(2 * Math.PI / 360 * (deg * i)) * r;
+                var By =disY + Math.cos(2 * Math.PI / 360 * (deg * i)) * r;
+                animate(BoomBox(disX,disY),{"left":Bx,"top":By},function (o) {
+                    o.remove()
+                })
+            }
+
+        })
+
+    }
+    function Color() {
+       var str=`rgb(${Math.ceil(Math.random()*256)},${Math.ceil(Math.random()*256)},${Math.ceil(Math.random()*256)})`
+        return str
+    }//随机颜色
+    function BigBOX(X) {
+        var BigBOX=document.createElement("div")
+        document.body.appendChild(BigBOX)
+        BigBOX.className="BigBOX"
+        BigBOX.style.left=X+"px"
+        BigBOX.style.background=Color()
+        return BigBOX
+    }
+    function BoomBox(x,y) {
+            var BoomBox=document.createElement("div")
+            document.body.appendChild(BoomBox)
+            BoomBox.className="BoomBox"
+            BoomBox.style.left=x+"px"
+            BoomBox.style.top=y+"px"
+            BoomBox.style.background=Color()
+            return BoomBox
+    }
+</script>

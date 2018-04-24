@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.min.js"></script>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            margin:3px;
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>
+<script>
+    // jq提供的 手动遍历 方法
+    //1. each
+      // 返回你传入 对象
+    //2. map
+     // 始终返回数组,默认是一个空数组,但是数组的个数,可以通过条件决定
+
+
+
+
+    $(function(){
+       // $("div").css("backgroundColor","yellow");
+
+
+//        $("div").height("300");  隐式迭代  内部帮你做好了 遍历操作
+
+//        for(var i=0;i< $("div").length;i++){
+//            $($("div")[i]).height(300)
+//        }
+
+
+//        $("div").each(function(index,ele){
+//            console.log(ele, index);
+//        })
+
+
+        var  arr=[111,222,333];
+//
+//        $.each(arr,function(index,ele){
+//            console.log(index, ele);
+//        })
+
+
+//        $("div").map(function(index,ele){
+//            console.log(index, ele);
+//        })
+
+//        $.map(arr,function(ele,index){
+//            console.log(index, ele);
+//        })
+
+
+        console.log($("div").each(function(index,ele){
+
+            if(index<3){
+                return ele;
+            }
+        }));
+
+        console.log($("div").map(function(index,ele){
+
+        }));
+
+
+    })
+
+</script>

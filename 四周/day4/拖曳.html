@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background: #00b5ee;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var obox=document.getElementById("box")
+//    普通模式
+//    obox.onmousedown=function (evt) {
+//        var e=evt||window.event
+//        var X=e.offsetX
+//        var  Y=e.offsetY
+//        document.onmousemove=function (evt) {
+//            var e=evt||window.event
+//            obox.style.left=e.clientX-X+"px"
+//            obox.style.top=e.clientY-Y+"px"
+//        }
+//        document.onmouseup=function () {
+//            document.onmousemove=document.onmouseup=null
+//        }
+//    }
+
+//    对象模式
+//   var  movebox={
+//        ele:null,
+//        getele:function (_ele) {
+//            this.ele=_ele
+//            console.log(this);
+//            return this
+//        },
+//        movestart:function () {
+//            var shef=this
+//            console.log(shef.ele);
+//            this.ele.onmousedown=function (evt) {
+//                var e=evt||window.event
+//                var disX=e.offsetX
+//                var disY=e.offsetY
+//                console.log(shef);
+//                shef.moveing(disX,disY)
+//                shef.moveend()
+//            }
+//        },
+//        moveing:function (disX,disY) {
+//            var shef=this
+//            document.onmousemove=function (evt) {
+//                var ee=evt||window.event
+//                shef.ele.style.left=ee.clientX-disX+"px"
+//                shef.ele.style.top=ee.clientY-disY+"px"
+//            }
+//        },
+//        moveend:function () {
+//            document.onmouseup=function () {
+//                document.onmousemove=document.onmouseup=null
+//            }
+//        }
+//    }
+//    movebox.getele(obox).movestart()
+
+//    工厂模式
+//    function movediv(_ele) {
+//        var obox=new Object
+//        obox.ele=_ele
+//        obox.movestart=function () {
+//            var updiv=this
+//            console.log(updiv);
+//            this.ele.onmousedown=function (evt) {
+//                var e=evt||window.event
+//                var X=e.offsetX
+//                var Y=e.offsetY
+//                updiv.moveing(X,Y)
+//                updiv.moveend()
+//            }
+//        }
+//        obox.moveing=function (X,Y) {
+//            var updiv=this
+//            document.onmousemove=function (evt) {
+//                var e=evt||window.event
+//                updiv.ele.style.left=e.clientX-X+"px"
+//                updiv.ele.style.top=e.clientY-Y+"px"
+//            }
+//        }
+//        obox.moveend=function () {
+//            document.onmouseup=function () {
+//                document.onmousemove=document.onmouseup=null
+//            }
+//        }
+//        console.log(obox);
+//        return obox
+//    }
+//    movediv(obox).movestart()
+
+//    构造函数模式
+    function Movediv(_ele) {
+        this.ele=_ele
+        this.movestrat=function () {
+            var herf=this
+            this.ele.onmousedown=function (evt) {
+                var e=evt||window.event
+                var X=e.offsetX
+                var Y=e.offsetY
+                herf.moveing(X,Y)
+                herf.moveend()
+            }
+        }
+        this.moveing=function (x,y) {
+            var herf=this
+            document.onmousemove=function (evt) {
+                var e=evt||window.event
+                herf.ele.style.left=e.clientX-x+"px"
+                herf.ele.style.top=e.clientY-y+"px"
+            }
+        }
+        this.moveend=function () {
+            document.onmouseup=function () {
+                document.onmousemove= document.onmouseup=null
+            }
+        }
+    }
+    var move=new Movediv(obox)
+      move.movestrat()
+</script>

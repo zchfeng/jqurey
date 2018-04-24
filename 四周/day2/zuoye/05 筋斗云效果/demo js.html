@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {margin:0; padding: 0}
+        ul {list-style: none;}
+        body {
+            background-color: #333;
+        }
+        .nav {
+            width: 800px;
+            height: 42px;
+            margin: 100px auto;
+            background: url(images/rss.png) right center no-repeat #fff;
+            border-radius: 10px;
+            position: relative;
+        }
+        .nav ul li{
+            width: 83px;
+            height: 42px;
+            float: left;
+            line-height: 42px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .nav span {
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .nav  ul {
+            position: absolute;
+        }
+    </style>
+    <script src="../../useker.animate.js?v=2"></script>
+</head>
+<body>
+<div class="nav">
+    <span id="cloud"></span>
+    <ul>
+        <li>首页新闻</li>
+        <li>师资力量</li>
+        <li>活动策划</li>
+        <li>企业文化</li>
+        <li>招聘信息</li>
+        <li>公司简介</li>
+        <li>长沙校区</li>
+        <li>深圳校区</li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+
+    //1.鼠标移入
+       //1.1  给所有的li绑定输入移入事件
+      //  在当前的li 获取当前里的 下标 在拿下标乘以 83 等于一个位置
+     // 把乘积的值 给 云
+      var oLis=document.querySelectorAll(".nav li");
+      var ocloud=document.querySelector("#cloud");
+
+
+      var position=0;
+
+      for(var i=0;i<oLis.length;i++){
+
+           oLis[i].tmpIndex=i;
+          oLis[i].onmouseenter=function(){
+              var target=this.tmpIndex * this.offsetWidth;
+              animate(ocloud,"left",target);
+          }
+
+          //3.给每一个li点击事件
+          oLis[i].onclick=function(){
+
+             var target=this.tmpIndex*83;
+              position=target;
+             animate(ocloud,"left",target)
+          }
+
+      }
+
+
+    //2. 鼠标移出
+      // 给ul绑定一个鼠标移出事件
+
+     var  oUl=document.querySelector(".nav >ul");
+    oUl.addEventListener("mouseleave",function(){
+        //2.1 当鼠标离开时 让云的位置 回到 0的位置
+        animate(ocloud,"left",position)
+
+    })
+
+
+
+
+
+
+
+
+
+
+</script>

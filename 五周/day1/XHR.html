@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">发送请求</button>
+<input type="button"/>
+</body>
+</html>
+<script>
+    function CreateXhr() {
+        if(window.XMLHttpRequest){
+            return new window.XMLHttpRequest()
+        }
+        return new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    var Xhr=CreateXhr()
+    document.getElementById("btn").onclick=function () {
+        Xhr.open("get", "tsconfig.json", false)//传入  获取方式,地址,同步/异步
+        Xhr.send(null)//传入参数
+        if (Xhr.status == 200) {
+            console.log(Xhr.responseText);
+        }
+    }
+</script>

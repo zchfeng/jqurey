@@ -1,0 +1,16 @@
+5页面
+1 主页
+2 商品 详情
+3 购物车
+4 注册
+5 登录
+
+
+php+sql
+
+jquery  
+jquery.cookie  
+jquery.ajax 
+
+git  
+requirejs 

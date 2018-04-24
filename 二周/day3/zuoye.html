@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{height:100px;
+            width:100px;
+            background:red;}
+    </style>
+
+</head>
+<body>
+<input type="text" id="txt">
+<input type="submit" id="sbt">
+<input type="text" id="txt2">
+<progress id="pr" value="0" max="100"></progress>
+<input type="text" id="txt4">
+<div id="div"></div>
+</body>
+</html>
+<script>
+//    实现秒表功能 : 显示时,分,秒 , 点击按钮开始计时
+          var osbt=document.getElementById("sbt")
+           osbt.onclick=function (){//点击函数
+              var hh=0,mm=0,ss=0;
+              var fn=function () {//计时函数
+                  var otxt = document.getElementById("txt")
+                 ss++
+                  if(ss==60){
+                      ss=0
+                      mm++
+                  }
+                  if(mm==60){
+                      mm=0
+                      hh++
+                  }
+                  otxt.value=hh+"时，"+mm+"分，"+ss+"秒"
+              }
+              setInterval(fn,1000)
+           }
+//
+//    计算2017年11月11日 11时 11分 11秒 距离当前日期的时间差,
+//    并以指定的格式
+//    (天/时/分/秒)的形式显示.
+        var fn2=function () {
+    var date1 = new Date()
+    var date2 = new Date("2017/11/11 11:11:11")
+    var time = date1.getTime() - date2.getTime()//距离时间  ms
+    var ss = parseInt(time / 1000) %60//距离s
+    var mm = parseInt(time / 1000/60) % 60  //距离m
+    var hh = parseInt(time / 1000 / 60/60) %24 //距离h
+    var dd = parseInt(time / 1000 / 60 / 60/24) //距离天
+    var otxt2 = document.getElementById("txt2")
+    otxt2.value = dd + "天/" + hh + "时/" + mm + "分/" + ss + "秒"
+}
+setInterval(fn2,1000)
+//    使用定时器实现进度条,
+//        提示:  获取标签对象, 并改变style属性的width值
+//    var proBar = document.getElementById("progressBar");
+//    proBar.style.width = barW + "px";
+            var fn3=function () {
+                var opr=document.getElementById("pr")
+                opr.value+=10
+                if(opr.value==100){
+                    opr.value=0
+                }
+            }
+           setInterval(fn3,1000)
+             var wid=100
+            var fn3=function () {
+                var odiv=document.getElementById("div")
+                wid+=50
+                odiv.style.width=wid+"px"
+                if(odiv.style.width==1000+"px"){
+                    wid=0
+                }
+            }
+            setInterval(fn3,1000)
+//    倒计时，  给定一个未来的日期，计算和当前时间的差值，并倒计时，
+//    当倒计时为0时， 弹出提示框“活动结束
+
+
+        var fn4 = function () {
+            var date2 = new Date("2018/1/10 20:59:11")
+            var date1 = new Date()
+            var  time = date2.getTime() - date1.getTime()//距离时间  ms
+            console.log(time)
+            var ss = parseInt(time / 1000) % 60//距离s
+            var mm = parseInt(time / 1000 / 60) % 60  //距离m
+            var hh = parseInt(time / 1000 / 60 / 60) % 24 //距离h
+            var dd = parseInt(time / 1000 / 60 / 60 / 24) //距离天
+            var otxt4 = document.getElementById("txt4")
+            otxt4.value = dd + "天/" + hh + "时/" + mm + "分/" + ss + "秒"
+            if(dd==0&&hh==0&&mm==0&&ss==0){
+                var fn4_t=function () {
+                    alert("活动结束")
+                }
+                setTimeout(fn4_t,1000)
+            }
+        }
+        setInterval(fn4, 1000)
+
+</script>

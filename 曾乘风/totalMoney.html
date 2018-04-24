@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var Cookieobj=JSON.parse(getCookie("fruits")||'[]')
+    var sum=0
+    for (var i = 0; i < Cookieobj.length; i++) {
+        if (Cookieobj[i].number != 0) {
+            var odiv = document.createElement("div")
+            odiv.innerHTML = Cookieobj[i].uname + " " + Cookieobj[i].pie + "X" + Cookieobj[i].number + "******************" +
+                (Cookieobj[i].pie * Cookieobj[i].number)
+            document.body.appendChild(odiv)
+        }
+        sum+=Cookieobj[i].pie*Cookieobj[i].number
+    }
+    var All = document.createElement("div")
+    All.innerHTML="总金额:"+sum+"元"
+    document.body.appendChild(All)
+    var back = document.createElement("div")
+    back.innerHTML="返回"
+    back.style.background="red"
+    back.style.width="100px"
+    back.style.height="20px"
+    document.body.appendChild(back)
+    back.onclick=function () {
+        location.href="cart.html"
+    }
+</script>

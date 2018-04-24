@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            margin:3px;
+            height:400px;
+            width:400px;
+            background-color:green;
+        }
+        .box:nth-of-type(even){
+            background-color:yellow;
+        }
+        .box:nth-of-type(odd){
+            background-color:wheat;
+        }
+        span{
+            margin:3px;
+            height:150px;
+            width:150px;
+            display:block;
+            background-color:#cd0a0a;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<div class="box">
+
+    <span>
+        <a href="http://www.baidu.com">百度</a>
+
+    </span>
+
+</div>
+</body>
+</html>
+<script>
+    $(function(){
+
+//        $("body").on("click",function(){
+//            alert("body")
+//        })
+//
+//
+//        $("div").on("click",function(){
+//            alert("div")
+//        })
+//
+//
+//
+//        $("span").on("click",function(evt){
+////            evt.stopPropagation();//停止事件冒泡
+////            evt.originalEvent.cancelBubble=true; //ie 已经ie8以上
+//
+//            alert("span")
+//        })
+
+
+        $("a").on("click",function(evt){
+//            return false;
+            evt.preventDefault(); //阻止默认行为
+        })
+
+
+
+        $(window).on("keydown",function(evt){
+            console.log(evt.keyCode);
+        })
+    })
+
+</script>

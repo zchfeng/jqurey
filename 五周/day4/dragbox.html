@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        div{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            background:#0cb75d;
+            top: 400px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+</body>
+</html>
+<script>
+    function Dragbox(_id) {
+        this.ele=document.getElementById(_id)
+//        this.ele.style.width="150px"
+//        this.ele.style.height="200px"
+//        this.ele.style.position="absolute"
+//        this.ele.style.background="pink"
+    }
+    Dragbox.prototype={
+        constructor:Dragbox,
+        movestate:function () {
+            var shlef=this
+            this.ele.onmousedown=function (evt) {
+                var e=evt||window.event
+                var x=e.offsetX
+                var y=e.offsetY
+                shlef.moveing(x,y)
+                shlef.moveend()
+            }
+        },
+        moveing:function (x,y) {
+            var shlef=this
+            document.onmousemove=function (evt) {
+                var e=evt||window.event
+                shlef.ele.style.left=e.clientX-x+"px"
+                shlef.ele.style.top=e.clientY-y+"px"
+            }
+        },
+        moveend:function () {
+            document.onmouseup=function () {
+                document.onmousemove=document.onmouseup=null
+            }
+        }
+    }
+    function DragBoxLimit(_id) {
+        Dragbox.call(this,_id)
+//        this.ele.style.background="#00b5ee"
+    }
+    console.log(new Dragbox("box1"));
+    DragBoxLimit.prototype=new Dragbox()
+    DragBoxLimit.prototype.moveing=function(x,y){
+        var shlef=this
+        document.onmousemove=function (evt) {
+            var e=evt||window.event
+            if(e.clientX-x<=0){
+                shlef.ele.style.left="0px"
+            }else{
+                shlef.ele.style.left=e.clientX-x+"px"
+            }
+            if(e.clientY-y<=0){
+                shlef.ele.style.top="0px"
+            }else{
+                shlef.ele.style.top=e.clientY-y+"px"
+            }
+
+        }
+    }
+    function DragBoxLimitText(_id) {
+        Dragbox.call(this,_id)
+        this.ele.style.background="red"
+    }
+    DragBoxLimitText.prototype=new DragBoxLimit()
+    DragBoxLimitText.prototype.moveing=function(x,y){
+        var shlef=this
+        document.onmousemove=function (evt) {
+            var e=evt||window.event
+            if(e.clientX-x<=0){
+                shlef.ele.style.left="0px"
+            }else{
+                shlef.ele.style.left=e.clientX-x+"px"
+            }
+            if(e.clientY-y<=0){
+                shlef.ele.style.top="0px"
+            }else{
+                shlef.ele.style.top=e.clientY-y+"px"
+            }
+            shlef.ele.innerHTML=shlef.ele.style.left+"px,"+shlef.ele.style.top+"px"
+        }
+    }
+
+    var obox1=new Dragbox("box1")
+    obox1.movestate()
+    var obox2=new DragBoxLimit("box2")
+    obox2.movestate()
+    var obox3=new DragBoxLimitText("box3")
+    obox3.movestate()
+</script>

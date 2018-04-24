@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            background: url(images/box.png) no-repeat center top;
+            width: 100%;
+            margin: 0 auto;
+            height: 7573px;
+        }
+
+        .top {
+            height: 45px;
+            width: 100%;
+            background: url(images/r1.png) no-repeat center top;
+            position: fixed;
+            top: 0;
+        }
+
+        .topadd {
+            position: static;
+        }
+
+        .one {
+            margin: 0 auto;
+            width: 1000px;
+            height: 45px;
+        }
+
+        .one a {
+            float: right;
+            width: 55px;
+            height: 22px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .tan {
+            width: 400px;
+            height: 200px;
+            border: 2px solid lightcoral;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -200px;
+            background: #fff;
+            display: none;
+        }
+
+        .tanup {
+            padding-left: 15px;
+            width: 385px;
+            height: 36px;
+            background: rgb(237, 100, 100);
+            cursor: move;
+            color: #fff;
+            font: 18px/36px "microsoft yahei"
+        }
+
+        .txt {
+            color: lightcoral;
+            font: 26px "microsoft yahei";
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 80px;
+            border: 2px solid salmon;
+            background-color: bisque;
+            text-align: center;
+            margin-left: 70px;
+            margin-top: 20px;
+            color: salmon;
+            font: 16px/36px "microsoft yahei";
+            cursor: pointer;
+        }
+
+        .left, .right {
+            width: 120px;
+            height: 288px;
+            position: absolute;
+            top: 200px;
+        }
+
+        .left {
+            left: 0px;
+            background: url(images/r2_c1.png) no-repeat;
+        }
+
+        .right {
+            right: 0px;
+            background: url(images/r2_c2.png) no-repeat;
+        }
+
+        .totop {
+            width: 50px;
+            height: 50px;
+            background: url(images/20150717215921.png);
+            position: fixed;
+            display: none;
+            bottom: 50px;
+            right: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="useer.animate.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="top" id="s_top">
+        <div class="one">
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+    <div class="tan" id="s_tan">
+        <div class="tanup" id="tanup">提示框</div>
+        <div class="txt">你真的真的真的要关闭吗？</div>
+        <span class="btn">狠心关掉</span><span class="btn">让它呆着</span>
+    </div>
+    <div class="left" id="left"></div>
+    <div class="right" id="right"></div>
+    <div class="totop" id="totop"></div>
+</div>
+</body>
+</html>
+<script>
+    //两侧栏跟随
+    //    滚动一定距离,回顶部框出现
+    //    点击回顶部框,缓动画回到顶部
+    //    点击按钮,弹框
+    //    点击左边,按钮无效
+    //    点击右边,关闭弹窗
+    var left = document.getElementById("left")
+    var right = document.getElementById("right")
+    var left_top = left.offsetTop
+    var right_top = left.offsetTop
+    var totop = document.getElementById("totop")
+    document.onscroll = function () {
+        var scroll = Myscroll().top
+        animate(left, {"top": scroll + left_top})
+        animate(right, {"top": scroll + right_top})
+        if (scroll >= 500) {
+            totop.style.display = "block"
+        } else {
+            totop.style.display = "none"
+        }
+        totop.onclick = function () {
+            var timer = setInterval(function () {
+                scroll = parseInt(scroll - scroll / 10)
+                window.scrollTo(0, scroll)
+                if (scroll == 0) {
+                    clearInterval(timer)
+                }
+            }, 40)
+        }
+    }
+    var s_top = document.getElementById("s_top").children[0].children[0]
+    var s_tan = document.getElementById("s_tan")
+     var tf_top=true
+    s_top.onclick = function () {
+        if(tf_top){
+            s_tan.style.display = "block"
+        }
+    }
+    s_tan.children[2].onclick = function () {
+        s_tan.style.display = "none"
+        tf_top=false
+    }
+    s_tan.children[3].onclick = function () {
+        s_tan.style.display = "none"
+    }
+</script>

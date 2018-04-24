@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script>
+			$(function(){
+				
+				//点击加入购物车
+				$(".addToCart").click(function(){
+					
+					//先获取商品信息
+					var goodsId = $(this).parent().find(".goodsId").html(); 
+					var goodsName = $(this).parent().find(".goodsName").html(); 
+					var goodsPrice = $(this).parent().find(".goodsPrice").html(); 
+					
+					
+					//添加到购物车
+					//如果是第一次加入购物车, 则goodsList=[], 否则获取原来购物车(cookie)中的商品
+					var goodsList = $.cookie("cart") ? JSON.parse($.cookie("cart")) : [];
+					
+					//判断即将添加的商品是否已经在购物车中存在, 如果存在则数量num++
+					var isExist = false; //不存在
+					for (var i=0; i<goodsList.length; i++) {
+						var cartGoodsId = goodsList[i].id; //购物车中商品id
+						if (goodsId == cartGoodsId) {
+							//存在相同的商品, 则把num++
+							goodsList[i].num++; 
+							isExist = true; //表示存在
+						}
+					}
+					
+					//添加新的商品时调用
+					if (!isExist) {
+						//对象:一个商品
+						var goods = {
+							id: goodsId,
+							name: goodsName,
+							price: goodsPrice,
+							num: 1
+						}
+						goodsList.push(goods);
+					}
+					
+					//添加到cookie
+					$.cookie("cart", JSON.stringify(goodsList), {expires:7, path:"/"});
+					console.log( $.cookie("cart") );
+					
+				});
+				
+				
+				//结算
+				$("#calculate").click(function(){
+					location.href = "2_buy.html"; 
+				})
+				
+				//清除
+				$("#clearCart").click(function(){
+					$.cookie("cart", "", {expires:0, path:"/"});
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li>
+				<span class="goodsId" style="display: none;">id1</span>
+				<span class="goodsName">单车</span>
+				<span class="goodsPrice">2000</span>
+				<a class="addToCart" href="#">加入购物车</a>
+			</li>
+			<li>
+				<span class="goodsId" style="display: none;">id2</span>
+				<span class="goodsName">摩托</span>
+				<span class="goodsPrice">4000</span>
+				<a class="addToCart" href="#">加入购物车</a>
+			</li>
+			<li>
+				<span class="goodsId" style="display: none;">id3</span>
+				<span class="goodsName">游艇</span>
+				<span class="goodsPrice">100</span>
+				<a class="addToCart" href="#">加入购物车</a>
+			</li>
+		</ul>
+		<button id="calculate">结算</button>
+		<button id="clearCart">清除</button>
+		
+	</body>
+</html>

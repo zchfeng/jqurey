@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Cookie.js"></script>
+    <style>
+        table,tr,td{
+            border: 1px solid #00b5ee;
+            width: 600px;
+        }
+        table{
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<p>表格</p>
+<form id="form">
+    请输入想搜索的数值 <input type="text" name="txt">
+    <input type="button" value="搜索" name="search">
+</form>
+<table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>手机号</td>
+        <td>邮箱</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody id="tab">
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    var oform=document.getElementById("form")
+    var cookieobj=JSON.parse(getCookie("list") || '[]')
+    function fn(cookieobj) {
+        for (var i = 0; i < cookieobj.length; i++) {
+            var oTR = document.createElement("tr")
+            var oTD1 = document.createElement("td")
+            oTD1.innerHTML = cookieobj[i].uname
+            oTR.appendChild(oTD1)
+            var oTD2 = document.createElement("td")
+            oTD2.innerHTML = cookieobj[i].pws
+            oTR.appendChild(oTD2)
+            var oTD3 = document.createElement("td")
+            oTD3.innerHTML = cookieobj[i].utel
+            oTR.appendChild(oTD3)
+            var oTD4 = document.createElement("td")
+            oTD4.innerHTML = cookieobj[i].uemail
+            oTR.appendChild(oTD4)
+            var oTD5 = document.createElement("td")
+            oTD5.innerHTML = "<a  onclick=del(this)>删除</a>"
+            oTR.appendChild(oTD5)
+            document.getElementById("tab").appendChild(oTR)
+        }
+    }
+    fn(cookieobj)
+    oform.search.onclick=function () {
+        document.getElementById("tab").innerHTML=""
+        var str=oform.txt.value
+        var cookie_value=JSON.parse(getCookie("list") || '[]')
+        for(var j=0;j<cookie_value.length;j++){
+            if(cookie_value[j].uname.indexOf(str)!=-1){
+                var arr=[]
+                arr.push(cookie_value[j])
+                fn(arr)
+            }
+        }
+
+    }
+
+    function del(a) {
+       var delTR=a.parentNode.parentNode
+        delTR.remove()
+        var delumane=delTR.firstElementChild.innerText||delTR.firstChild.innerText
+        console.log(delumane);
+        var del_cookie=cookieobj.filter(function (ele,index) {
+            if(ele.uname!=delumane){
+                return ele
+            }
+        })
+       setCookie("list",JSON.stringify(del_cookie))
+
+    }
+</script>

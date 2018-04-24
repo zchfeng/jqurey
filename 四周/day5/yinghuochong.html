@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            border:none;
+        }
+        body, html{
+            width:100%;
+            height:100%;
+            background:url(images/bg.jpg) no-repeat center;
+            background-size:cover;
+            overflow:hidden;
+        }
+        img{
+            width:18px;
+            height:18px;
+            position:absolute;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //创建萤火虫(工厂模式/构造函数)
+    //随机生成
+    //飞行  飞的位置
+    //生成多少萤火虫
+    function CreatYHC() {
+        var odiv=document.createElement("div")
+        odiv.style.width="10px"
+        odiv.style.height="10px"
+        odiv.style.backgroundImage = "url(images/snow.gif)";
+        odiv.style.backgroundSize = "cover"
+        odiv.style.position="absolute"
+        odiv.style.left=Random().left
+        odiv.style.top=Random().top
+        odiv.fly=function () {
+            animate(odiv,{"left":Random().left,"top":Random().top},function () {
+                setTimeout(function () {
+                    odiv.fly()
+                },5000)
+            })
+        }
+        document.body.appendChild(odiv)
+        return odiv
+    }
+    function Random() {
+        var position={}
+        position.left=Math.ceil(Math.random()*document.documentElement.scrollWidth)+"px"
+        position.top=Math.ceil(Math.random()*document.documentElement.scrollHeight)+"px"
+        return position
+    }
+
+    for(var i=0;i<30;i++) {
+        CreatYHC().fly()
+    }
+</script>

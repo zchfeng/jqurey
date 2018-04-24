@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="useer_animate.js"></script>
+    <script src="useer.animate2.js"></script>
+    <style>
+        *{margin:0;padding: 0;}
+        div{
+            height: 100px;
+            width: 100px;
+            background: #00b5ee;
+            position: absolute;
+        }
+        body{
+            height: 2000px;
+        }
+        button{
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<button id="all">全部</button>
+<button id="left800">left800</button>
+<button id="top400">top400</button>
+<div></div>
+</body>
+</html>
+<script>
+    var left800=document.getElementById("left800")
+    var top400=document.getElementById("top400")
+    var odiv=document.querySelector("div")
+    console.log(getstyle(odiv, "left"));
+    top400.onmousedown=function () {
+        animate(odiv,"top",400)
+    }
+    left800.onmousedown=function () {
+        animate(odiv,"left",800)
+    }
+    console.log(Myscroll().top);
+    var oall=document.getElementById("all")
+    oall.onmousedown=function () {
+        console.log("aaa");
+        animate2(odiv,{"width":400,"height":800})
+    }
+</script>

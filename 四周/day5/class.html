@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            height: 100px;
+            width: 100px;
+            background:#00b5ee;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    class move{
+        constructor(_box){
+            this.ele=document.getElementById(_box)
+            if(move.aaaa!=null){
+                return move.aaaa
+            }else{
+                move.aaaa=this
+            }
+        }
+        movestrat(){
+            var self=this
+            this.ele.onmousedown=function (evt) {
+                var e=evt||window.event
+                var disx=e.offsetX
+                var disY=e.offsetY
+                self.moveing(disx,disY)
+                self.moveend()
+            }
+        }
+        moveing(x,y){
+            var slaf=this
+            document.onmousemove=function (evt) {
+                var e=evt||window.event
+                slaf.ele.style.left=e.clientX-x+"PX"
+                slaf.ele.style.top=e.clientY-y+"PX"
+            }
+        }
+        moveend(){
+            document.onmouseup=function () {
+                document.onmousemove=document.onmouseup=null
+            }
+        }
+    }
+    var obox=new move("box")
+    var obox2=new move("box")
+    console.log(obox == obox2);
+
+</script>

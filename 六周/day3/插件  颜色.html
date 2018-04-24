@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background:red;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="jquery.color.js"></script>
+</head>
+<body>
+<button>改变颜色</button>
+<div></div>
+</body>
+</html>
+<script>
+    $(function () {
+        $("button").on("click",function () {
+            $("div").animate({"backgroundColor":"blue"})//插件要求  必须要加COLOR 不加不行
+        })
+    })
+
+</script>

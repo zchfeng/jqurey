@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <script src="useer.animate.js"></script>
+    <style>
+        blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+        body,button,input,select,textarea{font:12px/1.5 "Microsoft YaHei", "微软雅黑", SimSun, "宋体", sans-serif;color: #666;}
+        ol,ul{list-style:none}
+        a{text-decoration:none}
+        fieldset,img{border:0;vertical-align:top;}
+        a,input,button,select,textarea{outline:none;}
+        a,button{cursor:pointer;}
+
+        .wrap{
+            width:1200px;
+            margin:100px auto;
+        }
+        .slide {
+            height:500px;
+            position: relative;
+        }
+        .slide li{
+            position: absolute;
+            left:200px;
+            top:0;
+        }
+        .slide li img{
+            width:100%;
+        }
+        .arrow{
+            opacity: 0;
+        }
+        .prev,.next{
+            width:76px;
+            height:112px;
+            position: absolute;
+            top:50%;
+            margin-top:-56px;
+            background: url(images/prev.png) no-repeat;
+            z-index: 99;
+        }
+        .next{
+            right:0;
+            background-image: url(images/next.png);
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+        <ul>
+            <li>
+                <a href="#"><img src="images/slidepic1.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/slidepic2.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/slidepic3.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/slidepic4.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/slidepic5.jpg" alt=""/></a>
+            </li>
+        </ul>
+        <div class="arrow" id="arrow">
+            <a href="javascript:;" class="prev"></a>
+            <a href="javascript:;" class="next"></a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    var jsonData = [
+        {   //  1
+            width:400,
+            top:20,
+            left:50,
+            opacity:0.2,
+            zIndex:2
+        },
+        {  // 2
+            width:600,
+            top:70,
+            left:0,
+            opacity:.80,
+            zIndex:3
+        },
+        {   // 3
+            width:800,
+            top:100,
+            left:200,
+            opacity:1,
+            zIndex:4
+        },
+        {  // 4
+            width:600,
+            top:70,
+            left:600,
+            opacity:.80,
+            zIndex:3
+        },
+        {   //5
+            width:400,
+            top:20,
+            left:750,
+            opacity:.20,
+            zIndex:2
+        }
+    ];
+       //每张图片给对应的格式
+//    鼠标移入显示按钮,一次隐藏
+       //点击上一张按钮,向右切换一张
+      //点击下一张按钮,向左切换一张
+    var lis=document.getElementsByTagName("li")
+    var wrap=document.getElementById("wrap")
+    var arrow=document.getElementById("arrow")
+    var tf
+    function show() {
+        for (var i = 0; i < jsonData.length; i++) {//每张图片给对应的格式
+            animate(lis[i],jsonData[i],function (a) {
+                tf=true
+            })
+        }
+    }
+   show()
+    wrap.onmouseenter=function () {
+        arrow.style.opacity=1
+    }
+    wrap.onmouseleave=function () {
+        arrow.style.opacity=0
+    }
+    arrow.children[0].onclick=function () {
+        if (tf) {
+            tf=false
+            jsonData.unshift(jsonData.pop())
+            show()
+        }
+    }
+    arrow.children[1].onclick=function () {
+        if (tf) {
+            tf=false
+            jsonData.push(jsonData.shift())
+            show()
+        }
+    }
+</script>

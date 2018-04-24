@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+    function Person(){
+         this.name=null;
+         this.age=null;
+
+         this.setName=function(str){
+             this.name=str;
+             return this
+         }
+         this.getName=function(){
+             return this.name;
+
+         }
+
+
+    }
+
+
+    //获取的 不能进行链式编程
+    //设置的时候,能进行链式编程
+    // 链式的编程的核心 return this;
+    var p=new Person();
+    console.log(p.setName("周杰伦").getName());
+
+    p.setName("周杰伦").getName()
+
+
+</script>

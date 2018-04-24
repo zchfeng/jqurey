@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+</head>
+<body>
+性别<input type="text" class="s1" value="1" name="name"/>男<input type="text" value="2" name="name"/>女
+<input type="text" class="s1" value="3" name="name"/>人妖
+</body>
+</html>
+<script>
+    $(function () {
+        $("[name=name]").click(function () {
+            if($(this).val()==1){
+                alert("男")
+            }else if($(this).val()==2){
+                alert("女")
+            }else{
+                alert("人妖")
+            }
+            }
+        )
+        console.log($("input").val());
+        console.log($("input", ".s1"));
+        console.log($());
+    })
+</script>

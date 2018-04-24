@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table,tr,td{
+            border: solid 1px #000000;
+        }
+        table{
+            width: 700px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">sss</button>
+<table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td>name</td>
+        <td>age</td>
+        <td>sex</td>
+        <td>add</td>
+        <td>qq</td>
+    </tr>
+    </thead>
+    <tbody id="tab">
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+    function Create() {
+        if(window.XMLHttpRequest){
+            return new XMLHttpRequest()
+        }
+        return new ActiveXObject("Msxml2.XMLHTTP")
+    }
+    function ajax(url,callback) {
+        var xtr=Create()
+        xtr.open("get",url)
+        xtr.send(null)
+        xtr.onreadystatechange=function () {
+            if(xtr.status==200&&xtr.readyState==4){
+                if(callback){
+                    callback(xtr.responseText)
+                }
+            }
+        }
+    }
+    btn.onclick=function () {
+        document.getElementById("tab").innerHTML=""
+    var str=ajax("tsconfig.json",function (aaaa) {
+        var str1=aaaa
+        var  strobj=JSON.parse(str1)
+        for (var i = 0; i < strobj.length; i++) {
+            var otr=document.createElement("tr")
+            var otd1=document.createElement("td")
+            otd1.innerHTML=strobj[i].name
+            otr.appendChild(otd1)
+            var otd2=document.createElement("td")
+            otd2.innerHTML=strobj[i].age
+            otr.appendChild(otd2)
+            var otd3=document.createElement("td")
+            otd3.innerHTML=strobj[i].sex
+            otr.appendChild(otd3)
+            var otd4=document.createElement("td")
+            otd4.innerHTML=strobj[i].add
+            otr.appendChild(otd4)
+            var otd5=document.createElement("td")
+            otd5.innerHTML=strobj[i].qq
+            otr.appendChild(otd5)
+            document.getElementById("tab").appendChild(otr)
+        }
+    })}
+    var scroll=document.createElement("div")
+    scroll.innerHTML="滚动文字"
+    document.body.appendChild(scroll)
+    scroll.style.position="absolute"
+    var num=0
+    setInterval(function () {
+        num+=10
+        scroll.style.left=num+"px"
+        if(num>=500){
+            num=0
+        }
+    },500)
+</script>

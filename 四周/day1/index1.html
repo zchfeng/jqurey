@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+    <style>
+        input{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<form id="myform">
+    <p>注册</p>
+    账 号 <input name="uname" type="text"/><span></span><br>
+    密 码 <input name="upwd" type="password"/><span></span><br>
+    手 机 <input name="utel" type="text"/><span></span><br>
+    <input  type="submit" />
+    <input  type="reset"/>
+    <div id="box"></div>
+</form>
+</body>
+</html>
+<script>
+    var myform=document.getElementById("myform")
+    var obox=document.getElementById("box")
+    var ospan=document.getElementsByTagName("span")
+    var tf1,tf2,tf3;
+    myform.uname.oninput=myform.uname.onpropertychange=function () {
+         tf1=false
+        if(/^\w{6,}$/.test(myform.uname.value)){
+            tf1=true
+            ospan[0].innerHTML=""
+        }else{
+            ospan[0].innerHTML="账号格式不正确".fontcolor("red")
+        }
+    }
+    myform.upwd.oninput=myform.upwd.onpropertychange=function () {
+         tf2=false
+        if(/^.{8,16}$/.test(myform.upwd.value.trim())){
+            tf2=true
+            ospan[1].innerHTML=""
+        }else{
+            ospan[1].innerHTML="密码格式不正确".fontcolor("red")
+        }
+    }
+    myform.utel.oninput=myform.utel.onpropertychange=function () {
+         tf3=false
+        if(/^((13)|(14)|(15)|(17)|(18)|)\d{9}$/.test(myform.utel.value)){
+            tf3=true
+            ospan[2].innerHTML=""
+        }else{
+            ospan[2].innerHTML="手机格式不正确".fontcolor("red")
+        }
+    }
+    myform.onsubmit=function () {
+        var cookieobj=JSON.parse(getCooie("Cookie")||'[]')
+        var strobj={}
+        strobj.uname=myform.uname.value
+        strobj.upwd=myform.upwd.value.trim()
+        strobj.utel=myform.utel.value
+        console.log(strobj);
+        var tf4=true
+        for(var i=0;i<cookieobj.length;i++){
+            if(strobj.uname==cookieobj[i].uname){
+                obox.innerHTML="账号已存在".fontcolor("red")
+                tf4=false
+            }
+        }
+        console.log(tf1, tf2, tf3, tf4);
+        if(tf1&&tf2&&tf3&&tf4){
+            cookieobj.push(strobj)
+            console.log(cookieobj);
+        }
+        console.log(cookieobj);
+        setCookie("Cookie",JSON.stringify(cookieobj))
+        return false
+    }
+
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            background: #a71919;
+        }
+        #box2{
+            background: #00b5ee;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+</body>
+</html>
+<script>
+    function Box(_id) {
+        this.ele=document.getElementById(_id)
+    }
+    Box.prototype={
+        constructor:Box,
+        movestatr:function () {
+            var shilf=this
+            this.ele.onmousedown=function (evt) {
+                var e=evt||window.event
+                var disx=e.offsetX
+                var disy=e.offsetY
+                shilf.ele.style.zIdex=window.getComputedStyle(shilf.ele,null)[zIdex]+1
+                shilf.moveing(disx,disy)
+                shilf.moveend()
+            }
+        },
+        moveing:function (x,y) {
+          var shilf=this
+            document.onmousemove=function (evt) {
+                var e=evt||window.event
+                shilf.ele.style.left=e.clientX-x+"px"
+                shilf.ele.style.top=e.clientY-y+"px"
+            }
+        },
+        moveend:function () {
+            document.onmouseup=function () {
+                document.onmousemove=document.onmouseup=null
+            }
+        }
+    }
+    var box1=new  Box("box1")
+    box1.movestatr()
+    var box2=new  Box("box2")
+    box2.movestatr()
+</script>

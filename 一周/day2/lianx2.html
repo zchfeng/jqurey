@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+//var x=150
+//y=x.toString(2);
+//x=parseInt(y,2)
+//console.log(y,x)
+//3.  判断一个整数是偶数还是奇数，并输出判断结果
+//      var num=prompt("输入一个整数")
+////      被2整除为偶,其它为奇
+//      if(num%2==0){
+////      偶数
+//      console.log(num+"为偶数")
+//      }else{
+//      console.log(num+"为奇数")
+//      }
+//      switch (true){
+////      偶数
+//             case (num%2==0) :
+//             console.log(num+"为偶数")
+//             break;
+//             default :
+////             奇数
+//             console.log(num+"为奇数")
+//             break;     
+//      }
+
+//4.  开发一款软件，根据公式（身高-108）*2=标准体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+//  var h=Number(prompt("身高"));
+//  var w=Number(prompt("体重"));
+//var s=(h-108)*2;
+//
+//switch(true){
+//case s+10>w&&s-10<w:
+// console.log("ok");
+//break;
+//}
+// w=Number(prompt("体重"));
+//h=(h-108)*2
+// if((h >= w-10)  &&  (h<= w+10)){
+//   console.log("合适")
+//   }else {
+//   console.log("不合适")
+//   }
+//     switch (true){
+//            case w-10<=h&&w+10>=h :
+//             console.log("合适")
+//             break;
+//             default :
+//             console.log("不合适")
+//             break;
+//     }
+// console.log(h)
+        //6.  随意输入一个年份，判断这个年份是否为闰年.
+//      var year=prompt("输入年")
+//       if((year%4==0 && year%100!=0)||(year%400==0)){
+////                闰年
+//                console.log(year+"是闰年")
+//       }else {
+////       平年
+//       console.log(year+"是平年")
+//       }
+//switch (true){
+////闰年
+//         case (year%4==0 && year%100!=0) || (year%400==0) :
+//         console.log(year+"是闰年")
+//         break;
+//         default :
+//         console.log(year+"是平年")
+//         break;
+//}
+//7.  输入赵本山的考试成绩，显示所获奖励
+//var g=prompt("输入成绩")
+//if(g==100){
+//    console.log("买车")
+//}else if(g<100 && g>=90){
+//    console.log("买MP4")
+//}else if(g<90 && g>=60){
+//      console.log("买书")
+//}else if(g<60){
+//console.log("什么都没有")
+//}
+//switch(true){
+//      case g==100 :
+//      console.log("买车")
+//      break;
+//      case g<100 && g>=90 :
+//      console.log("买MP4")
+//      break;
+//      case g>=60 && g<90 :
+//      console.log("买参考书")
+//      break;
+//      case g<60 :
+//      console.log("什么都么")
+//      break;
+//}
+//8.  会员购物时，根据积分的不同享受不同的折扣，计算会员购物时所获得折扣 
+//        var jf=prompt("输入积分")
+//        if(jf<2000){
+//        console.log("九折")
+//        }else if(jf>=2000 && jf <4000){
+//        console.log("八折")
+//        }else if(jf>=4000 && jf <8000){
+//        console.log("七折")
+//        }else{
+//        console.log("六折")
+//        }
+//switch (true){
+//     case jf<2000 :
+//     console.log("九折")
+//     break;
+//     case jf>=2000 && jf<4000 :
+//     console.log("八折")
+//     break;
+//     case jf>=4000 && jf<8000 :
+//     console.log("七折")
+//     break;
+//     case jf>=8000 :
+//     console.log("六折")
+//     break;
+//}
+// 石头剪刀布(设石头=1, 剪刀=2, 布=3, 两个人划拳, 比较他们的大小)
+//var x=prompt("输入x")
+//y=prompt("输入y");
+// if(x<0 || x>3 || y<0 ||y>3){
+// console.log("错误")
+// }else if(x==y){
+//  console.log("平手")
+// }else if((x==1 && y==2) || (x==2 && y==3) || (x==3 && y==1)){
+// console.log("x大")
+// }else {
+// console.log("y大")
+// }
+//switch (true){
+//       case x==y :
+//       console.log("平手")
+//       break;
+//       case x>3 || y>3 || x<0 || y<0 :
+//       console.log("错误")
+//       break;
+//       case (x==1 && y==2)||(x==2&&y==3)||(x==3&&y==1) :
+//       console.log("x大")
+//       break;
+//       default :
+//       console.log("y大")
+//       break;
+//}
+//体质指数（BMI）= 体重（kg）÷身高^2（m）
+var h=Number(prompt("身高/m"))
+    w=Number(prompt("体重/kg"))
+    BMI=w/(h*h);
+//  if(BMI<18.5){
+//  console.log("过轻")
+//  }else if(BMI>=18.5&&BMI<=24.99){
+//  console.log("正常")
+//  }else if(BMI>=25&&BMI<=28){
+//  console.log("过重")
+//  }else if(BMI>28&&BMI<=32){
+//  console.log("肥胖")
+//  }else if(BMI>32){
+//  console.log("非常肥胖")
+//  }
+switch (true){
+        case BMI <18.5 :
+        console.log("过轻")
+        break;
+        case BMI>=18.5&&BMI<=24.99 :
+        console.log("正常")
+        break;
+        case BMI>=25 && BMI<=28 :
+        console.log("过重")
+        break;
+        case  BMI>28&&BMI<=32 :
+        console.log("肥胖")
+        break;
+        case BMI>32 :
+        console.log("非常肥胖")
+        break;
+}
+    console.log(BMI)
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            margin:3px;
+            height:100px;
+            width:100px;
+            background-color:green;
+        }
+        .box:nth-of-type(even){
+            background-color:yellow;
+        }
+        .box:nth-of-type(odd){
+            background-color:wheat;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<div class="box"></div>
+</body>
+</html>
+<script>
+    $(function(){
+//        $(".box").click(function(){
+//
+//            $("<div class='box'></div>").appendTo("body");
+//
+//        })
+//
+//        $(".box").mouseenter(function(){
+//            $("<div class='box'></div>").appendTo("body");
+//        })
+
+        //bind
+        // 简单的事件与bind事件 都不能为到动态创建的元素,继续绑定事件
+
+//        $(".box").bind("click mouseenter",function(){
+//            $("<div class='box'></div>").appendTo("body");
+//        })
+
+//
+//        //delegate 委托事件
+//        $("body").delegate(".box","click",function(){
+//            $("<div class='box'></div>").appendTo("body");
+//        });
+//
+//        $("body").click(function(){
+//            alert(123);
+//        })
+//
+//
+//        //解除委托
+//        $("body").off("click","**")
+////        $("body").undelegate("**","**");
+        
+        // on 
+        
+//        $(".box").on("click",function(){
+//            $("<div class='box'></div>").appendTo("body");
+//        })
+
+
+// 委托的事件绑定,利用 事件冒泡机制  事件有传递性.
+
+        // on 的委托
+//        $("body").on("click",".box",function(){
+//            $("<div class='box'></div>").appendTo("body");
+//        })
+//
+//        $("body").off("click",".box")
+
+
+        var str="周杰伦"
+        $("body").on("click",".box",str, function(evt){
+            console.log(evt.data);
+        })
+        str="刘德华";
+
+
+
+    })
+</script>

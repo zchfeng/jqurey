@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+//2.  判断一个整数，属于哪个范围：大于0；小于0；等于0
+//    var num=parseInt(prompt("输入数值，判断范围"))
+//    switch(true){
+////    大于0
+//           case (num>0):
+//           console.log(num+"大于0")
+//           break;
+////           等于0
+//           case (num==0):
+//           console.log(num+"等于0");
+//           break;
+//           case (num<0):
+//           console.log(num+"小于0")
+//           break;
+//    }
+
+//3.  判断一个整数是偶数还是奇数，并输出判断结果
+//     var a=parseInt(prompt("输入数值，判断奇偶"))
+//     switch (true){
+////     判断偶数
+//             case (a%2==0):
+//             console.log(a+"是偶数")
+//             break;
+////             判断奇数
+//             default :
+//             console.log(a+"奇数")
+//             break;
+//     }
+//     
+//4.  开发一款软件，根据公式（身高-108）*2=标准体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+//         var hei=parseInt(prompt("输入身高"))
+//             wei=prompt("输入体重")
+//             h=2*(hei-108);
+//         switch (true){
+////         合适
+//                case ((h <= wei+10) && (h>= wei-10)) :
+//                console.log("合适");
+//               break;
+////               不合适
+//            default :
+//            console.log("不合适")
+//            break;
+//         }
+//5.  已知圆的半径r，求出圆的面积s
+//         var r=prompt("输入圆的半径")
+//        s=r*r*3.1415;
+//        console.log("圆的面积s="+s)
+//6.  随意输入一个年份，判断这个年份是否为闰年.
+//      var year=prompt("输入一个年份")
+//      switch (true){
+////      闰年
+//              case (year%4==0 && year%100!=0) || (year%400==0) :
+//              console.log(year+"是闰年")
+//              break;
+////              平年
+//              default :
+//              console.log(year+"是平年")
+//              break;
+//      }
+        
+//7.  输入赵本山的考试成绩，显示所获奖励
+//       var g=parseInt(prompt("输入成绩"))
+//       switch (true){
+////       买车
+//            case g==100 :
+//            console.log("买辆车")
+//            break;
+////            买MP4
+//            case g>=90 && g<100 :
+//            console.log("买MP4")
+//            break;
+////            买参考书
+//            case g<90 && g>=60 :
+//            console.log("买参考书")
+//            break;
+////            什么都不买
+//            case g<60 :
+//            console.log("什么都不买")
+//            break;
+//       }
+//8.  会员购物时，根据积分的不同享受不同的折扣，计算会员购物时所获得折扣 
+//              var jf=prompt("输入积分")
+//              switch (true){
+//                     case jf<2000 :
+//                     console.log("九折")
+//                     break;
+//                     case jf>=2000 && jf<4000 :
+//                     console.log("八折")
+//                     break;
+//                     case jf>=4000 && jf<8000 :
+//                     console.log("七折")
+//                     break;
+//                     case jf>=8000 :
+//                     console.log("六折")
+//                     break;
+//              }
+          
+//随意输入一个 年月日,判断这个年月日是否是合法的,例如 2018-1-3 是有效.而2018-2-31,2018-12-32 是无效日期
+//                     var y=prompt("输入年") ,m=prompt("输入月") ,day=prompt("输入日");
+//                     if(y>0 && m>0 && day>0 && m<=12 && day<=31){
+//                                      if((m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12) && day<=31){
+////                                     1 3 5 7 8 10月
+//                                     console.log(y+"年-" + m +"月-"+day+"日有效")
+//                                      }else{
+//                                             if(y>0 && (m==4 || m==6 || m==9 || m==11) && day<=30){
+////                                             4 6 9 11月
+//                                               console.log(y+"年-" + m +"月-"+day+"日有效")
+//		                                        }else{
+////		                                                                                           闰年2月
+//				                                     if(((y%4==0 && y%100!=0) || (year%400==0)) && m==2 && day<=29){
+//				                                     
+//				                                      console.log(y+"年-" + m +"月-"+day+"日有效")
+//				                                      }else{
+////				                                                                                     平年2月
+//						                                      if(((y%4!=0 || y%100==0))  && m==2 && day<=28){
+//						                                        console.log(y+"年-" + m +"月-"+day+"日有效")
+//						                                      }else{
+//						                                     console.log(y+"年-" + m +"月-"+day+"日无效")
+//				                                        }
+//				                                     }
+//		                                       }
+//                                      }                                                                                                                                                       
+//                     }else{
+//                     console.log(y+"年-" + m +"月-"+day+"日无效")
+//                     }
+//应缴个人所得税=（工资收入-3500）*税率 –速算扣除数
+//        var gz=prompt("输入您的工资数")
+////        超过的钱
+//        cg=gz-3500
+////        税
+//        shui=0;
+//没超过工资
+//        if(cg<=0){
+//        shui=0;
+//        }
+//         超过工资不大于500
+//         else if(cg<500 && cg>0){
+//                 shui=cg*5/100;
+//              }
+//超过工资大于500 不大于200
+//              else if(cg>=500 && cg<2000){
+//                     shui=cg*10/100-25
+//                     }
+//超过工资大于2000 不大于5000
+//                      else if(cg>=2000 && cg<5000){
+//                            shui=cg*15/100-125
+//                            }
+//超过工资大于5000 不大于20000
+//                            else if(cg>=5000 && cg<20000){
+//                                   shui=cg*20/100-375
+//                                   }else if(cg>=20000 && cg<40000){
+//					                       shui=cg*25/100-1375
+//					                       }else if(cg>=40000 && cg<60000){
+//							                       shui=cg*30/100-3375
+//							                       }else if(cg>=60000 && cg<80000){
+//									                       shui=cg*35/100-6375
+//									                       }else if(cg>=80000 && cg<100000){
+//											                     shui=cg*40/100-10375
+//											                     }else if(cg>=100000 ){
+//									                              shui=cg*45/100-15375
+//									                               }
+//							                       
+//							                       
+//        console.log(shui)
+// 石头剪刀布(设石头=1, 剪刀=2, 布=3, 两个人划拳, 比较他们的大小)
+
+// x 1 y 2
+//x 2 y 3
+// x3 y1
+           var x=parseInt(prompt("输入x"))
+           y=parseInt(prompt("输入y"));
+           if(x>3 || x<0 || y>3 || y<0){
+           console.log("错误")
+           }
+           else if(x==y){
+           console.log("平手");
+           }else if((x==1 && y==2) || (x==2 && y==3) || (x==3 && y==1)){
+           console.log("x大")
+           }else {
+           console.log("y大")
+           }
+           
+</script>

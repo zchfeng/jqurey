@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+<div><img src="images/bg.jpg" width=100%></div>
+</body>
+</html>
+<script>
+    var obox=document.getElementsByTagName("div")[0]
+    function Yinghc() {
+        this.ele=document.createElement("img")
+        this.ele.style.position="absolute"
+        this.ele.style.width="30px"
+        this.ele.style.height="30px"
+        this.ele.style.left=Random().X
+        this.ele.style.top=Random().Y
+        this.ele.src="images/1.jpg"
+        obox.appendChild(this.ele)
+    }
+    Yinghc.prototype.fei=function () {
+        constructor:Yinghc
+        var herf=this
+        animate(this.ele,{"left":Random().X,"top":Random().Y},function () {
+//            setInterval(function () {
+                herf.fei()
+//            },3000)
+        })
+    }
+//    var oimg=document.createElement("img")
+//    oimg.style.position="absolute"
+//    oimg.style.width="30px"
+//    oimg.style.height="30px"
+//    oimg.style.left=Random().X
+//    oimg.style.top=Random().Y
+//    oimg.src="images/1.jpg"
+//    obox.appendChild(oimg)
+    function Random() {
+        var x=Math.random()*obox.offsetWidth+"px"
+        var y=Math.random()*obox.offsetHeight+"px"
+        return {
+            X:x,
+            Y:y
+        }
+    }
+//    function fei() {
+//        animate(oimg,{"left":Random().X,"top":Random().Y})
+//    }
+    for (var i = 0; i < 30; i++) {
+        var box=new Yinghc
+        box.fei()
+    }
+
+</script>

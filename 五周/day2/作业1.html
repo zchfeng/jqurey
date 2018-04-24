@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Ajax2.js"></script>
+</head>
+<body>
+账号<input type="text" id="username"/><br>
+密码<input type="text" id="password"/><br>
+年龄<input type="text" id="age"/><br>
+<button typeof="button" id="btn">注册</button>
+</body>
+</html>
+<script>
+//注册（POST）
+//注册接口:  http://60.205.181.47/myPHPCode3/register.php
+// 参数:username=zhangsan, 用户名（必须）
+//参数:password=123456,密码（必须）
+//参数:age=33,年龄（必须）
+
+document.getElementById("btn").onclick=function () {
+    var obj={}
+    obj.url="http://60.205.181.47/myPHPCode3/register.php"
+    obj.data={
+        username:document.getElementById("username").value,
+        password:document.getElementById("password").value,
+        age:document.getElementById("age").value,
+    }
+    console.log(obj);
+    Ajax(obj).then(function (res) {
+            console.log(res);
+        })
+    }
+</script>
+

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="submit">点击</button>
+<input type="text" id="txt"/>
+<input type="text" id="txt2">
+<select id="tf">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+
+</body>
+</html>
+<script>
+    //     var m=0
+    //    function sum(n){
+    //        m+=n
+    //        n--
+    //        console.log(m)
+    //        if(!n){
+    //            return m
+    //        }
+    //       sum(n)
+    //    }
+    //var str=sum(5)
+    //document.write(str)
+    //    var dj=document.getElementById("sumbit");
+    ////    console.dir(dj)
+    //    dj.onclick=show
+    //    function show() {
+    //        alert("点击")
+    //    }
+    //
+    //   var obtn =document.getElementById("sumbit")//获取按钮
+    //    obtn.onclick=function () {
+    //       var otxt=document.getElementById("txt")//获取文本框
+    //        console.log(otxt.value)//获得内容
+    //        otxt.value=""  //清除内容
+    //    }
+    //    var num=new Function("n","m","return n+m")
+    //    var sum=num(10,20)
+    //    console.log(sum)
+    //function sum(n){
+    //    if(n==1){
+    //        return 1
+    //    }
+    //      return  n+sum(n-1)
+    //}
+    //var num=sum(100)
+    //    console.log(num)
+//    function hi(n) {
+//        console.log("哈喽，world");
+//        if (n == 1) {
+//            return
+//        }
+//        hi(--n);
+//    }
+//
+//    var o = hi(5)
+//    8, 兔子繁殖问题，设有一对新生兔子，从第四个月开始他们每个月, 月初都生一对兔子,
+//        新生的兔子从第四个月月初开始又每个月生一对兔子按此规律，并假定兔子没有死亡,
+//        n(n<=20)个月月末共有多少对兔子？
+//    function Tz(n){
+//        var sum=0
+//        if(n==1||n==2||n==3){
+//            return 1;
+//        }
+//        return sum=Tz(n-1)+Tz(n-3)
+//    }
+//    console.log(Tz(4))
+//    function show(n){
+//        if(n==0){
+//            return 0
+//        }
+//        return n+show(--n)
+//    }
+//    document.write(show(100))
+//    function hi(n){
+    //        console.log("world")
+    //        if(n==1){
+    //            return
+    //        }
+    //        hi(--n)
+    //    }
+    //    hi(5)
+//    var obtn=document.getElementById("sumbit")
+    //    obtn.onclick=function(){
+    //        var otxt=document.getElementById("txt")
+    //        console.log(otxt.value)
+    //        otxt.value=""
+    //    }
+//    var obtn=document.getElementById("submit")
+    //   obtn.onclick=function (){
+    //       var num1=document.getElementById("txt")
+    //       var num2=document.getElementById("txt2")
+    //       var tf=document.getElementById("tf")
+    //       console.log(show(Number(num1.value),Number(num2.value),tf.value))
+    //   }
+    //   function show(num1,num2,tf){
+    //       var sum=0;
+    //       switch (tf){
+    //           case "+" :
+    //               sum=num1+num2
+    //               break;
+    //           case "-":
+    //               sum=num1-num2
+    //               break;
+    //           case "*":
+    //               sum=num1*num2
+    //               break;
+    //           case "/":
+    //               sum=num1/num2
+    //               break;
+    //       }
+    //     return sum
+    //   }
+//    兔子问题
+//function show(n){
+//    if(n==1||n==2||n==3){  //前三个月只有一对兔子
+//        return 1
+//    }
+//    return show(n-1)+show(n-3)  //兔子数等于前一个月和前前前个月之和
+//}
+//console.log(show(20))
+//    递归1-100和
+//    function show(n){
+//        if(n==1){
+//            return 1
+//        }
+//        return n+show(n-1)
+//    }
+//    console.log(show(100))
+//    循环100
+//    function show(n){
+//        var sum=0
+//        for(var i=1;i<=n;i++){
+//            sum+=i
+//        }
+//        return sum
+//    }
+//    console.log(show(100))
+//    打印n个world
+//    function show(n){
+//        console.log("world")
+//        if(n==1){
+//            return
+//        }
+//        show(n-1)
+//    }
+//    show(10)
+//    简易计算器
+//    var obtn=document.getElementById("submit")//获取按钮
+//    obtn.onclick=function () { //按钮控制
+//        var num1=document.getElementById("txt")//获取第一位数
+//        var num2=document.getElementById("txt2")//获取第二位数
+//        var tf=document.getElementById("tf")//获取第三位数
+//        console.log(show(Number(num1.value),Number(num2.value),tf.value))
+//    }
+//    function show(num1,num2,tf ){  //计算
+//        var sum=0  //第一初始值
+//        switch (tf){
+//            case "+"://加算
+//                sum=num1+num2
+//                break;
+//            case "-"://减算
+//                sum=num1-num2
+//                break;
+//            case "*"://乘算
+//                sum=num1*num2
+//                break;
+//            case "/"://除算
+//                sum=num1/num2
+//                break;
+//        }
+//        return sum
+//    }
+//    function show(n) {
+//        for(var i=n;i>=2;i-- ){
+//            var tf=true
+//            for (var j=2;j<i;j++){
+//                if(i%j==0){
+//                    tf=false
+//                }
+//            }
+//            if(tf){
+//                console.log(i+"素数")
+//            }else{
+//                console.log(i+"合数")
+//            }
+//        }
+//    }
+//    show(100)
+//    求出1000以内，能被7整除,不能被6整除,且十位数不是5,个位数不大于2,
+//    或者能被50以内最大的三个素数的和所整除的数中最大的5个.(可能用到break,continue;)
+    var con=0,sum=0
+    for(var i=50;i>2;i--){
+        var tf=true
+        for(j=2;j<i;j++){
+            if(i%j==0){
+             tf=false
+            }
+        }
+        if(tf){
+            sum+=i
+            console.log(i)
+         con++
+         if(con==3){
+             break;
+         }
+        }
+    }
+    console.log(sum)
+    var gs=0
+    for(n=1000;n>0;n--){
+        if((n%7==0&&n%6!=0&&parseInt(n/10)%10!=5&&n%10<=2)||(n%sum==0)){
+            gs++
+            console.log(n)
+            if(gs==5){
+                break;
+            }
+        }
+    }
+</script>

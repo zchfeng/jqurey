@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #box {
+            width: 360px;
+            height: 460px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            position: relative;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+
+        #box #middleImg {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            position: relative;
+        }
+
+        #box #middleImg img {
+            width: 350px;
+            height: 350px;
+        }
+
+        #box #middleArea {
+            width: 100px;
+            height: 100px;
+            background: rgba(100, 222, 200, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        #box #small {
+            /*background: red;*/
+            width: 360px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        #box #small li, #box #small li img {
+            width: 48px;
+            height: 48px;
+        }
+
+        #box #small li {
+            float: left;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        #box #bigArea {
+            position: absolute;
+            left: 420px;
+            top: 50px;
+            overflow: hidden;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        #box #bigArea img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 800px;
+            height: 800px;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+<div id="box">
+    <div id="middleImg">
+        <img src="images/images(7)/images2/1_2.jpeg"/>
+        <div id="middleArea"></div>
+    </div>
+    <div id="small">
+        <ul>
+            <li><img src="images/images(7)/images2/1_1.jpeg"/></li>
+            <li><img src="images/images(7)/images2/2_1.jpeg"/></li>
+            <li><img src="images/images(7)/images2/3_1.jpeg"/></li>
+            <li><img src="images/images(7)/images2/4_1.jpeg"/></li>
+            <li><img src="images/images(7)/images2/5_1.jpeg"/></li>
+        </ul>
+    </div>
+    <div id="bigArea">
+        <img id="bigImg" src="images/images(7)/images2/1_3.jpeg"/>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    //点小图 ,中图会同步小图显示
+    //移进中图  ,出现放大框,放大框随鼠标移到而移动
+    //放大框不超过中图范围
+    //大图同步中图  //显示放大
+    //大图移动随移动框移动
+    //放大比例   // 小区域/大区域=小图/大图
+    //移动比例  / 比例 :   大图 除以小图  * 小区域 * -1= 大图的位置
+    var olis=document.getElementsByTagName("li")
+    var minImg=document.getElementById("middleImg")
+    var bigImg=document.getElementById("bigImg")
+    var bigArea=document.getElementById("bigArea")
+    var minArea=document.getElementById("middleArea")
+    var obox=document.getElementById("box")
+    for(var i=0;i<olis.length;i++){
+        olis[i].index=i
+          olis[i].onclick=function () {
+              var src1=`images/images(7)/images2/${this.index+1}_2.jpeg`
+              var src2=`images/images(7)/images2/${this.index+1}_3.jpeg`
+              minImg.children[0].setAttribute("src",src1)
+              bigImg.setAttribute("src",src2)
+          }
+    }
+    minArea.style.width=parseInt(getstyle(minImg,"width"))/parseInt(getstyle(bigImg,"width"))*parseInt(getstyle(bigArea,"width"))+"PX"
+    minArea.style.height=parseInt(getstyle(minImg,"height"))/parseInt(getstyle(bigImg,"height"))*parseInt(getstyle(bigArea,"height"))+"px"
+    minImg.onmouseenter=function (evt) {
+        var e=evt||window.event
+        minArea.style.display="block"
+        bigArea.style.display="block"
+        minImg.onmousemove=function (evt) {
+            var e=evt||window.event
+            minArea.style.left=e.clientX-parseInt(getstyle(minArea,"width"))/2-obox.offsetLeft-minImg.offsetLeft+"px"
+            minArea.style.top=e.clientY-parseInt(getstyle(minArea,"height"))/2-obox.offsetTop-minImg.offsetTop+"px"
+            if(parseInt(minArea.style.left)<=0){
+                minArea.style.left="0px"
+            }
+            if(parseInt(minArea.style.left)>=parseInt(getstyle(minImg,"width"))-parseInt(getstyle(minArea,"width"))+10){
+                minArea.style.left=parseInt(getstyle(minImg,"width"))-parseInt(getstyle(minArea,"width"))+10+"px"
+            }
+            if(parseInt(minArea.style.top)<=0){
+                minArea.style.top="0px"
+            }
+            if(parseInt(minArea.style.top)>=parseInt(getstyle(minImg,"height"))-parseInt(getstyle(minArea,"height"))+10){
+                minArea.style.top=parseInt(getstyle(minImg,"height"))-parseInt(getstyle(minArea,"height"))+10+"px"
+            }
+            var bili=parseInt(getstyle(bigImg,"width"))/parseInt(getstyle(minImg,"width"))
+
+            bigImg.style.left=(parseInt(minArea.style.left)*bili*-1)+"px"
+            bigImg.style.top=(parseInt(minArea.style.top)*bili*-1)+"px"
+            console.log(bigImg.style.left,bigImg.style.top);
+        }
+    }
+</script>

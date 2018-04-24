@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+</head>
+<body>
+<p>商品列表</p>
+<ul>
+    <li note_value='{"uname":"单车","pic":100 }' >id1 单车 $100 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"摩托","pic":200 }' >id1 摩托 $200 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"汽车","pic":300 }' >id1 汽车 $300 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"坦克","pic":400 }' >id1 坦克 $400 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"飞机","pic":500 }' >id1 飞机 $500 <a href="#">加入购物车</a></li>
+</ul>
+<a href="index3.html" >购物</a>
+</body>
+</html>
+<script>
+var all_a=document.querySelectorAll("ul li a")//获取所有a
+    for(var i=0;i<all_a.length;i++){//遍历a
+        all_a[i].onclick=function () {//a绑定点击事件
+            //通过点击的a获取对应父元素的属性节点
+            var str=this.parentNode.getAttribute("note_value")
+            strobj=JSON.parse(str)//转为对象
+            //获取cookie记录并转为对象
+            var cookieobj=JSON.parse(getCookie("cart")||'[]')
+           var tf=true  //默认记录无
+            console.log(cookieobj)
+           for(var j=0;j<cookieobj.length;j++){//遍历cookie对象
+                if(cookieobj[j].uname==strobj.uname){//判断原纪录有无相应的
+                    cookieobj[j].num+=1 //记录物品数量加1
+                    tf=false  //原纪录有  tf=false
+                }
+           }
+            if(tf==true){//原纪录无
+                strobj.num=1
+                cookieobj.push(strobj)//新数据加入老数据中
+            }
+            console.log(JSON.stringify(cookieobj))
+            Cookie("cart",JSON.stringify(cookieobj))//记录最新数据
+        }
+    }
+
+</script>

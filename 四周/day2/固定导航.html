@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+        }
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script src="useer_animate.js"></script>
+    <script src="useer.animate2.js"></script>
+</head>
+<body>
+<div class="top" id="top">
+    <img src="images/top.png" alt=""/>
+</div>
+<div id="Q-nav">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="main">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>
+<script>
+//////    要求:滚动到第二个盒子(导航)第二个盒子一直定位到顶部,
+////    1,拿到3个盒子(区域)
+////    2,确定第二个盒子到总页面高的距离
+////    3.滚动到2个盒子是  2盒子保持在顶部
+//    var otop=document.getElementById("top")
+//    var onav=document.getElementById("Q-nav")
+//    var omain=document.getElementById("main")
+//    var onav_top=onav.offsetTop;
+//    document.onscroll=function () {
+//        var scroll=Myscroll().top;
+//        console.log(scroll);
+//        if(scroll>=onav_top){
+//            onav.style.position="fixed"
+//            onav.style.top="0px"
+//            omain.style.marginTop=onav_top+"px";
+//        }else{
+//            omain.style.marginTop="0px"
+//            onav.style.position="static"
+//        }
+//    }
+//    var onav=document.getElementById("Q-nav")
+//    var omain=document.getElementById("main")
+//    var onav_top=onav.offsetTop
+//    document.onscroll=function () {
+//        var scroll=Myscroll().top
+//        if(scroll>=onav_top){
+//            onav.style.position="fixed"
+//            onav.style.top="0px"
+//        }else{
+//            onav.style.position="relative"
+//        }
+//    }
+    var onav=document.getElementById("Q-nav")//获得导航块
+    var omain=document.getElementById("main")//获得文本块
+    var onav_top=onav.offsetTop//导航到页面顶部的距离
+    document.onscroll=function () {
+        var scroll=Myscroll().top  //滚动条的高度
+        if(scroll>=onav_top){
+            onav.style.position="fixed"
+            onav.style.top="0px"
+        }else{
+            onav.style.position="static"
+        }
+    }
+</script>

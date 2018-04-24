@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // name=value;[expires=date];[path=路径];[domain=域名];[secure]
+    function setCookie(key,value,time,path,domain,secure) {
+      var   str=""
+        if(key){
+            str+=encodeURIComponent(key)
+        }
+        if(value){
+            str+="="+encodeURIComponent(value)
+        }
+        if(time){
+            var date=new Date()
+            date.setDate(date.getDate())
+            str+=";expires="+date
+        }
+        if(path){
+            str+=";path="+path
+        }
+        if(domain){
+            str+=";domain"+domain
+        }
+        if(secure){
+            str+=";secure"
+        }
+        document.cookie=str
+        return document.cookie
+    }
+
+    function getCookie(key) {
+        var str=document.cookie//获取coolie
+        var arr=str.split(";")//切割
+        for(var i=0;i<arr.length;i++){
+            var arr1=arr[i].split("=")
+            if()
+        }
+    }
+</script>

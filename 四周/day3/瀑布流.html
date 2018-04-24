@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 100%;
+        }
+        div{
+            width: 200px;
+            float: left;
+
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+      for(var i=0;i<42;i++){
+          var odiv=document.createElement("div")
+          odiv.innerHTML=`<img src="images/img (${i+1}).jpg">`
+          document.body.appendChild(odiv)
+      }
+      window.onload=function () {
+          var odivs=document.getElementsByTagName("div")
+          var arr=[]
+          for(var i=0;i<odivs.length;i++){
+              if(i<3){
+                  arr.push(odivs[i].offsetHeight)
+                  console.log(arr);
+              }else{
+                  var index=show(arr)//arr=[]
+                  arr[index]=arr[index]+odivs[i].offsetHeight
+                  odivs[i].style.left=index*200+"px"
+                  odivs[i].style.top=odivs[index].offsetHeight+"px"
+              }
+          }
+          function show(arr) {
+              var min=arr[0]
+              var minindex=0
+              for(var n=0;n<arr.length;n++){
+                  if(min>arr[n]){
+                      min=arr[n]
+                      minindex=n
+                  }
+
+              return minindex
+          }
+      }}
+</script>

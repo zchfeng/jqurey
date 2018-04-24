@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+<div><img src="images/bg.jpg" width=100%></div>
+</body>
+</html>
+<script>
+    function All(_width,_height,url) {
+        this.ele=document.createElement("img")
+        this.ele.src=url
+        this.ele.style.width=_width+"px"
+        this.ele.style.height=_height+"px"
+        this.ele.style.position="absolute"
+        this.ele.style.left=random().X
+        document.getElementsByTagName("div")[0].appendChild(this.ele)
+    }
+    function Snow(_width,_height,url) {
+//        this.ele=document.createElement("img")
+//        this.ele.src=url
+//        this.ele.style.width="10px"
+//        this.ele.style.height="10px"
+//        this.ele.style.position="absolute"
+//        this.ele.style.left=random().X
+
+        All.apply(this,arguments)
+        this.ele.style.top="0px"
+// document.getElementsByTagName("div")[0].appendChild(this.ele)
+    }
+    Snow.prototype={
+        constructor:Snow,
+        fly:function () {
+            var self=this
+            animate(this.ele,{"top":document.getElementsByTagName("div")[0].offsetHeight},function (a) {
+                self.fly()
+                a.remove()
+            })
+        }
+    }
+
+    function Chong(_width,_height,url) {
+//        this.ele=document.createElement("img")
+//        this.ele.src=url
+//        this.ele.style.width="30px"
+//        this.ele.style.height="30px"
+//        this.ele.style.position="absolute"
+//        this.ele.style.left=random().X
+//        this.ele.style.top=random().Y
+        All.apply(this,arguments)
+        this.ele.style.top=random().Y
+//        document.getElementsByTagName("div")[0].appendChild(this.ele)
+    }
+    Chong.prototype.fly=function () {
+        var self=this
+        animate(this.ele,{"left":random().X,"top":random().Y},function () {
+            self.fly()
+        })
+    }
+    function random() {
+      var x=Math.random()*document.getElementsByTagName("div")[0].offsetWidth
+      var y=Math.random()*document.getElementsByTagName("div")[0].offsetHeight
+        return {
+            X:x+"px",
+            Y:y+"px"
+        }
+    }
+
+    for (var i = 0; i < 30; i++) {
+        var ochong=new Chong(30,30,"images/1.jpg")
+        ochong.fly()
+    }
+
+    setInterval(function () {
+        var osnow=new Snow(20,20,"images/snow.gif")
+        osnow.fly()
+    },300)
+
+
+
+
+</script>

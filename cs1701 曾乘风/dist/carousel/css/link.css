@@ -1,0 +1,12 @@
+a,aside,b,body,dd,dl,dt,em,footer,form,h1,h2,h3,h4,h5,h6,header,html,i,input,li,main,nav,ol,p,section,select,ul{margin:0;padding:0}
+ol li,ul li{list-style:none}
+a{text-decoration:none}
+a{color:#333}
+img{border:0}
+input{outline:0}
+.main{width:1002px;margin:0 auto}
+body{font:14px/14px "微软雅黑";color:#333}
+.font24{font-size:24px}
+.col-w{color:#fff}
+.retract{text-indent:99999px}
+.font12{font-size:12px}

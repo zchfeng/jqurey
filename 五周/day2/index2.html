@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Ajax2.js"></script>
+</head>
+<body>
+<form id="myform">
+    登录用户名<input type="text" name="txt"/><span></span><br>
+    登录密码<input type="text" name="password" /><br>
+    <button typeof="button" id="btn">注册</button>
+</form>
+</body>
+</html>
+<script>
+    var myform=document.getElementById("myform")
+    document.getElementById("btn").onclick=function () {
+        var obx={}
+        obx.url="http://useker.cn/UserInfo/login"
+        obx.data={
+//            LoginName 登录名
+//            LoginPwd  密码
+            LoginName:myform.txt.value,
+            LoginPwd:myform.password.value
+        }
+        Ajax(obx).then(function (res) {
+            var res=JSON.parse(res)
+            if(res. status==true){
+                alert("登录成功")
+                location.href="index3.html"
+            }else{
+                alert("密码不正确")
+            }
+        })
+        return false
+    }
+</script>

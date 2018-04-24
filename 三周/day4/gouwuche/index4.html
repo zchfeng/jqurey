@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+</head>
+<body>
+<p>商品列表</p>
+<ul>
+    <li note_value='{"uname":"单车","pic":100 }' >id1 单车 $100 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"摩托","pic":200 }' >id1 摩托 $200 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"汽车","pic":300 }' >id1 汽车 $300 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"坦克","pic":400 }' >id1 坦克 $400 <a href="#">加入购物车</a></li>
+    <li note_value='{"uname":"飞机","pic":500 }' >id1 飞机 $500 <a href="#">加入购物车</a></li>
+</ul>
+<a href="index3.html" >购物车</a>
+</body>
+</html>
+<script>
+    var all_a=document.querySelectorAll("ul li a")
+    console.log(all_a);
+    for (var i=0;i<all_a.length;i++){
+        all_a[i].onclick=function () {
+        var str= this.parentNode.getAttribute("note_value")
+            var strobj=JSON.parse(str)
+            var tf=true
+            var cookieobj=JSON.parse(getCookie("cart")||'[]')
+            for(var j=0;j<cookieobj.length;j++){
+            if(cookieobj[j].uname==strobj.uname){
+                tf=false
+                cookieobj[j].num+=1
+            }
+            }
+            if(tf==true){
+                strobj.num=1
+                cookieobj.push( strobj)
+            }
+            console.log(cookieobj)
+            Cookie("cart",JSON.stringify(cookieobj))
+        }
+    }
+</script>

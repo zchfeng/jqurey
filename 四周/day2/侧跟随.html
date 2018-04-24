@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img{
+            position:absolute;
+            left:0;
+            top:50px;
+        }
+        #demo{
+            width:1000px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<script src="useer_animate.js"></script>
+<script src="useer.animate2.js"></script>
+<body>
+<img src="images/aside.jpg" alt="" id="pic"/>
+<div id="demo">
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+    <p>天王盖地虎，小鸡炖蘑菇</p>
+</div>
+</body>
+</html>
+<script>
+//    var oimg=document.getElementById("pic")
+//    var oimgtop=oimg.offsetTop
+//     document.onscroll=function () {
+//         var scroll=Myscroll().top
+//         console.log(scroll);
+//         animate(oimg,"top",scroll+oimgtop)
+//     }
+//    var oimg=document.getElementById("pic")
+//    var oimg_top=oimg.offsetTop
+//    document.onscroll=function () {
+//        var scroll=Myscroll().top
+//        animate2(oimg,{"top":scroll+oimg_top})
+//
+//    }
+    var oimg=document.getElementById("pic")//拿到移动对象
+    var oimg_top=oimg.offsetTop//初始对象到页面顶部的距离
+    document.onscroll=function () {
+        var scroll=Myscroll().top
+        animate2(oimg,{"top":scroll+oimg_top})
+    }
+</script>

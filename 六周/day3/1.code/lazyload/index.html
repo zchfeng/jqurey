@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/amazeui.lazyload.js"></script>
+    <style>
+        img{
+            width:100%;
+            width:765px;
+            height:574px
+        }
+    </style>
+</head>
+<body>
+
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256881_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256882_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256883_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256884_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256885_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256886_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256887_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256888_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_256889_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_2568810_b.jpg">
+<img class="lazy" data-original="http://pic1.16pic.com/00/02/56/16pic_2568811_b.jpg">
+
+</body>
+</html>
+<script>
+    $(function(){
+        $("img.lazy").lazyload({
+            placeholder : "img/loding.gif",
+            effect : 'fadeIn',
+            event : 'sporty',
+            threshold : 200,
+            failurelimit : 10
+        });
+
+
+    })
+</script>

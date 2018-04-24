@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script>
+			
+			$(function(){
+				
+				//显示购物车信息
+				var goodsList = JSON.parse( $.cookie("cart") );
+				
+				for (var i=0; i<goodsList.length; i++) {
+					var goods = goodsList[i]; //购物车中的每个商品
+					
+					var li = $("<li></li>");
+					
+					$("<span>," + goods.name + "</span>").appendTo(li);
+					$("<span>," + goods.price + "</span>").appendTo(li);
+					$("<span>," + goods.num + "</span>").appendTo(li);
+					
+					$("ul").append(li);
+				}
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+		<ul>
+			
+		</ul>
+	</body>
+</html>

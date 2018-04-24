@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="useer.Cookie.js"></script>
+</head>
+<body>
+<button>保存</button>
+<button>修改</button>
+<button>删除</button>
+<button>获取</button>
+</body>
+</html>
+<script>
+//    var obtn=document.getElementsByTagName("button")
+//    var date=new Date()
+//    date.setMinutes(date.getMinutes()+1)
+//    var uname=0;
+//    function oname(uname) {
+//        uname=uname
+//        return uname
+//    }
+//    obtn[0].onclick=function () {
+//       var  name1=prompt("输入保存的名字")
+//        document.cookie="key="+oname(name1)+";expires="+date.toUTCString();
+//    }
+//    obtn[1].onclick=function () {
+//        document.cookie="key=zhoujielun;expires="+date.toUTCString();
+//    }
+//    obtn[2].onclick=function () {
+//        var date=new Date()
+//        date.setDate(date.getDate()-1)
+//        document.cookie="key=cook;expires="+date.toUTCString();
+//    }
+//    obtn[3].onclick=function () {
+//        console.log( document.cookie)
+//    }
+//    var obtns=document.getElementsByTagName("button")
+//     var date=new Date()
+//       date.setMinutes(date.getMinutes()+1)
+//       obtns[0].onclick=function () {
+//        var umane=prompt("保存的名字")
+//        document.cookie="key1="+umane+";expires="+date.toUTCString();
+//    }
+//    obtns[1].onclick=function () {
+//    var umane=prompt("修改的名字")
+//    document.cookie="key1="+umane+";expires="+date.toUTCString();
+//}
+           console.log(setCookie("key1","aaa",7))
+//           console.log(setCookie("key2","bbb",7,))
+           console.log(getCookie("key1"));
+           removeCookie("key1")
+</script>

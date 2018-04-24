@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+</head>
+<body>
+<div></div>
+</body>
+</html>
+<script>
+    $(function () {
+//        $(window).on("keydown",function (evt) {
+//            console.log(evt.keyCode);
+//            if(evt.keyCode==82){
+//                $("div").css("background","red").text(evt.keyCode)
+//            }
+//            if(evt.keyCode==71){
+//                $("div").css("background","green").text(evt.keyCode)
+//            }
+//            if(evt.keyCode==66){
+//                $("div").css("background","blue").text(evt.keyCode)
+//            }
+//        })
+        $(document).on("keydown keyup",function (evt) {
+            if(evt.keyCode==82){
+                $("div").css({"background":"red"}).html(evt.keyCode)
+            }
+            if(evt.keyCode==71){
+                $("div").css({"background":"red"}).html(evt.keyCode)
+            }
+            if(evt.keyCode==66){
+                $("div").css({"background":"red"}).html(evt.keyCode)
+            }
+        })
+    })
+</script>

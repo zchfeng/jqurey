@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//登录
+				$("button").click(function(){
+					
+					var name = "zhangsan";
+					var pwd = "1234567";
+					
+					//获取users.json中的数据
+					$.getJSON("json/users.json", function(json){
+						
+						var arr = json;
+						var isLoginSuccess = false; 
+						for (var i=0; i<arr.length; i++) {
+							var user = arr[i];
+							if (user.name == name && user.pwd == pwd) {
+								//登录成功
+								isLoginSuccess = true;
+								console.log("登录成功!");
+							}
+						}
+						
+						if (!isLoginSuccess) {
+							//登录失败
+							console.log("用户名或密码有误!");
+						}
+						
+					})
+					
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button>登录</button>
+	</body>
+</html>

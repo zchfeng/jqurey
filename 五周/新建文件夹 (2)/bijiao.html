@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a{
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+<button id="b1">1</button>
+<button id="b2">2</button>
+<button id="b3">3</button>
+<button id="b4">4</button>
+</body>
+</html>
+<script>
+//    function setName(obj){
+//    obj.name = "xiaoxiaozi";
+//        console.log(obj);
+//        obj = {};
+//    obj.name = "admin";
+//        console.log(obj);
+//        return obj.name
+//    }
+//    var person = {};
+//    setName(person)
+//    alert(person.name);
+
+function foo(a) {
+    var a;
+    return a;
+}
+
+function bar(a) {
+    var a = "bye";
+    return a;
+}
+
+console.log(foo("hello"), bar("hello"));
+//一个变量在同一作用域中已经声明过，会自动移除 var 声明，
+//但是赋值操作依旧保留
+
+var a = Function.length;
+var b = new Function().length;
+console.log(a === b);
+
+// A. true
+// B. false
+// C. error
+// D. other
+
+//a的值是1，b的值是0。
+
+//function cat (type) {
+//    console.log(type);
+//    if(type == "cat") {
+//        console.log("我是猫猫");
+//    } else {
+//        return "nextSuccessor"
+//    }
+//}
+//
+//function dog (type) {
+//    console.log(type);
+//    if(type == "dog") {
+//        console.log("我是狗狗");
+//    } else {
+//        return "nextSuccessor"
+//    }
+//}
+//
+//function pig (type) {
+//    if(type == "pig") {
+//        console.log("我是猪猪");
+//    } else {
+//        return "nextSuccessor"
+//    }
+//}
+//
+//Function.prototype.after = function(fn) {
+//    var _self = this;
+//    return function () {
+//        console.dir(arguments);
+//        var ret = _self.apply(this, arguments);
+//        if(ret === "nextSuccessor") {
+//            return fn.apply(this, arguments);
+//        }
+//        return ret;
+//    }
+//}
+//
+//var pet = cat.after(dog).after(pig);
+//
+//pet("pig"); //我是猪猪
+//pet("dog"); //我是狗狗
+//pet("cat"); //我是猫猫
+//
+////http://www.cnblogs.com/tugenhua0707/p/5198407.html#_labe4
+</script>

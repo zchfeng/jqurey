@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<button id="btn1">关灯</button>
+<button id="btn2">开灯</button>
+</body>
+</html>
+<script>
+    $(function () {
+        $("button")[0].onclick=function () {
+            $("body")[0].style.background="#000"
+        }
+        $("#btn2").click(function () {
+            $("body")[0].style.background="#999"
+        })
+    })
+</script>

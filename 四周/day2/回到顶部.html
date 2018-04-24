@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li{
+            list-style: none;
+            width: 100%;
+            height: 200px;
+            background: #0cb75d;
+        }
+        ul li:nth-child(2n){
+            background: #00b5ee;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div id="moveTop">回到顶部</div>
+</body>
+</html>
+<script>
+    var omoveTop=document.getElementById("moveTop")
+    omoveTop.onclick=function () {
+      var timer= setInterval(function () {//定时器
+          var scroll=Myscroll().top  //获取当时滚动高度
+            var step=(0-scroll)/10   //算出步长,步长=(目标位置-当前位置)/10
+            step=step>0? Math.ceil(step):Math.floor(step)//判断步长取整
+            window.scrollTo(0,scroll+step) //设置新位置  新位置=当前位置+步长
+            if(scroll==0){  //到达目标位置 停止定时
+              clearInterval(timer)
+            }
+        },100)
+    }
+    function Myscroll() {
+        if(window.pageYOffset!=null){
+            return {
+                "top":window.pageYOffset,
+                "left":window.pageXOffset
+            }
+        }
+        if(document.compatMode=="CSS1compat"){//判断是否是变异模式  有无DTD
+            return {
+                "top":document.documentElement.scrollTop,
+                "left":document.documentElement.scrollLeft
+            }
+        }
+        return {
+            "top":document.body.scrollTop,
+            "left":document.body.scrollLeft
+        }
+    }
+</script>

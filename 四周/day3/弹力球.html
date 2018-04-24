@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background: #8ec63f;
+            top:50px;
+            left:100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var obox=document.getElementById("box")
+    var ny=-20
+    setInterval(function () {
+           ny++
+        if(obox.offsetTop>=document.documentElement.clientHeight-30){
+            ny*=-0.8
+        }
+        obox.style.left=obox.offsetLeft+5+"px"
+        obox.style.top=obox.offsetTop+ny+"px"
+        },100)
+</script>

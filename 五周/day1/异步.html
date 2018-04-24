@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>发送请求</button>
+</body>
+</html>
+<script>
+    function CreateXTR() {
+        if(window.XMLHttpRequest){
+            return new XMLHttpRequest()
+        }
+        return new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    function Ajax(url,callback) {
+        var xtr=CreateXTR()
+        xtr.open("get",url)
+        xtr.send(null)
+        xtr.onreadystatechange=function () {
+            if(xtr.readyState==4&&xtr.status==200){
+                if(callback){
+                    callback(xtr.responseText)
+                }
+            }
+        }
+    }
+    var str=Ajax("tsconfig.json",function (text) {
+        console.log(text);
+    })
+</script>

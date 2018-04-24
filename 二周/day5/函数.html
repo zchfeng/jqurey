@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    console.log(fn)
+//    var fn=function show(a,b,c) {
+//        var num=a
+//        console.log(this)  //window
+//
+//    }(3,4,5)
+//    console.log(typeof fn)   //number
+//    function show(a,b,c){
+//        var num=a
+//        console.log( this)  //window
+//        return num
+//    }
+//    console.log(show(4,5,6))
+var num=new Num(1,2,3);
+function Num(a,b,c){
+    this.fristNum=a
+    this.lastNum=c
+    console.log(this)  //window
+    return  a+b+c
+}
+console.log(Num(1,2,3))  //6
+console.log(num)//Num {fristNum: 1, lastNum: 3}
+console.log(num.fristNum)  //1
+console.log(num.lastNum)  //3
+
+
+//var quo=function(string){
+//    this.status=string;
+//    console.log(this)//quo{}
+//}
+//quo.prototype.get_status=function(){
+//    console.log(this) //quo{}
+//    return this.status;
+//
+//}
+//var qq=new quo("aaa");
+//alert(qq.get_status());//aaa
+//var myobject={
+//    value:0,
+//    inc:function(){
+//        alert(this.value)
+//    }
+//}
+//var myobject={
+//    value:0,
+//    inc:function(){
+//        alert(this.value)
+//    }
+//}
+//myobject.inc()
+//var add=function(a,b){
+//    alert(this)//this被绑顶到window
+//    console.log(this)//myobject
+//    return a+b;
+//}
+//var arr=[10,20];
+//var sum=add.apply(myobject,arr);
+//console.log(sum)
+//alert(sum);//30
+//var num=add.call(myobject,10,20);
+//console.log(num)
+//alert(num);//30
+
+//function Fish(name, color){
+//    this.name=name;
+//    this.color=color;
+//    this.livesIn="milk"
+//}
+//Fish.prototype.livesIn="water";
+//Fish.prototype.price=20;
+//
+//Fish.prototype = new Fish();
+//Fish.prototype.Property = 3;
+////Fish.prototype.color=3
+//
+//var fish=new Fish("salmon", "white");
+//console.log(fish)//Fish {name: "salmon", color: "white"}
+//console.log(fish.name)//salmon
+// console.log(fish.livesIn)  //water
+//function AClass(){
+//    this.Property = 1;
+//    this.Method = 1
+//
+//}
+//function AClass2(){
+//    this.Property = 2;
+//    this.Method = 2
+//
+//}
+//AClass2.prototype = new AClass();
+//AClass2.prototype.Property = 3;
+//AClass2.prototype.Method =3
+//console.log(this)
+//
+//var obj = new AClass2();
+//console.log((obj));//AClass2 {Property2: 2, Method2: 2}
+//console.log((obj.Property));//1
+//console.log((obj.Method));//1
+</script>

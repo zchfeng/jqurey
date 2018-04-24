@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Ajax2.js"></script>
+    <style>
+        table,tr,td,th{
+            border: solid 1px #00b5ee;
+            text-align: center;
+        }
+        table{
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>地址</th>
+        <th>手机</th>
+        <th>QQ</th>
+    </tr>
+    </thead>
+    <TBODY id="tab">
+
+
+    </TBODY>
+</table>
+</body>
+</html>
+<script>
+    var obj={}
+    obj.url="http://useker.cn/UserInfo/getlist"
+    obj.data={
+        page :3,
+        pagesize:10
+    }
+    function lunxun() {
+        document.getElementById("tab").innerHTML=""
+        Ajax(obj).then(function (res) {
+            console.log(res);
+            var res = JSON.parse(res).Rows
+            console.log(res);
+            for (var i = 0; i < res.length; i++) {
+                console.log(res);
+                var otr = document.createElement("tr")
+                var otd1 = document.createElement("td")
+                otd1.innerHTML = res[i].LoginName
+                otr.appendChild(otd1)
+                var otd2 = document.createElement("td")
+                otd2.innerHTML = res[i].UserName
+                otr.appendChild(otd2)
+                var otd3 = document.createElement("td")
+                otd3.innerHTML = res[i].Age
+                otr.appendChild(otd3)
+                var otd4 = document.createElement("td")
+                otd4.innerHTML = res[i].Address
+                otr.appendChild(otd4)
+                var otd5 = document.createElement("td")
+                otd5.innerHTML = res[i].TelPhone
+                otr.appendChild(otd5)
+                var otd6 = document.createElement("td")
+                otd6.innerHTML = res[i].QQ
+                otr.appendChild(otd6)
+                document.getElementById("tab").appendChild(otr)
+            }
+        })
+    }
+    setInterval(lunxun,3000)
+</script>

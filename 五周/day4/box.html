@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+</body>
+</html>
+<script>
+    function Box1(_id) {
+       this.ele= document.getElementById(_id)
+        this.ele.style.width="150px"
+        this.ele.style.heiht="150px"
+        this.ele.style.position="absolute"
+        this.ele,style.background="red"
+    }
+    Box1.prototype={
+        constructor:Box1
+        movestart:function () {
+            var self=this
+            this.ele.onmousedow=function (evt) {
+                var  e=evt||window.event
+                var disX=e.offsetX
+                var disY=e.offsetY
+            }
+        }
+        moveimg:function (x,y) {
+            var self=this
+            document.onmousemove=function (evt){
+                var e=evt||window.event
+                self.ele.style.left=e.clinck-x+"px"
+                self.ele.style.top=e.clinck-y+"px"
+            }
+        }
+    }
+</script>

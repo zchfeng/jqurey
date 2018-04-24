@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        div{
+            width: 200px;
+            height: 200px;
+            background:red;
+            position: absolute;
+        }
+        p{
+            width:200px;
+            height: 30px;
+            line-height: 30px;
+            background:#AA22FF;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p><span>关闭</span></p>
+</div>
+</body>
+</html>
+<script>
+//    1, 窗口拖动和关闭, 只可以点击紫色区域才可以拖拽窗口,
+// 点击关闭按钮就关闭窗/
+   var odiv= document.getElementsByTagName("div")[0]
+    var op=odiv.getElementsByTagName("p")[0]
+    var ospan=op.getElementsByTagName("span")[0]
+    op.onmousedown=function (evt) {
+        e=evt||window.event
+        x=e.clientX-odiv.offsetLeft
+        y=e.clientY-odiv.offsetTop
+
+        document.onmousemove=function (evt) {
+            var ee=evt||window.event
+            var mx=ee.clientX-x
+            var my=ee.clientY-y
+            console.log(mx,my)
+            odiv.style.left=mx+"px"
+            odiv.style.top=my+"px"
+        }
+        document.onmouseup=function () {
+            document.onmouseup=document.onmousemove=null
+        }
+    }
+   ospan.onclick=function () {
+       odiv.style.display="none"
+   }
+</script>

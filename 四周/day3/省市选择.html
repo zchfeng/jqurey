@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 200px;
+            background-color: teal;
+            height: 200px;
+            font-size: 20px;
+        }
+
+        .btn-box {
+            width: 30px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1>城市选择：</h1>
+<select id="src-city" name="src-city" multiple>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">深圳</option>
+    <option value="4">广州</option>
+    <option value="5">西红柿</option>
+</select>
+<div class="btn-box">
+    <!--实体字符-->
+    <button id="btn-sel-all"> &gt;&gt; </button>
+    <button id="btn-sel-none"> &lt;&lt; </button>
+    <button id="btn-sel"> &gt;</button>
+    <button id="btn-back"> &lt; </button>
+</div>
+<select id="tar-city" name="tar-city" multiple>
+</select>
+</body>
+<script>
+    var src_city=document.getElementById("src-city")
+    var tar_city=document.getElementById("tar-city")
+    var btn_all=document.getElementById("btn-sel-all")
+    var btn_none=document.getElementById("btn-sel-none")
+    var btn_sel=document.getElementById("btn-sel")
+    var btn_back=document.getElementById("btn-back")
+    btn_all.onclick=function () {
+        for(var i=0;i<src_city.options.length;i++){
+            tar_city.appendChild(src_city.options[i])
+            i--
+        }
+    }
+    btn_none.onclick=function () {
+        for(var i=tar_city.options.length-1;i>=0;i--){
+            src_city.appendChild(tar_city.options[i])
+        }
+    }
+    btn_sel.onclick=function () {
+        for(var i=0;i<src_city.options.length;i++){
+            if(src_city.options[i].selected){
+                tar_city.appendChild(src_city.options[i])
+                i--
+            }
+        }
+    }
+    btn_back.onclick=function () {
+        for(var i=tar_city.options.length-1;i>=0;i--){
+            if(tar_city.options[i].selected){
+                src_city.appendChild(tar_city.options[i])
+            }
+        }
+    }
+
+</script>

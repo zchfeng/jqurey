@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    $(function(){
+//        console.log($.fn.jquery); // 3.3.1
+//
+//        $.noConflict();//交出 当前 3.3.1 对 $ 的控制权
+//        console.log($.fn.jquery); //1.11.1
+//
+//        console.log(jQuery.fn.jquery); //3.3.1
+
+
+      var jq3= $.noConflict(true) //不仅仅交出 $,同时 jQuery
+
+        console.log($.fn.jquery);
+        console.log(jQuery.fn.jquery);
+
+        console.log(jq3.fn.jquery);
+
+    })
+</script>

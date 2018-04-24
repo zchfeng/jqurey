@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js.js"></script>
+</head>
+<body>
+<form id="myform">
+    <input type="text" name="txt"/><span></span>
+</form>
+</body>
+</html>
+<script>
+//    http://60.205.181.47/myPHPCode2/checkname.php?regname=zhangsan
+    var myform=document.getElementById("myform")
+   var ospan=document.getElementsByTagName("span")[0]
+    myform.txt.oninput=myform.txt.onpropertychange=function () {
+        var str=myform.txt.value
+        var url1=`http://60.205.181.47/myPHPCode2/checkname.php?regname=${str}`
+        ajax(url1,function (aaa) {
+            var obj=JSON.parse(aaa)
+            console.log(obj);
+            if(obj.status==0){
+                ospan.innerHTML="账号已存在"
+            }
+            if(obj.status==1){
+                ospan.innerHTML="账号可用"
+            }
+        })
+    }
+</script>

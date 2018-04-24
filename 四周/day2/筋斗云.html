@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {margin:0; padding: 0}
+        ul {list-style: none;}
+        body {
+            background-color: #333;
+        }
+        .nav {
+            width: 800px;
+            height: 42px;
+            margin: 100px auto;
+            background: url(images/rss.png) right center no-repeat #fff;
+            border-radius: 10px;
+            position: relative;
+        }
+        .nav ul li{
+            width: 83px;
+            height: 42px;
+            float: left;
+            line-height: 42px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .nav span {
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .nav  ul {
+            position: absolute;
+        }
+    </style>
+    <script src="useer_animate.js?v=2"></script>
+    <script src="useer.animate2.js"></script>
+</head>
+<body>
+<div class="nav">
+    <span></span>
+    <ul>
+        <li>北京校区</li>
+        <li>北京校区</li>
+        <li>北京校区</li>
+        <li>北京校区</li>
+        <li>北京校区</li>
+        <li>北京校区</li>
+        <li>北京校区</li>
+        <li>北京校区</li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+//    1.拿到所有li 并绑定鼠标移入事件
+//    2.拿到span,移动块区域
+//    3.鼠标移到li ,span到相应的li,移动距离是li的下标*li的宽度
+//    4,鼠标移开ul,span回到原点
+//    5.鼠标点击li,span 固定到相应的li
+//    var olis=document.getElementsByTagName("li")//获取所有li
+//    var oul=document.getElementsByTagName("ul")[0]//获取ul
+//    var ospan=document.getElementsByTagName("span")[0]//获取span
+//    var position=0  //记录点击位置
+//    for (var i = 0; i <olis .length; i++) {  //遍历li(绑定移入和点击事件)
+//        olis[i].index=i  //记录li下标
+//          olis[i].onmouseenter=function () {//绑定所有li的移入事件
+//              var target=this.index*(this.offsetWidth)  //span需要移动的距离
+//              animate(ospan,"left",target)  //移动
+//          }
+//          olis[i].onclick=function () {  //绑定点击事件
+//              var target=this.index*(this.offsetWidth)
+//              position=target
+//              animate(ospan,"left",target)
+//          }
+//    }
+//    oul.onmouseleave=function () {  //鼠标移开时
+//        animate(ospan,"left",position)//回到原来的位置
+//    }
+//    var ospan=document.getElementsByTagName("span")[0]//获取ospan(移动块)
+//    var olis=document.getElementsByTagName("li")//获得所有li(事件控制移动块位置)
+//    var oul=document.getElementsByTagName("ul")[0]//获得ul(移出事件)
+//    var position=0  //控制原点位置
+//for (var i = 0; i <olis .length; i++) {//遍历li
+//    olis[i].index=i//给每个li添加下标属性 (计算用)
+//    olis[i].onmouseenter=function () {
+//        var target=this.index*this.offsetWidth//块需要移动的距离=移动几个li*每个li的宽
+//        animate2(ospan,{"left":target})
+//    }
+//    olis[i].onclick=function () {
+//        var target=this.index*this.offsetWidth
+//        position=target
+//        animate2(ospan,{"left":target})
+//    }
+//}
+//oul.onmouseleave=function () {//移出事件
+//    animate2(ospan,{"left":position})
+//}
+    var olis=document.getElementsByTagName("li")
+    var oul=document.getElementsByTagName("ul")
+    var ospan=
+</script>

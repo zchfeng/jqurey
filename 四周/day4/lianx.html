@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    var obj={
+//        number:15,
+//        name:"sdsds",
+//        age:14,
+//    }
+//    var number=13
+//    var name="sdsad"
+//    var age=15
+//    var OBJ={number,name,age}
+//    console.log(obj);
+//    console.log(OBJ);
+//
+//    function show() {
+//        var p=new Promise(function (tf1,tf2) {
+//              if(true){
+//                  tf1("成功")
+//              }else{
+//                  tf2("失败")
+//              }
+//        })
+//        return p
+//    }
+//    show().then(function (date1) {
+//        console.log(date1);
+//    },function (date2) {
+//        console.log(date2);
+//    })
+//const fn = (a, b) => a + b;
+    var fn1=(a,b)=>{return a+b};
+console.log(fn1(1,2));
+var fn2=(a,b)=>{console.log(a, b);
+b=12
+return a+b
+}
+console.log(fn2(1,2));
+var fn2=(a,b,c)=>{
+    return a+b+c
+}
+console.log(fn2(2,3)); //nan
+
+    var obj={
+        uname:"123",
+        age:12,
+        height:167,
+        weight:55,
+    }
+    var uname="123"
+    var age=12
+    var height=167
+    var weight=55
+    var Obj={uname,age,height,weight}
+var obj2={}
+obj2.uname="123";
+    obj2.age=12;
+    obj2.height=167;
+    obj2.weight=55;
+    var obj3=new Object()
+obj3.uname="123";
+obj3.age=12;
+obj3.height=167;
+obj3.weight=55;
+var obj4=new Object()
+obj4.uname="123";
+obj4.age=12;
+obj4.height=167;
+obj4.weight=55;
+console.log(obj);
+console.log(Obj);
+console.log(obj == Obj);//fales  内容一样,创建方式不一样
+    var nowobj=obj
+console.log(nowobj);
+console.log(nowobj == obj);//true  复制的会复制一样的样式
+console.log(nowobj == Obj);
+console.log(obj2);
+console.log(obj2 == obj);
+console.log(obj2 == Obj);
+console.log(obj3);
+console.log(obj3 == obj);
+console.log(obj3== Obj);
+console.log(obj3 == obj2);
+console.log(obj4);
+console.log(obj3 == obj4);
+console.log("aaa" == "aaa");
+</script>

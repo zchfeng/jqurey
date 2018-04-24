@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="box">
+    <li>11111</li>
+    <li>1111111</li>
+    <li>3333</li>
+    <li>44</li>
+    <li>55</li>
+</ul>
+</body>
+</html>
+<script>
+//    var obox=document.getElementById("box")
+//    var child=obox.children
+//    console.log(child)
+//    for(var i=0;i<child.length;i++){
+//        if(i%2==0){
+//            child[i].style.background="red"
+//        }else{
+//            child[i].style.background="blue"
+//        }
+//    }
+//     var end=[]
+//    var obox=document.getElementById("box")   //获取对应的ul
+//     var  arr=obox.childNodes   //获取ul下面的所有节点
+//    console.log(arr)
+//    for(var j=0;j<arr.length;j++){
+//        if(arr[j].nodeType==1){//p判断是不是元素节点
+//            end.push(arr[j])//把所有元素节点加入到一个数组/集合
+//        }
+//    }
+//    console.log(end)
+//    for(var n=0;n<end.length;n++){//判断奇偶性
+//        if(n%2==0){
+//            end[n].style.background="red"
+//        }else{
+//            end[n].style.background="blue"
+//        }
+//    }
+//    创建元素节点
+    var newdiv=document.createElement("div")
+    var newtxt=document.createTextNode("这是什么鬼")
+    newdiv.appendChild(newtxt)
+    document.body.appendChild(newdiv)
+</script>

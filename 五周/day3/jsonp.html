@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jsonp.js"></script>
+    <!--<script>-->
+        <!--function abc(res) {-->
+            <!--console.log(res);-->
+        <!--}-->
+    <!--</script>-->
+    <!--<script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=miqi&cb=abc"></script>-->
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    JSONP({
+        url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+        data:{
+            wd:"miqi"
+        },
+        cbname:"cb",
+        callback:function (res) {
+            console.log(res);
+        }
+    })
+</script>

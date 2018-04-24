@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0}
+        html,body{
+            background:#c6c6c6;
+        }
+        #top{
+            height: 50px;
+            width: 400px;;
+            border: solid 1px #ffffff;
+            text-align: center;
+            font-size:24px;
+            line-height: 50px;
+        }
+    ul li{
+       list-style:none;
+        height: 50px;
+        width: 200px;
+        border: solid 1px #ffffff;
+        text-align: center;
+        font-size:24px;
+        line-height: 50px;
+        background: #0c091a;
+        color:#ffffff;
+    }
+   ul {
+       display: none;
+   }
+        #box {
+       width: 300px;
+       height: 300px;
+   }
+
+        #box img{
+            float:left;
+            width: 50px;
+            height: 50px;
+            margin:3px;
+        }
+        #box #frist{
+           width:161px;
+            height: 161px;
+        }
+    </style>
+</head>
+<body>
+<div  id="div">
+<div id="top">请选择游戏</div>
+<ul id="ul">
+    <li>英雄联盟</li>
+    <li>魔兽世界</li>
+    <li>天龙八部</li>
+    <li>大话西游</li>
+    <li>九阴真经</li>
+</ul>
+</div>
+<div id="box">
+    <img src=images(6)/image1/big_4.jpg  id="frist">
+    <img src=images(6)/image1/big_1.jpg >
+    <img src=images(6)/image1/big_2.jpg >
+    <img src=images(6)/image1/big_3.jpg >
+    <img src=images(6)/image1/big_4.jpg >
+    <img src=images(6)/image1/big_5.jpg >
+    <img src=images(6)/image1/big_6.jpg >
+    <img src=images(6)/image1/big_7.jpg >
+    <img src=images(6)/image1/big_8.jpg >
+    <img src=images(6)/image1/big_9.jpg >
+    <img src=images(6)/image1/big_10.jpg >
+    <img src=images(6)/image1/big_11.jpg >
+</div>
+</body>
+<script>
+//    3, 制作下拉菜单:
+//    1, 最开始效果如左图1
+//    2, 鼠标滑过”请选择游戏名称”区域时,效果如图2
+//    3, 鼠标滑过下拉选项区域时, 让下拉选项可以继续显示,移开后隐藏
+//    4, 鼠标在选项中滑过时, 显示效果图3
+//    5, 选择某一项, 将顶部的名称改成你选择的游戏名称
+//           var oslt=document.getElementById("top")
+//           var oul=document.getElementById("ul")
+//           var oli=document.getElementsByTagName("li")
+//           var odiv=document.getElementById("div")
+//            odiv.onmouseenter=function () {
+//                        oul.style.display="block"
+//                    for(var i=0;i<oli.length;i++){
+//                    oli[i].onmouseenter=function () {
+//                        this.style.background="#ccc"
+//                    }
+//                        oli[i].onmouseleave=function () {
+//                            this.style.background="#0c091a"
+//                        }
+//                        oli[i].onclick=function () {
+//                            oslt.innerText=this.innerText
+//                        }
+//                }
+//                      }
+//            odiv.onmouseleave=function () {
+//                oul.style.display="none"
+//            }
+
+//4, 制作如下图效果:  当鼠标滑过小图片时, 让大图片也显示该图
+             var obox=document.getElementById("box")
+             var ofrist=document.getElementById("frist")
+             var oimg=document.getElementsByTagName("img")
+              for(var i=1;i<oimg.length;i++) {
+                  oimg[i].onmouseenter=function () {
+                      ofrist.setAttribute("src", this.getAttribute("src"))
+                  }
+              }
+</script>

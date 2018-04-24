@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            height: 500px;
+            width: 800px;
+            border: 1px solid #c0c0c0;
+
+            position: absolute;
+            margin: 100px auto;
+            left: 100px;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        ul > li {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            font-size: 30px;
+            text-align: center;
+            opacity: 0;
+        }
+
+        li:nth-child(1) {
+            opacity: 1;
+            /*background-color: red;*/
+        }
+
+        li:nth-child(2) {
+            /*background-color: yellow;*/
+        }
+
+        li:nth-child(3) {
+            /*background-color: green;*/
+        }
+
+        li:nth-child(4) {
+            /*background-color: #0094ff;*/
+        }
+
+        li:nth-child(5) {
+            /*background-color: pink;*/
+        }
+
+        ol {
+            list-style: none;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        ol > li {
+            height: 100px;
+            width: 146px;
+            margin-left: 8px;
+            float: left;
+            text-align: center;
+            border: 1px solid #999999;
+            opacity: 0.2;
+        }
+
+        ol > li img {
+            height: 100px;
+            width: 146px;
+            float: left;
+        }
+    </style>
+    <script src="useer.animate.js"></script>
+</head>
+<body>
+
+
+<div id="box">
+    <ul id="ul">
+        <li><a href="javascript:void(0)"><img src="images/slidepic1.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic2.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic3.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic4.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic5.jpg" alt=""/></a></li>
+    </ul>
+
+    <ol id="ol">
+        <li><a href="javascript:void(0)"><img src="images/slidepic1.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic2.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic3.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic4.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic5.jpg" alt=""/></a></li>
+    </ol>
+</div>
+</body>
+</html>
+<script>
+//    大图轮流透明
+//    小图透明,轮流显示
+//    鼠标移到小图上,停止轮播,显示切换对应的图片,移开继续轮播
+//    鼠标点击小图时,停止轮播,显示切换对应的图片,移开不继续
+//    大图,小图同步显示
+    var oul=document.getElementById("ul")
+    var ool=document.getElementById("ol")
+    var imgindex=0
+        ool.children[0].style.opacity=1
+   var timer=setInterval(function () {
+        play()
+    },1000)
+    function play() {
+        imgindex++
+        if(imgindex==5){
+            imgindex=0
+        }
+        for (var i = 0; i < oul.children.length; i++) {
+            animate(oul.children[i],{"opacity":0})
+            animate(ool.children[i],{"opacity":0.2})
+        }
+        animate(oul.children[imgindex],{"opacity":1})
+        animate(ool.children[imgindex],{"opacity":1})
+    }
+
+         for (var i = 0; i < ool.children.length; i++) {
+           ool.children[i].index=i
+             ool.children[i].onmouseenter=function () {
+                 imgindex=this.index-1
+                 play()
+                 clearInterval(timer)
+             }
+         }
+         ool.onmouseleave=function () {
+             timer=setInterval(function () {
+                 play()
+             },1000)
+         }
+
+</script>

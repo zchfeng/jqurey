@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+            border: 1px solid #000000;
+            line-height: 20px;
+            height: 30px;
+            width: 200px;
+        }
+        form{
+            width: 400px;
+            margin:0 auto;
+        }
+        input{
+            height: 30px;
+            width: 200px;
+        }
+    </style>
+    <script src="jsonp2.js"></script>
+</head>
+<body>
+<form>
+    <input id="txt" type="text" name="text"/>
+    <ul>
+    </ul>
+</form>
+</body>
+</html>
+<script>
+   var otxt= document.getElementById("txt")
+   otxt.oninput=otxt.onpropertychange=function () {
+       document.getElementsByTagName("ul")[0].innerHTML=""
+       document.getElementsByTagName("ul")[0].style.display="block"
+       var text=this.value
+       JSONP({
+           url: "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+           data: {"wd": text},
+           cbname: "cb",
+           callback: function (res) {
+               for (var i = 0; i < res.s.length; i++) {
+                   var oli = document.createElement("li")
+                   oli.innerText = res.s[i]
+                   document.getElementsByTagName("ul")[0].appendChild(oli)
+               }
+               var olis=document.getElementsByTagName("li")
+               console.log(olis);
+               for (var n = 0; n <olis .length; n++) {
+                   olis[n].onmouseenter=function () {
+                       for (var m = 0; m <olis .length; m++) {
+                           olis[m].style.background="#fff"
+                       }
+                       this.style.background="yellow"
+                   }
+                   olis[n].onmouseleave=function () {
+                       this.style.background="#fff"
+                   }
+                   olis[n].onclick=function () {
+                       otxt.value=this.innerText
+                       document.getElementsByTagName("ul")[0].style.display="none"
+                   }
+               }
+           }
+
+       })
+   }
+</script>

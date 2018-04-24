@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+    <style>
+        input{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<form id="form">
+    账号<input type="text" name="txt1"><br>
+    密码<input type="password"name="pwd"><br>
+    手机号<input type="text" name="txt2"><br>
+    <input type="submit">
+    <input type="reset">
+</form>
+</body>
+</html>
+<script>
+//    邮政编码(共6位数字, 第一位不能为0)
+//    var res1=/^[1-9]\d{5}$/
+//    var str1=111111
+//    console.log(res1.test(str1));
+
+//电子邮件(xxxx@xxx(.xxx)+)
+//    var res2=/^\w+@\w+\.\w+$/
+//    var str2="qq@12345.com"
+//    console.log(res2.test(str2));
+
+//手机号(13或14或15或18开头的11位数字)
+//    var res=/^((13[0-9])|(14[0-9])|(15[2-7])|(18[25-9]))\d{8}$/
+//    var str=13211050079
+//    console.log(res.test(str));
+
+//用户名(只能使用数字字母下划线, 且数字不能开头, 长度在6-15位)
+//    var res=/^[a-zA-z_]\w{5,14}/
+//    var str="a2321iudhd"
+//console.log(res.test(str));
+
+//删除多余空格
+//    var str=" sdsd  sfdsdwadw sdsd   "
+//    var str2=str.replace(/\s+/g,"")
+//console.log(str2);
+
+//删除首尾空格/
+//       var str=" sdsd  sfdsdwadw sdsd   "
+//       var str2=str.replace(/^\s+/,"").replace(/\s+$/,"")
+//       console.log(str2);
+
+//身份证
+//    var str="43052119876543213x"
+//    var res=/^\d{17}[\dxX]$/
+//console.log(res.test(str));
+
+//        中文
+//        var str = "张三";
+//var pattern = /[\u4e00-\u9fa5]+/;
+//console.log(pattern.test(str));
+
+//简单日期格式
+//    var str="2018-01-18"
+//    var res=/^\d{4}[\.\-\/]\d{2}[\.\-\/]\d{2}$/
+//console.log(res.test(str));
+//图片文件格式
+//    var str="aaaa.gif"
+//    var res=/\.(gif)|(png)|(jpg)$/
+//console.log(res.test(str));
+
+//1, 找出下面字符串中的bag,beg,big,bog, 忽略大小写, 并将其改为bug:
+//( I am a Big man, I have so mach bag, so veryone call me
+//beg man,  bog bog bog, I hate you! )
+//    var str="I am a Big man, I have so mach bag, so veryone call mebeg man,  bog bog bog, I hate you! "
+//    var res=/(bag)|(beg)|(big)|(bog)/ig
+//console.log(res.exec(str).index);
+//console.log(res.exec(str).index);
+//console.log(res.exec(str).index);
+//console.log(res.exec(str).index);
+//console.log(res.exec(str).index);
+//console.log(res.exec(str).index);
+//var newstr=str.replace(res,"bug")
+//        console.log(newstr);
+
+
+//2, 假设有一个多字符的片断重复出现，把"really"、"really really "，
+//以及任意数量连续出现的"really"字符串换成一个简单的"very ”
+//( Billy tried really hard Sally tried really really hard Timmy tried
+//really really really hard Johnny tried really really really really
+//hard )
+//    var str="Billy tried really hard Sally tried really really hard Timmy tried really really really hard Johnny tried really really really really hard"
+//   var res=/((\s+really))+/gm
+//   newstr=str.replace(res, " very")
+//
+//console.log(newstr);
+
+//3, 有以下表单, 验证用户名, 密码, 手机号
+//用户名只包含数字,字母,下划线, 且长度不小于6位
+//密码长度在8到16位
+//手机号要合法
+//保存到cookie中
+var oform=document.getElementById("form")//获取表单
+oform.onsubmit=function () {//提交事件
+    var umane=/^\w{6,}$/  //判断账号的正则
+    var pass=/^.{8,16}$/  //判断密码的正则
+    var tel=/^((13[0-9])|(14[0-9])|(15[2-7])|(18[25-9]))\d{8}$/
+    //判断手机号
+    var str={}//建个对象放所有数值
+    str.txt1=oform.txt1.value//账号信息放进对象
+    str.pwd=oform.pwd.value//密码信息放进对象
+    str.txt2=oform.txt2.value//手机号信息放进对象
+    var strcookie=JSON.stringify(str) //转成字符串
+    if(umane.test(oform.txt1.value)==true&&
+        pass.test(oform.pwd.value)== true&&
+        tel.test(oform.txt2.value)== true){//判断信息是否合法
+        Cookie("login",strcookie)//合法, 记录进COOKIE
+    }
+    return false
+}
+var strcook= getCookie("login")  //获取记录的信息
+   var cookobj=JSON.parse(strcook)  //把信息转对象
+    if(cookobj.txt1&&cookobj.pwd&&cookobj.txt2){//判断信息是否正确
+        oform.txt1.value=cookobj.txt1//正确  把值显示到表单
+        oform.pwd.value=cookobj.pwd
+        oform.txt2.value=cookobj.txt2
+    }
+
+</script>

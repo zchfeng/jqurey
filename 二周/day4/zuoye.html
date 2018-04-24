@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width:100px;height:100px;background:#ffffff;}
+        #box1{width:500px;height:500px;background:rgba(0,0,0,0.5);font-size: 16px;}
+        li{width:500px;height:50px;}
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button id="btn">改变颜色</button>
+<div id="box1">看我72变</div>
+<input type="text" id="txt1" value="姓名" class="txt" />
+<input type="text" id="txt2" value="年龄" class="txt" /><br/>
+<input type="text" id="txt3" value="学历" class="txt" />
+<input type="text" id="txt4" value="专业" class="txt" /><br/>
+<input type="submit" id="sbt" value="保存" class="falsetxt sbt" />
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+</ul>
+</body>
+</html>
+<script>
+//    1, 有一个装有颜色的数组["red", "blue", "yellow", "green", "black", "orange"];
+//    点击button 启动定时器,每一秒给它换一次色, 按顺序循环换色
+   var arr=["red", "blue", "yellow", "green", "black", "orange"]
+    document.getElementById("btn").onclick=function () {
+       var con=0
+       var obox=document.getElementById("box")
+       function fn() {
+            obox.style.backgroundColor=arr[con]
+            con++
+            }
+        setInterval(fn,1000)
+    }
+//2,  写一个定时器, 每隔0.1秒修改一次div内文字颜色和文字大小.
+//    最开始这个文字是默认大小, 开启定时器后文字大小开始增大,
+//    当增大了6次以后, 文字大小开始缩小, 缩小6次, 文字再开始增大…效果如下图:
+         var obox1=document.getElementById("box1")
+         var size=0;
+        function fn() {
+            size+=10
+            var r=Math.ceil(Math.random()*255)
+            var g=Math.ceil(Math.random()*255)
+            var b=Math.ceil(Math.random()*255)
+            obox1.style.color="rgb("+r+","+g+","+b+")"//rgb(r,g,b)
+            obox1.style.fontSize=(Math.abs(size)+16)+"px";
+            if(size==60||size==0){
+                size=size*-1
+            }
+            console.log(Math.abs(size))
+        }
+        setInterval(fn,100)
+//1, 实现一个个人信息页面   姓名  年龄  学历  专业, 可以获取到输入的信息,
+//    点击保存按钮以后, 输出信息(信息显示形式: 姓名:张三,年龄:33,学历:本科,专业:计算机)
+//      id方法
+//       document.getElementById("sbt").onclick=function () {
+//           document.getElementById("txt1").value="张三"
+//           document.getElementById("txt2").value=33
+//           document.getElementById("txt3").value="本科"
+//           document.getElementById("txt4").value="计算机"
+//       }
+
+//           document.getElementById("sbt").onclick=function () {
+//               var arr=[]
+//            var str=document.getElementsByTagName("input")
+//               for(var i=0;i<str.length;i++){
+//                if(str[i].className="txt"){
+//                    arr.push(str[i])
+//                }
+//               }
+//               arr[0].value="张三"
+//               arr[1].value=33
+//               arr[2].value="本科"
+//               arr[3].value="计算机"
+//           }
+//             document.getElementById("sbt").onclick=function () {
+//            n="txt"
+//             end=[]
+//            var str=document.getElementsByTagName("*")
+//                 for(var i=0;i<str.length;i++){
+//                if(str[i].className.indexOf(n)!=-1){
+//                    var str1=str[i].className
+//                    var arr=str1.split(" ")
+//                    console.log(arr)
+//                    for(var j=0;j<arr.length;j++){
+//                        if(arr[j]==n){
+//                         end.push(str[i])
+//                        }
+//                    }
+//                }
+//                 }
+//                 end[0].value="张三"
+//                 end[1].value=33
+//                 end[2].value="本科"
+//                  end[3].value="计算机"
+//             }
+//隔行变色
+              var str=document.getElementsByTagName("li")
+              console.log(str)
+              for(var n=0;n<10;n++) {
+                  if (n % 2 == 0) {
+                      str[n].style.backgroundColor = "red"
+                  } else {
+                      str[n].style.backgroundColor = "blue"
+                  }
+              }
+</script>

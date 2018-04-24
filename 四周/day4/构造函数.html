@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Cat(_color,_weight) {
+        this.color=_color;
+        this.weigth=_weight;
+        this.can=function () {
+            console.log(this.color+"runing");
+        }
+    }
+    var cat1=new Cat("黑色",5)
+    var cat2=new Cat("白色",6)
+    console.log(cat1, cat2);
+    cat1.can()
+    cat2.can()
+    function Person(_name,_age) {
+        this.name=_name;
+        this.age=_age;
+        this.sayHi=function () {
+            return "大家好,我叫"+_name
+        }
+    }
+    var p1=new Person("周杰伦",18)
+    var p2=new Person("刘德华",20)
+    console.log(p1,p1.sayHi());
+    console.log(p2,p2.sayHi());
+    console.log("111");
+</script>

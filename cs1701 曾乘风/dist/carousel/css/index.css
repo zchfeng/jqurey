@@ -1,0 +1,15 @@
+.carousel{position:absolute;overflow:hidden;width:370px;height:387px;border:solid 5px silver}
+.carousel .header{font-size:18px;color:silver;height:40px;line-height:40px;background:#8a2be2;overflow:hidden;margin-bottom:20px}
+.carousel .header span{font-size:18px;margin-left:30px}
+.carousel .header a{font-size:14px;color:silver;margin-left:157px}
+.carousel .header p{color:silver;display:inline-block;margin-left:5px;font-size:14px;border:solid 1px silver;border-radius:50%;line-height:12px}
+ul li{float:left;position:absolute;background:#fff}
+ul li div{margin-top:10px;margin-bottom:20px;border-bottom:solid 1px silver}
+ul li div p{margin-left:25px;font-size:14px;color:silver;margin-bottom:5px}
+ul li div img{margin:0 5px}
+#prev{left:-6px;top:185px;position:absolute}
+#next{right:-6px;top:185px;position:absolute}
+#bottom{position:absolute;width:84px;height:28px;left:130px;bottom:5px;border-radius:14px;background:rgba(0,0,0,.4);padding-left:14px}
+#bottom a{width:10px;height:10px;margin-top:9px;margin-right:17px;border-radius:50%;display:block;float:left}
+.red{background:#e31436}
+.white{background:#fff}

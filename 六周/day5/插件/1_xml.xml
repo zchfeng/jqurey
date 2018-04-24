@@ -1,0 +1,20 @@
+<xml>
+	<person>
+		<id>
+			<id1>11</id1>
+			<id2>22</id2>
+		</id>
+		<name>张三</name>
+		<age>33</age>
+	</person>
+	<person>
+		<id>33342</id>
+		<name>李四</name>
+		<age>44</age>
+	</person>
+	<person>
+		<id>454645</id>
+		<name>王五</name>
+		<age>55</age>
+	</person>
+</xml>

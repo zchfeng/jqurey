@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var str="asdsdwqdewgfweoidxhiwqeaca"
+    var obj={}
+
+    for (var i = 0; i < str.length; i++) {
+        for(var key in obj){
+            if(key==str[i]){
+                console.log(str[i]);
+                obj[str[i]]=obj[str[i]]+1
+            }
+        }
+        obj[str[i]]=1
+    }
+    console.log(obj);
+</script>

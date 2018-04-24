@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #iphone_box {
+            background: #00b5ee;
+            width: 426px;
+            height: 640px;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        #lock_box {
+            width: 360px;
+            height: 66px;
+            position: absolute;
+            left: 34px;
+            top: 545px;
+            				background: red;
+            */			}
+
+        #lock {
+            background: #0cb75d;
+            width: 93px;
+            height: 62px;
+            position: absolute;
+            left: 0px;
+            top: 0;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div id="iphone_box">
+    <div id="lock_box">
+        <div id="lock"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+//   var oiphone_box=document.getElementById("iphone_box")
+//   var olock_box=document.getElementById("lock_box")
+//   var olock=document.getElementById("lock")
+//    olock.onmousedown=function (evt) {//点击事件
+//        var e=evt||width.event
+////        取点击点到滑锁最左边的距离
+//        var x=e.clientX-oiphone_box.offsetLeft-olock_box.offsetLeft-olock.offsetLeft
+////       取滑锁的最大活动范围、
+//        var max=olock_box.offsetWidth-olock.offsetWidth
+//        olock_box.onmousemove=function (evt) {//划动事件
+//            var ee=evt||window.event
+////            取划动点后，滑锁到滑锁区域最左边的距离
+//            var mx=ee.clientX-x-oiphone_box.offsetLeft-olock_box.offsetLeft
+//           if(mx<=0){//判断是否超出最小划动范围
+//                olock.style.left="0px"
+//           }else if(mx>=max){//判断是否超出最大滑动范围
+//               olock.style.left=max+"px"
+//           }else{
+//               olock.style.left=mx+"px"
+//           }
+//        }
+//        olock_box.onmouseup=function () {//停止点击后
+//            olock_box.onmousemove= olock_box.onmouseup=null//停止
+//            var mx=olock.offsetLeft//取这是的滑锁到滑锁区域的距离
+//            if(mx<max/2){//判断位置
+//                olock.style.left="0px"
+//            }else{
+//                olock.style.left=max+"px"
+//            }
+//        }
+//    }
+//    var obox1=document.getElementById("iphone_box")
+//    var obox2=document.getElementById("lock_box")
+//    var obox3=document.getElementById("lock")
+//    obox3.onmousedown=function (evt) {
+//        var e=evt||window.event
+//        var x=e.offsetX
+//        var max=obox2.offsetWidth-obox3.offsetWidth
+//        obox2.onmousemove=function (evt) {
+//            var ee=evt||window.event
+//            var mx=ee.clientX-x-obox2.offsetLeft-obox1.offsetLeft
+//            if(mx<=0){
+//                obox3.style.left="0px"
+//            }else if(mx>max){
+//                obox3.style.left=max+"px"
+//            } else{
+//                obox3.style.left=mx+"px"
+//            }
+//        }
+//        obox2.onmouseup=function () {
+//            obox2.onmouseup=obox2.onmousemove=null
+//            var mx=obox3.offsetLeft
+//            if(mx>max/2){
+//                obox3.style.left=max+"px"
+//            }else{
+//                obox3.style.left="0px"
+//            }
+//        }
+//    }
+    var show1=document.getElementById("iphone_box")
+    var show2=document.getElementById("lock_box")
+    var show3=document.getElementById("lock")
+    show3.onmousedown=function (evt) {
+        var e=evt||window.event
+        var max=show2.offsetWidth-show3.offsetWidth
+        var x=e.clientX-show1.offsetLeft-show2.offsetLeft-show3.offsetLeft
+        show2.onmousemove=function (evt) {
+            var ee=evt||window.event
+            var mx=ee.clientX-show1.offsetLeft-show2.offsetLeft-x
+            if(mx>=max){
+                show3.style.left=max+"px"
+            }else if(mx<=0){
+                show3.style.left="0px"
+            }else {
+                show3.style.left=mx+"px"
+            }
+        }
+        show2.onmouseup=function () {
+            show2.onmouseup=show2.onmousemove=null
+            var mx=show3.offsetLeft
+            if(mx>max/2){
+                show3.style.left=max+"px"
+            }else{
+                show3.style.left="0px"
+            }
+
+        }
+    }
+</script>

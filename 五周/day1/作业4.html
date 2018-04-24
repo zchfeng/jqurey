@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border:solid 1px #a71919;
+            width: 500px;
+        }
+        span{
+            color: #99FF00;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function CreateXTR() {
+        if(window.XMLHttpRequest){
+            return new XMLHttpRequest()
+        }
+        return new ActiveXObject("Msxml2.XMLHTTP")
+    }
+    function ajax(url,callback) {
+        var xtr=CreateXTR()
+        xtr.open("get",url)
+        xtr.send(null)
+        xtr.onreadystatechange=function () {
+            if(xtr.status==200&xtr.readyState==4){
+                if(callback){
+                    callback(xtr.responseText)
+                }
+            }
+        }
+    }
+    ajax("http://60.205.181.47/myPHPCode2/weibo.php",function (ajax) {
+        console.log(111);
+        var xtrobj=JSON.parse(ajax)
+        for (var i = 0; i <xtrobj .length; i++) {
+            var odiv=document.createElement("div")
+            odiv.innerHTML=`${xtrobj[i].content}<br><span>${xtrobj[i].comtcnt}人评论
+</span><span>${xtrobj[i].likecnt}人赞 </span>`
+            document.body.appendChild(odiv)
+        }
+    })
+</script>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .rocket {
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+            display: none;
+        }
+    </style>
+    <script src="useer.animate2.js"></script>
+</head>
+<body>
+<span class="rocket" id="backTop">
+    <img src="images/Top.jpg" alt=""/>
+</span>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+<p>开始页面内容</p>
+</body>
+</html>
+<script>
+    var movetop=document.getElementById("backTop")
+    document.onscroll=function () {
+        var scroll = Myscroll().top
+        if (scroll >= 400) {
+            movetop.style.display = "block"
+        } else {
+            movetop.style.display = "none"
+        }
+        movetop.onclick = function () {
+            var timer = setInterval(function () {//定时器
+                var scroll = Myscroll().top  //获取当时滚动高度
+                var step = (0 - scroll) / 10   //算出步长,步长=(目标位置-当前位置)/10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)//判断步长取整
+                window.scrollTo(0, scroll + step) //设置新位置  新位置=当前位置+步长
+                if (scroll == 0) {  //到达目标位置 停止定时
+                    clearInterval(timer)
+                }
+            }, 100)
+        }
+    }
+</script>

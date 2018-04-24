@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+        }
+        #box1{
+            background: #00b5ee;
+        }
+        #box2{
+            background:#0cb75d;
+        }
+        #box3{
+            background:#a71919;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+</body>
+</html>
+<script>
+    class Dargbox{
+        constructor(id){
+            this.ele=document.getElementById(id)
+        }
+        movestart(){
+            var self=this
+            console.log(this.ele);
+            this.ele.onmousedown=function(evt){
+                var e=evt||window.event
+                var disX=e.offsetX
+                var disY=e.offsetY
+                self.moveing(disX,disY)
+                self.moveend()
+            }
+        }
+        moveing(x,y){
+            var self=this
+            document.onmousemove=function(evt){
+                var e=evt||window.event
+                self.ele.style.left=e.clientX-x+"px"
+                self.ele.style.top=e.clientY-y+"px"
+            }
+        }
+        moveend(){
+            document.onmouseup=function(){
+                document.onmousemove=document.onmouseup=null
+            }
+        }
+    }
+    class Dargbox_tow extends Dargbox{
+        constructor(id){
+            super(id)
+        }
+        moveing(x,y){
+            var self=this
+            document.onmousemove=function(evt){
+                var e=evt||window.event
+                self.ele.style.left=e.clientX-x+"px"
+                self.ele.style.top=e.clientY-y+"px"
+                if(self.ele.offsetLeft<=0){
+                    self.ele.style.left="0px"
+                }
+                if(self.ele.offsetTop<=0){
+                    self.ele.style.top="0px"
+                }
+            }
+        }
+    }
+    class Dargbox_thr extends Dargbox_tow{
+        constructor(id){
+            super(id)
+        }
+        movetext(){
+            var self=this
+            document.addEventListener("mousemove",function(){
+                self.ele.innerText="left"+self.ele.offsetLeft+","+"top"+self.ele.offsetTop
+            })
+        }
+    }
+    var box1=new Dargbox("box1")
+    box1.movestart()
+    var box2=new Dargbox_tow("box2")
+    box2.movestart()
+    var box3=new Dargbox_thr("box3")
+    box3.movestart()
+    box3.movetext()
+</script>

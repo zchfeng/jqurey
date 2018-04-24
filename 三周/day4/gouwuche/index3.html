@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Cookie.js"></script>
+</head>
+<body>
+<p>我的购物车</p>
+<ul></ul>
+</body>
+</html>
+<script>
+    var cookieobj=JSON.parse(getCookie("cart")||'[]')
+    for(var i=0;i<cookieobj.length;i++){
+        var oli=document.createElement("li")
+        var str="商品名称:"+cookieobj[i].uname+" 价格:"+cookieobj[i].pic+" 数量:"+
+            cookieobj[i].num+" 金额:"+(cookieobj[i].pic*cookieobj[i].num)
+        oli.innerText=str
+        document.querySelector("ul").appendChild(oli)
+    }
+</script>

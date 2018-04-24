@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="JS/animate_height.js"></script>
+    <style type="text/css">
+        *{ padding:0; margin:0; list-style:none; border:0; }
+        .all{
+            width:500px;
+            height:200px;
+            padding:7px;
+            border:1px solid #ccc;
+            position:relative;
+            float: left;
+        }
+        .screen{
+            width:500px;
+            height:200px;
+            overflow:hidden;
+            position:relative;
+        }
+        .screen li{ width:500px; height:200px; overflow:hidden;}
+        .screen ul{ position:absolute; left:0; top:0px; }
+        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center; }
+        .all ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer; }
+        .all ol li.current{ background:yellow; }
+        #img{
+            width:750px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='all'>
+<div class="screen">
+    <ul>
+        <li><img src="images(6)/01.jpg" width="500" height="200"/></li>
+        <li><img src="images(6)/02.jpg" width="500" height="200"/></li>
+        <li><img src="images(6)/03.jpg" width="500" height="200"/></li>
+        <li><img src="images(6)/04.jpg" width="500" height="200"/></li>
+        <li><img src="images(6)/05.jpg" width="500" height="200"/></li>
+
+    </ul>
+</div>
+<ol></ol>
+</div>
+<img src="images(6)/01.jpg"  id="img" />
+</body>
+</html>
+<script>
+    var oul=document.getElementsByTagName("ul")[0]
+    var ool=document.getElementsByTagName("ol")[0]
+    var oimg=document.getElementById("img")
+    var oall=document.getElementById("all")
+    oul.appendChild(oul.children[0].cloneNode(true))
+    for(var i=0;i<oul.children.length-1;i++){
+        var oli=document.createElement("li")
+        oli.innerHTML=i+1
+        ool.appendChild(oli)
+        if(i==0){
+            oli.className="current"
+        }
+        oli.index=i
+        oli.onclick=function () {
+            num = this.index - 1;
+            show();
+        }
+    }
+    var num=0
+    function show() {
+        num++
+        if(num>=5){
+            num=1
+            oul.style.top="0px"
+        }
+        oimg.setAttribute("src",oul.children[num].children[0].getAttribute("src"))
+        animate(oul,-200*num)
+
+    }
+    var timer=setInterval(function () {
+        show()
+    },1000)
+    oall.onmouseenter=function () {
+        clearInterval(timer)
+    }
+    oall.onmouseleave=function () {
+        timer=setInterval(function () {
+            show()
+        },1000)
+    }
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script src="../../tools.js"></script>
+</head>
+<body>
+<div class="top" id="top">
+    <img src="images/top.png" alt=""/>
+</div>
+<div id="Q-nav">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="main">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>
+
+<script>
+
+    var oTop=document.getElementById('top');// 第1个盒子
+    var nav=document.getElementById('Q-nav');//第2个盒子
+    var main=document.getElementById('main');//第3个盒子
+
+    //1.要给页面添加一个滚动条事件
+    document.onscroll=function(){
+        //2.当滚动的值 大于 第一个盒子的高度 或者 滚动条大于第2个盒子到顶部的距离
+
+        var scrollTop=MyScoll().top;
+        var topHeight=oTop.offsetHeight // 第一个盒子的自身高度
+
+        if(scrollTop>=topHeight){
+            //  让第2个盒子固定在顶部
+            nav.style.position="fixed";
+            nav.style.top="0px"
+            //  让第三个盒子 的marginTop 等于第2个盒子的高度
+            main.style.marginTop=nav.offsetHeight+"px";
+        }else{
+            //3.滚回来的情况,让第2个盒子回到原来的位置 ,让第三个盒子的margintop变成0
+            main.style.marginTop="0px";
+            // position 有4个属性 默认就是  static 静态
+            nav.style.position="static";
+
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+</script>

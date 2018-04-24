@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+<button id="btn1">关灯</button>
+<button id="btn2">开灯</button>
+</body>
+</html>
+<script>
+$(function () {
+    $("#btn1").click(function () {
+        $("body").css("background","#000")
+    })
+    $("#btn2").click(function () {
+        $("body").css("background","#666")
+    })
+})
+</script>
